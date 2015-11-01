@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import Parse
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+//        let userProfile = PFObject(className:"UserProfile")
+//        userProfile["name"] = "Courtney"
+//        
+//        userProfile.saveInBackground()
     }
 
     override func didReceiveMemoryWarning() {

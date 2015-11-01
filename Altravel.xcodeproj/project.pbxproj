@@ -14,6 +14,12 @@
 		F6489D5C1BE59BE6003D4435 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6489D5A1BE59BE6003D4435 /* LaunchScreen.storyboard */; };
 		F6489D671BE59BE6003D4435 /* AltravelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6489D661BE59BE6003D4435 /* AltravelTests.swift */; };
 		F6489D721BE59BE6003D4435 /* AltravelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6489D711BE59BE6003D4435 /* AltravelUITests.swift */; };
+		F6489D801BE5A22C003D4435 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6489D7F1BE5A22C003D4435 /* Parse.framework */; };
+		F6489D831BE5A3C0003D4435 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6489D821BE5A3C0003D4435 /* Bolts.framework */; };
+		F6489D851BE5A5F1003D4435 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6489D841BE5A5F1003D4435 /* AudioToolbox.framework */; };
+		F6489D871BE5A609003D4435 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6489D861BE5A609003D4435 /* SystemConfiguration.framework */; };
+		F6489D8C1BE5A7C2003D4435 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F6489D881BE5A739003D4435 /* libstdc++.6.tbd */; };
+		F6489D8D1BE5A7D1003D4435 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F6489D8A1BE5A744003D4435 /* libsqlite3.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +53,12 @@
 		F6489D6D1BE59BE6003D4435 /* AltravelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AltravelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6489D711BE59BE6003D4435 /* AltravelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AltravelUITests.swift; sourceTree = "<group>"; };
 		F6489D731BE59BE6003D4435 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6489D7F1BE5A22C003D4435 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		F6489D821BE5A3C0003D4435 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		F6489D841BE5A5F1003D4435 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		F6489D861BE5A609003D4435 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F6489D881BE5A739003D4435 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
+		F6489D8A1BE5A744003D4435 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6489D8D1BE5A7D1003D4435 /* libsqlite3.tbd in Frameworks */,
+				F6489D8C1BE5A7C2003D4435 /* libstdc++.6.tbd in Frameworks */,
+				F6489D871BE5A609003D4435 /* SystemConfiguration.framework in Frameworks */,
+				F6489D851BE5A5F1003D4435 /* AudioToolbox.framework in Frameworks */,
+				F6489D801BE5A22C003D4435 /* Parse.framework in Frameworks */,
+				F6489D831BE5A3C0003D4435 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +98,7 @@
 				F6489D501BE59BE6003D4435 /* Altravel */,
 				F6489D651BE59BE6003D4435 /* AltravelTests */,
 				F6489D701BE59BE6003D4435 /* AltravelUITests */,
+				F6489D811BE5A235003D4435 /* Frameworks */,
 				F6489D4F1BE59BE6003D4435 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -123,6 +142,19 @@
 				F6489D731BE59BE6003D4435 /* Info.plist */,
 			);
 			path = AltravelUITests;
+			sourceTree = "<group>";
+		};
+		F6489D811BE5A235003D4435 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F6489D8A1BE5A744003D4435 /* libsqlite3.tbd */,
+				F6489D881BE5A739003D4435 /* libstdc++.6.tbd */,
+				F6489D861BE5A609003D4435 /* SystemConfiguration.framework */,
+				F6489D841BE5A5F1003D4435 /* AudioToolbox.framework */,
+				F6489D821BE5A3C0003D4435 /* Bolts.framework */,
+				F6489D7F1BE5A22C003D4435 /* Parse.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -399,6 +431,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Altravel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.courtney.Altravel;
@@ -410,6 +446,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Altravel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.courtney.Altravel;
