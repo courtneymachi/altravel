@@ -1,0 +1,507 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F6489D521BE59BE6003D4435 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6489D511BE59BE6003D4435 /* AppDelegate.swift */; };
+		F6489D541BE59BE6003D4435 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6489D531BE59BE6003D4435 /* ViewController.swift */; };
+		F6489D571BE59BE6003D4435 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6489D551BE59BE6003D4435 /* Main.storyboard */; };
+		F6489D591BE59BE6003D4435 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6489D581BE59BE6003D4435 /* Assets.xcassets */; };
+		F6489D5C1BE59BE6003D4435 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6489D5A1BE59BE6003D4435 /* LaunchScreen.storyboard */; };
+		F6489D671BE59BE6003D4435 /* AltravelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6489D661BE59BE6003D4435 /* AltravelTests.swift */; };
+		F6489D721BE59BE6003D4435 /* AltravelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6489D711BE59BE6003D4435 /* AltravelUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F6489D631BE59BE6003D4435 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F6489D461BE59BE5003D4435 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F6489D4D1BE59BE6003D4435;
+			remoteInfo = Altravel;
+		};
+		F6489D6E1BE59BE6003D4435 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F6489D461BE59BE5003D4435 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F6489D4D1BE59BE6003D4435;
+			remoteInfo = Altravel;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F6489D4E1BE59BE6003D4435 /* Altravel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Altravel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6489D511BE59BE6003D4435 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F6489D531BE59BE6003D4435 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F6489D561BE59BE6003D4435 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F6489D581BE59BE6003D4435 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F6489D5B1BE59BE6003D4435 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F6489D5D1BE59BE6003D4435 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6489D621BE59BE6003D4435 /* AltravelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AltravelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6489D661BE59BE6003D4435 /* AltravelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AltravelTests.swift; sourceTree = "<group>"; };
+		F6489D681BE59BE6003D4435 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6489D6D1BE59BE6003D4435 /* AltravelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AltravelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6489D711BE59BE6003D4435 /* AltravelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AltravelUITests.swift; sourceTree = "<group>"; };
+		F6489D731BE59BE6003D4435 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F6489D4B1BE59BE6003D4435 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6489D5F1BE59BE6003D4435 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6489D6A1BE59BE6003D4435 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F6489D451BE59BE5003D4435 = {
+			isa = PBXGroup;
+			children = (
+				F6489D501BE59BE6003D4435 /* Altravel */,
+				F6489D651BE59BE6003D4435 /* AltravelTests */,
+				F6489D701BE59BE6003D4435 /* AltravelUITests */,
+				F6489D4F1BE59BE6003D4435 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F6489D4F1BE59BE6003D4435 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F6489D4E1BE59BE6003D4435 /* Altravel.app */,
+				F6489D621BE59BE6003D4435 /* AltravelTests.xctest */,
+				F6489D6D1BE59BE6003D4435 /* AltravelUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F6489D501BE59BE6003D4435 /* Altravel */ = {
+			isa = PBXGroup;
+			children = (
+				F6489D511BE59BE6003D4435 /* AppDelegate.swift */,
+				F6489D531BE59BE6003D4435 /* ViewController.swift */,
+				F6489D551BE59BE6003D4435 /* Main.storyboard */,
+				F6489D581BE59BE6003D4435 /* Assets.xcassets */,
+				F6489D5A1BE59BE6003D4435 /* LaunchScreen.storyboard */,
+				F6489D5D1BE59BE6003D4435 /* Info.plist */,
+			);
+			path = Altravel;
+			sourceTree = "<group>";
+		};
+		F6489D651BE59BE6003D4435 /* AltravelTests */ = {
+			isa = PBXGroup;
+			children = (
+				F6489D661BE59BE6003D4435 /* AltravelTests.swift */,
+				F6489D681BE59BE6003D4435 /* Info.plist */,
+			);
+			path = AltravelTests;
+			sourceTree = "<group>";
+		};
+		F6489D701BE59BE6003D4435 /* AltravelUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F6489D711BE59BE6003D4435 /* AltravelUITests.swift */,
+				F6489D731BE59BE6003D4435 /* Info.plist */,
+			);
+			path = AltravelUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F6489D4D1BE59BE6003D4435 /* Altravel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F6489D761BE59BE6003D4435 /* Build configuration list for PBXNativeTarget "Altravel" */;
+			buildPhases = (
+				F6489D4A1BE59BE6003D4435 /* Sources */,
+				F6489D4B1BE59BE6003D4435 /* Frameworks */,
+				F6489D4C1BE59BE6003D4435 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Altravel;
+			productName = Altravel;
+			productReference = F6489D4E1BE59BE6003D4435 /* Altravel.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F6489D611BE59BE6003D4435 /* AltravelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F6489D791BE59BE6003D4435 /* Build configuration list for PBXNativeTarget "AltravelTests" */;
+			buildPhases = (
+				F6489D5E1BE59BE6003D4435 /* Sources */,
+				F6489D5F1BE59BE6003D4435 /* Frameworks */,
+				F6489D601BE59BE6003D4435 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F6489D641BE59BE6003D4435 /* PBXTargetDependency */,
+			);
+			name = AltravelTests;
+			productName = AltravelTests;
+			productReference = F6489D621BE59BE6003D4435 /* AltravelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F6489D6C1BE59BE6003D4435 /* AltravelUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F6489D7C1BE59BE6003D4435 /* Build configuration list for PBXNativeTarget "AltravelUITests" */;
+			buildPhases = (
+				F6489D691BE59BE6003D4435 /* Sources */,
+				F6489D6A1BE59BE6003D4435 /* Frameworks */,
+				F6489D6B1BE59BE6003D4435 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F6489D6F1BE59BE6003D4435 /* PBXTargetDependency */,
+			);
+			name = AltravelUITests;
+			productName = AltravelUITests;
+			productReference = F6489D6D1BE59BE6003D4435 /* AltravelUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F6489D461BE59BE5003D4435 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "courtney machi";
+				TargetAttributes = {
+					F6489D4D1BE59BE6003D4435 = {
+						CreatedOnToolsVersion = 7.1;
+					};
+					F6489D611BE59BE6003D4435 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = F6489D4D1BE59BE6003D4435;
+					};
+					F6489D6C1BE59BE6003D4435 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = F6489D4D1BE59BE6003D4435;
+					};
+				};
+			};
+			buildConfigurationList = F6489D491BE59BE5003D4435 /* Build configuration list for PBXProject "Altravel" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F6489D451BE59BE5003D4435;
+			productRefGroup = F6489D4F1BE59BE6003D4435 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F6489D4D1BE59BE6003D4435 /* Altravel */,
+				F6489D611BE59BE6003D4435 /* AltravelTests */,
+				F6489D6C1BE59BE6003D4435 /* AltravelUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F6489D4C1BE59BE6003D4435 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6489D5C1BE59BE6003D4435 /* LaunchScreen.storyboard in Resources */,
+				F6489D591BE59BE6003D4435 /* Assets.xcassets in Resources */,
+				F6489D571BE59BE6003D4435 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6489D601BE59BE6003D4435 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6489D6B1BE59BE6003D4435 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F6489D4A1BE59BE6003D4435 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6489D541BE59BE6003D4435 /* ViewController.swift in Sources */,
+				F6489D521BE59BE6003D4435 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6489D5E1BE59BE6003D4435 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6489D671BE59BE6003D4435 /* AltravelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6489D691BE59BE6003D4435 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6489D721BE59BE6003D4435 /* AltravelUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F6489D641BE59BE6003D4435 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F6489D4D1BE59BE6003D4435 /* Altravel */;
+			targetProxy = F6489D631BE59BE6003D4435 /* PBXContainerItemProxy */;
+		};
+		F6489D6F1BE59BE6003D4435 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F6489D4D1BE59BE6003D4435 /* Altravel */;
+			targetProxy = F6489D6E1BE59BE6003D4435 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F6489D551BE59BE6003D4435 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F6489D561BE59BE6003D4435 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F6489D5A1BE59BE6003D4435 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F6489D5B1BE59BE6003D4435 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F6489D741BE59BE6003D4435 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F6489D751BE59BE6003D4435 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F6489D771BE59BE6003D4435 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Altravel/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.courtney.Altravel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F6489D781BE59BE6003D4435 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Altravel/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.courtney.Altravel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F6489D7A1BE59BE6003D4435 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = AltravelTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.courtney.AltravelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Altravel.app/Altravel";
+			};
+			name = Debug;
+		};
+		F6489D7B1BE59BE6003D4435 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = AltravelTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.courtney.AltravelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Altravel.app/Altravel";
+			};
+			name = Release;
+		};
+		F6489D7D1BE59BE6003D4435 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = AltravelUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.courtney.AltravelUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Altravel;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		F6489D7E1BE59BE6003D4435 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = AltravelUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.courtney.AltravelUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Altravel;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F6489D491BE59BE5003D4435 /* Build configuration list for PBXProject "Altravel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6489D741BE59BE6003D4435 /* Debug */,
+				F6489D751BE59BE6003D4435 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F6489D761BE59BE6003D4435 /* Build configuration list for PBXNativeTarget "Altravel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6489D771BE59BE6003D4435 /* Debug */,
+				F6489D781BE59BE6003D4435 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F6489D791BE59BE6003D4435 /* Build configuration list for PBXNativeTarget "AltravelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6489D7A1BE59BE6003D4435 /* Debug */,
+				F6489D7B1BE59BE6003D4435 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F6489D7C1BE59BE6003D4435 /* Build configuration list for PBXNativeTarget "AltravelUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6489D7D1BE59BE6003D4435 /* Debug */,
+				F6489D7E1BE59BE6003D4435 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F6489D461BE59BE5003D4435 /* Project object */;
+}
