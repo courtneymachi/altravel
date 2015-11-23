@@ -8,11 +8,19 @@
 
 import UIKit
 import Parse
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let loginButton:FBSDKLoginButton = FBSDKLoginButton()
+        loginButton.center = self.view.center
+        self.view .addSubview(loginButton)
+        
+        
         
 //        let userProfile = PFObject(className:"UserProfile")
 //        userProfile["name"] = "Courtney"
