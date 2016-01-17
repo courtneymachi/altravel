@@ -24,6 +24,7 @@
 		F6489D971C029623003D4435 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6489D941C029623003D4435 /* FBSDKCoreKit.framework */; };
 		F6489D981C029623003D4435 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6489D951C029623003D4435 /* FBSDKLoginKit.framework */; };
 		F6489D991C029623003D4435 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6489D961C029623003D4435 /* FBSDKShareKit.framework */; };
+		F6D8698A1C4C4040004E0BF1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D869891C4C4040004E0BF1 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		F6489D941C029623003D4435 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		F6489D951C029623003D4435 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		F6489D961C029623003D4435 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		F6D869891C4C4040004E0BF1 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				F6489D511BE59BE6003D4435 /* AppDelegate.swift */,
+				F6D869891C4C4040004E0BF1 /* ProfileViewController.swift */,
 				F6489D531BE59BE6003D4435 /* ViewController.swift */,
 				F6489D551BE59BE6003D4435 /* Main.storyboard */,
 				F6489D581BE59BE6003D4435 /* Assets.xcassets */,
@@ -304,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6D8698A1C4C4040004E0BF1 /* ProfileViewController.swift in Sources */,
 				F6489D541BE59BE6003D4435 /* ViewController.swift in Sources */,
 				F6489D521BE59BE6003D4435 /* AppDelegate.swift in Sources */,
 			);

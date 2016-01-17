@@ -34,10 +34,10 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="LGQ-3h-jia">
             <objects>
-                <viewController id="UyG-Pb-X2Z" sceneMemberID="viewController">
+                <viewController id="UyG-Pb-X2Z" customClass="ProfileViewController" customModule="Altravel" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pOM-qa-zZT"/>
                         <viewControllerLayoutGuide type="bottom" id="NUD-wj-yVq"/>
@@ -45,8 +45,19 @@
                     <view key="view" contentMode="scaleToFill" id="9ga-ba-hz1">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zab-W5-dxT">
+                                <rect key="frame" x="133" y="121" width="253" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="userNameLabel" destination="Zab-W5-dxT" id="nri-OO-oZb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfw-Df-Mav" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

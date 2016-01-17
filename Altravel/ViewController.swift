@@ -23,24 +23,30 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onLogin(sender: UIButton) {
-        PFFacebookUtils.logInInBackgroundWithReadPermissions(nil, block: { (user, error) -> Void in
-            if ((error == nil)) {
-                if (user == nil) {
-                    NSLog("User cancelled the facebook login");
+        let permissions = ["public_profile"]
+        
+        PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions) {
+            (user: PFUser?, error: NSError?) -> Void in
+            
+                if (error == nil) {
+                    if user != nil {
+                        NSLog("User logged in through facebook");
+                        //move to the next scene
+                        self.performSegueWithIdentifier("loginSuccessSegue", sender: self)
+                    }
+                    else {
+                        NSLog("User cancelled");
+                        if PFUser.currentUser() != nil {
+                            self.performSegueWithIdentifier("loginSuccessSegue", sender: self)
+                        }
+                    }
                 }
                 else {
-                    NSLog("User logged in through facebook");
-                    //TODO: add move to the next scene
-                    self.performSegueWithIdentifier("loginSuccessSegue", sender: self)
+                    NSLog("%s", error!)
                 }
-            }
-            else {
-                NSLog("%s", error!)
-            }
-        })
+        }
+        
     }
-
-    
-    
 }
+
 
