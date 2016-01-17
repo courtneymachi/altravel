@@ -28,11 +28,10 @@ class ViewController: UIViewController {
                 if (user == nil) {
                     NSLog("User cancelled the facebook login");
                 }
-                else if ((user?.isNew) != nil) {
-                    NSLog("User signed up and logged in through facebook");
-                }
                 else {
                     NSLog("User logged in through facebook");
+                    //TODO: add move to the next scene
+                    self.performSegueWithIdentifier("loginSuccessSegue", sender: self)
                 }
             }
             else {
@@ -41,5 +40,7 @@ class ViewController: UIViewController {
         })
     }
 
+    
+    
 }
 
