@@ -23,18 +23,15 @@ class ProfileViewController: UIViewController {
         request.startWithCompletionHandler { (connection, userInfo, error) -> Void in
             
             //TODO store the facebook id
-            
-            if let fbID = userInfo["id"] as? String {
-                NSLog("captured facebook id")
-                NSLog("%s", fbID)
-            }
-            
-            
             if ((error == nil)) {
                 if let name = userInfo["name"] as? String {
                     self.userNameLabel.text = "\(name)"
                 }
-                
+
+                if let fbID = userInfo["id"] as? String {
+                    NSLog("captured facebook id")
+                    NSLog("%s", fbID)
+                }
             }
             
         }
