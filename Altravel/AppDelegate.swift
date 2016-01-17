@@ -10,6 +10,8 @@ import UIKit
 import Parse
 import FBSDKCoreKit
 import FBSDKLoginKit
+import ParseFacebookUtilsV4;
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         Parse.setApplicationId("cRNvN1a8JbJuRJumjVsdGzEndrn8ytYV2rUcnBSv", clientKey: "lVWdcXXkXn34MLvMNN4Ql7BU7eZoVfs2G39rnmVf")
-        
+    
+        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions);
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         return true

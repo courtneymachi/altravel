@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DDD8566D1C4B41D500761965 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD8566C1C4B41D500761965 /* ParseFacebookUtilsV4.framework */; };
 		F6489D521BE59BE6003D4435 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6489D511BE59BE6003D4435 /* AppDelegate.swift */; };
 		F6489D541BE59BE6003D4435 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6489D531BE59BE6003D4435 /* ViewController.swift */; };
 		F6489D571BE59BE6003D4435 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6489D551BE59BE6003D4435 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DDD8566C1C4B41D500761965 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		F6489D4E1BE59BE6003D4435 /* Altravel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Altravel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6489D511BE59BE6003D4435 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6489D531BE59BE6003D4435 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				F6489D8C1BE5A7C2003D4435 /* libstdc++.6.tbd in Frameworks */,
 				F6489D871BE5A609003D4435 /* SystemConfiguration.framework in Frameworks */,
 				F6489D851BE5A5F1003D4435 /* AudioToolbox.framework in Frameworks */,
+				DDD8566D1C4B41D500761965 /* ParseFacebookUtilsV4.framework in Frameworks */,
 				F6489D971C029623003D4435 /* FBSDKCoreKit.framework in Frameworks */,
 				F6489D991C029623003D4435 /* FBSDKShareKit.framework in Frameworks */,
 				F6489D801BE5A22C003D4435 /* Parse.framework in Frameworks */,
@@ -156,6 +159,7 @@
 		F6489D811BE5A235003D4435 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DDD8566C1C4B41D500761965 /* ParseFacebookUtilsV4.framework */,
 				F6489D941C029623003D4435 /* FBSDKCoreKit.framework */,
 				F6489D951C029623003D4435 /* FBSDKLoginKit.framework */,
 				F6489D961C029623003D4435 /* FBSDKShareKit.framework */,
@@ -536,6 +540,7 @@
 				F6489D781BE59BE6003D4435 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F6489D791BE59BE6003D4435 /* Build configuration list for PBXNativeTarget "AltravelTests" */ = {
 			isa = XCConfigurationList;
@@ -544,6 +549,7 @@
 				F6489D7B1BE59BE6003D4435 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F6489D7C1BE59BE6003D4435 /* Build configuration list for PBXNativeTarget "AltravelUITests" */ = {
 			isa = XCConfigurationList;
@@ -552,6 +558,7 @@
 				F6489D7E1BE59BE6003D4435 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

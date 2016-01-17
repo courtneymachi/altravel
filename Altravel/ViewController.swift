@@ -8,24 +8,13 @@
 
 import UIKit
 import Parse
-import FBSDKCoreKit
-import FBSDKLoginKit
+import ParseFacebookUtilsV4;
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let loginButton:FBSDKLoginButton = FBSDKLoginButton()
-        loginButton.center = self.view.center
-        self.view .addSubview(loginButton)
-        
-        
-        
-//        let userProfile = PFObject(className:"UserProfile")
-//        userProfile["name"] = "Courtney"
-//        
-//        userProfile.saveInBackground()
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,6 +22,24 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func onLogin(sender: UIButton) {
+        PFFacebookUtils.logInInBackgroundWithReadPermissions(nil, block: { (user, error) -> Void in
+            if ((error == nil)) {
+                if (user == nil) {
+                    NSLog("User cancelled the facebook login");
+                }
+                else if ((user?.isNew) != nil) {
+                    NSLog("User signed up and logged in through facebook");
+                }
+                else {
+                    NSLog("User logged in through facebook");
+                }
+            }
+            else {
+                NSLog("%s", error!)
+            }
+        })
+    }
 
 }
 
