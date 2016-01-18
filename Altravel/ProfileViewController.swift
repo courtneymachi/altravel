@@ -18,6 +18,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userProfileView: UIImageView!
     
+    @IBOutlet weak var profileInputField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,7 +27,6 @@ class ProfileViewController: UIViewController {
     
         request.startWithCompletionHandler { (connection, userInfo, error) -> Void in
             
-            //TODO store the facebook id
             if ((error == nil)) {
                 if let name = userInfo["name"] as? String {
                     self.userNameLabel.text = "\(name)"
@@ -50,8 +51,14 @@ class ProfileViewController: UIViewController {
             
         }
     }
-
     
-    
+    @IBAction func onEdit(sender: AnyObject) {
+        if self.profileInputField.enabled {
+            self.profileInputField.enabled = false;
+        }
+        else {
+            self.profileInputField.enabled = true;
+        }
+    }
     
 }
