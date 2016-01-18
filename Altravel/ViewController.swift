@@ -21,31 +21,47 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated);
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if PFUser.currentUser() != nil {
+            if PFFacebookUtils.isLinkedWithUser(PFUser.currentUser()!) {
+                self.performSegueWithIdentifier("loginSuccessSegue", sender: self)
+            }
+        }
+    }
+
 
     @IBAction func onLogin(sender: UIButton) {
         let permissions = ["public_profile"]
-        
+            
         PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions) {
             (user: PFUser?, error: NSError?) -> Void in
             
-                if (error == nil) {
-                    if user != nil {
-                        NSLog("User logged in through facebook");
-                        //move to the next scene
-                        self.performSegueWithIdentifier("loginSuccessSegue", sender: self)
-                    }
-                    else {
-                        NSLog("User cancelled");
-                        if PFUser.currentUser() != nil {
-                            self.performSegueWithIdentifier("loginSuccessSegue", sender: self)
-                        }
-                    }
+            
+            if (error == nil) {
+                if user != nil {
+                    NSLog("User logged in through facebook");
+                    //move to the next scene
+                    self.performSegueWithIdentifier("loginSuccessSegue", sender: self)
                 }
                 else {
-                    NSLog("%s", error!)
+                    NSLog("User cancelled");
+                    if PFUser.currentUser() != nil {
+                        self.performSegueWithIdentifier("loginSuccessSegue", sender: self)
+                    }
                 }
+            }
+            else {
+                NSLog("%s", error!)
+            }
         }
-        
+
     }
 }
 
