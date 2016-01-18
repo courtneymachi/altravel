@@ -10,10 +10,13 @@ import UIKit
 import Parse
 import ParseFacebookUtilsV4;
 
+import AlamofireImage
+
 class ProfileViewController: UIViewController {
     
     
     @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var userProfileView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,13 +33,24 @@ class ProfileViewController: UIViewController {
 
                 if let fbID = userInfo["id"] as? String {
                     NSLog("captured facebook id")
-                    NSLog("%s", fbID)
+                    NSLog("%@", fbID)
+                    
+                    let profileImageURL = NSURL(string: "https://graph.facebook.com/\(fbID)/picture?type=large&return_ssl_resources=1")!
+                    
+                    let filter = AspectScaledToFillSizeWithRoundedCornersFilter(
+                        size: self.userProfileView.frame.size,
+                        radius: 50.0
+                    )
+                    self.userProfileView.af_setImageWithURL(
+                        profileImageURL,
+                        filter: filter
+                    )
                 }
             }
             
         }
-        
     }
+
     
     
     

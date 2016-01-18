@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -46,22 +48,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zab-W5-dxT">
-                                <rect key="frame" x="133" y="121" width="253" height="35"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XGM-V0-NsD">
+                                <rect key="frame" x="20" y="67" width="172" height="174"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="172" id="h44-oY-82T"/>
+                                    <constraint firstAttribute="width" secondItem="XGM-V0-NsD" secondAttribute="height" multiplier="200:193" constant="-8.3108808290155309" id="yS8-P0-9OF"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zab-W5-dxT">
+                                <rect key="frame" x="228" y="67" width="352" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="f78-oF-5GB"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XGM-V0-NsD" firstAttribute="top" secondItem="pOM-qa-zZT" secondAttribute="bottom" constant="47" id="7X4-0N-2fo"/>
+                            <constraint firstItem="Zab-W5-dxT" firstAttribute="leading" secondItem="XGM-V0-NsD" secondAttribute="trailing" constant="36" id="H8h-8W-NuB"/>
+                            <constraint firstItem="XGM-V0-NsD" firstAttribute="top" secondItem="Zab-W5-dxT" secondAttribute="top" id="UCl-v0-ZbB"/>
+                            <constraint firstItem="Zab-W5-dxT" firstAttribute="trailing" secondItem="XGM-V0-NsD" secondAttribute="trailing" constant="388" id="ti9-KX-Hhs"/>
+                            <constraint firstItem="XGM-V0-NsD" firstAttribute="leading" secondItem="9ga-ba-hz1" secondAttribute="leadingMargin" id="xOm-rz-8fA"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="userNameLabel" destination="Zab-W5-dxT" id="nri-OO-oZb"/>
+                        <outlet property="userProfileView" destination="XGM-V0-NsD" id="jAm-LC-4Fd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfw-Df-Mav" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1315" y="341"/>
+            <point key="canvasLocation" x="1315" y="315"/>
         </scene>
     </scenes>
 </document>
