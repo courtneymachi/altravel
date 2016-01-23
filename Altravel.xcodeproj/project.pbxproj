@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5AF2AB92B23FD430C9241F19 /* Pods_Altravel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2C81216316FA6ACFD7E87FE /* Pods_Altravel.framework */; };
-		DDD8566D1C4B41D500761965 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD8566C1C4B41D500761965 /* ParseFacebookUtilsV4.framework */; };
+		DD7ABE571C54321C00BF7C04 /* UserProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7ABE561C54321C00BF7C04 /* UserProperties.swift */; };
+		DD7ABE591C54343300BF7C04 /* PFUser+UserProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7ABE581C54343300BF7C04 /* PFUser+UserProperties.swift */; };
 		F6489D521BE59BE6003D4435 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6489D511BE59BE6003D4435 /* AppDelegate.swift */; };
 		F6489D541BE59BE6003D4435 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6489D531BE59BE6003D4435 /* ViewController.swift */; };
 		F6489D571BE59BE6003D4435 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6489D551BE59BE6003D4435 /* Main.storyboard */; };
@@ -16,15 +17,11 @@
 		F6489D5C1BE59BE6003D4435 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6489D5A1BE59BE6003D4435 /* LaunchScreen.storyboard */; };
 		F6489D671BE59BE6003D4435 /* AltravelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6489D661BE59BE6003D4435 /* AltravelTests.swift */; };
 		F6489D721BE59BE6003D4435 /* AltravelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6489D711BE59BE6003D4435 /* AltravelUITests.swift */; };
-		F6489D801BE5A22C003D4435 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6489D7F1BE5A22C003D4435 /* Parse.framework */; };
 		F6489D831BE5A3C0003D4435 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6489D821BE5A3C0003D4435 /* Bolts.framework */; };
 		F6489D851BE5A5F1003D4435 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6489D841BE5A5F1003D4435 /* AudioToolbox.framework */; };
 		F6489D871BE5A609003D4435 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6489D861BE5A609003D4435 /* SystemConfiguration.framework */; };
 		F6489D8C1BE5A7C2003D4435 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F6489D881BE5A739003D4435 /* libstdc++.6.tbd */; };
 		F6489D8D1BE5A7D1003D4435 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F6489D8A1BE5A744003D4435 /* libsqlite3.tbd */; };
-		F6489D971C029623003D4435 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6489D941C029623003D4435 /* FBSDKCoreKit.framework */; };
-		F6489D981C029623003D4435 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6489D951C029623003D4435 /* FBSDKLoginKit.framework */; };
-		F6489D991C029623003D4435 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6489D961C029623003D4435 /* FBSDKShareKit.framework */; };
 		F6D8698A1C4C4040004E0BF1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D869891C4C4040004E0BF1 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,7 +46,8 @@
 		68826FA8E64D62511CECEBA8 /* Pods-Altravel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Altravel.release.xcconfig"; path = "Pods/Target Support Files/Pods-Altravel/Pods-Altravel.release.xcconfig"; sourceTree = "<group>"; };
 		9659348E2D87ABE152FE06D2 /* Pods-Altravel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Altravel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Altravel/Pods-Altravel.debug.xcconfig"; sourceTree = "<group>"; };
 		A2C81216316FA6ACFD7E87FE /* Pods_Altravel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Altravel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DDD8566C1C4B41D500761965 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
+		DD7ABE561C54321C00BF7C04 /* UserProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProperties.swift; sourceTree = "<group>"; };
+		DD7ABE581C54343300BF7C04 /* PFUser+UserProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PFUser+UserProperties.swift"; sourceTree = "<group>"; };
 		F6489D4E1BE59BE6003D4435 /* Altravel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Altravel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6489D511BE59BE6003D4435 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6489D531BE59BE6003D4435 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,15 +61,11 @@
 		F6489D6D1BE59BE6003D4435 /* AltravelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AltravelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6489D711BE59BE6003D4435 /* AltravelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AltravelUITests.swift; sourceTree = "<group>"; };
 		F6489D731BE59BE6003D4435 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F6489D7F1BE5A22C003D4435 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		F6489D821BE5A3C0003D4435 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		F6489D841BE5A5F1003D4435 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		F6489D861BE5A609003D4435 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F6489D881BE5A739003D4435 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		F6489D8A1BE5A744003D4435 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		F6489D941C029623003D4435 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		F6489D951C029623003D4435 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		F6489D961C029623003D4435 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		F6D869891C4C4040004E0BF1 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,11 +78,6 @@
 				F6489D8C1BE5A7C2003D4435 /* libstdc++.6.tbd in Frameworks */,
 				F6489D871BE5A609003D4435 /* SystemConfiguration.framework in Frameworks */,
 				F6489D851BE5A5F1003D4435 /* AudioToolbox.framework in Frameworks */,
-				DDD8566D1C4B41D500761965 /* ParseFacebookUtilsV4.framework in Frameworks */,
-				F6489D971C029623003D4435 /* FBSDKCoreKit.framework in Frameworks */,
-				F6489D991C029623003D4435 /* FBSDKShareKit.framework in Frameworks */,
-				F6489D801BE5A22C003D4435 /* Parse.framework in Frameworks */,
-				F6489D981C029623003D4435 /* FBSDKLoginKit.framework in Frameworks */,
 				F6489D831BE5A3C0003D4435 /* Bolts.framework in Frameworks */,
 				5AF2AB92B23FD430C9241F19 /* Pods_Altravel.framework in Frameworks */,
 			);
@@ -120,6 +109,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DD7ABE551C54320200BF7C04 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DD7ABE561C54321C00BF7C04 /* UserProperties.swift */,
+				DD7ABE581C54343300BF7C04 /* PFUser+UserProperties.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		F6489D451BE59BE5003D4435 = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +143,7 @@
 		F6489D501BE59BE6003D4435 /* Altravel */ = {
 			isa = PBXGroup;
 			children = (
+				DD7ABE551C54320200BF7C04 /* Models */,
 				F6489D511BE59BE6003D4435 /* AppDelegate.swift */,
 				F6D869891C4C4040004E0BF1 /* ProfileViewController.swift */,
 				F6489D531BE59BE6003D4435 /* ViewController.swift */,
@@ -178,16 +177,11 @@
 		F6489D811BE5A235003D4435 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DDD8566C1C4B41D500761965 /* ParseFacebookUtilsV4.framework */,
-				F6489D941C029623003D4435 /* FBSDKCoreKit.framework */,
-				F6489D951C029623003D4435 /* FBSDKLoginKit.framework */,
-				F6489D961C029623003D4435 /* FBSDKShareKit.framework */,
 				F6489D8A1BE5A744003D4435 /* libsqlite3.tbd */,
 				F6489D881BE5A739003D4435 /* libstdc++.6.tbd */,
 				F6489D861BE5A609003D4435 /* SystemConfiguration.framework */,
 				F6489D841BE5A5F1003D4435 /* AudioToolbox.framework */,
 				F6489D821BE5A3C0003D4435 /* Bolts.framework */,
-				F6489D7F1BE5A22C003D4435 /* Parse.framework */,
 				A2C81216316FA6ACFD7E87FE /* Pods_Altravel.framework */,
 			);
 			name = Frameworks;
@@ -382,8 +376,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD7ABE571C54321C00BF7C04 /* UserProperties.swift in Sources */,
 				F6D8698A1C4C4040004E0BF1 /* ProfileViewController.swift in Sources */,
 				F6489D541BE59BE6003D4435 /* ViewController.swift in Sources */,
+				DD7ABE591C54343300BF7C04 /* PFUser+UserProperties.swift in Sources */,
 				F6489D521BE59BE6003D4435 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

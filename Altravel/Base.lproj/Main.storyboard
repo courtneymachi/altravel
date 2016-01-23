@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -90,7 +90,7 @@
                                     <constraint firstAttribute="height" constant="40" id="Jhh-DO-tYe"/>
                                     <constraint firstAttribute="width" constant="40" id="Qvo-py-1bv"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="edit"/>
+                                <state key="normal" title="Button" image="Edit"/>
                                 <connections>
                                     <action selector="onEdit:" destination="UyG-Pb-X2Z" eventType="touchUpInside" id="9NR-Mk-tQJ"/>
                                 </connections>
@@ -133,7 +133,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="edit" width="40" height="40"/>
+        <image name="Edit" width="40" height="40"/>
         <image name="fb_login_circle" width="128" height="128"/>
         <image name="login_bg_img" width="1024" height="682"/>
     </resources>

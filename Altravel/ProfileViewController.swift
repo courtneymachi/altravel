@@ -9,19 +9,24 @@
 import UIKit
 import Parse
 import ParseFacebookUtilsV4;
-
 import AlamofireImage
 
 class ProfileViewController: UIViewController {
     
-    
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userProfileView: UIImageView!
-    
     @IBOutlet weak var profileInputField: UITextField!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+//        if let currentUser:PFUser = PFUser.currentUser() {
+//            NSLog("current user %@", currentUser);
+//            currentUser.fetchPropertiesInBacground({ (UserProperty, error) -> Void in
+//                
+//            })
+//        }
         
         let request = FBSDKGraphRequest.init(graphPath: "me", parameters:nil)
     
@@ -40,7 +45,7 @@ class ProfileViewController: UIViewController {
                     
                     let filter = AspectScaledToFillSizeWithRoundedCornersFilter(
                         size: self.userProfileView.frame.size,
-                        radius: 50.0
+                        radius: self.userProfileView.frame.size.width / 2
                     )
                     self.userProfileView.af_setImageWithURL(
                         profileImageURL,

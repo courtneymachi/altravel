@@ -10,7 +10,8 @@ import UIKit
 import Parse
 import FBSDKCoreKit
 import FBSDKLoginKit
-import ParseFacebookUtilsV4;
+import ParseFacebookUtilsV4
+
 
 
 @UIApplicationMain
@@ -24,6 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("cRNvN1a8JbJuRJumjVsdGzEndrn8ytYV2rUcnBSv", clientKey: "lVWdcXXkXn34MLvMNN4Ql7BU7eZoVfs2G39rnmVf")
     
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions);
+        
+        // Register Parse subclasses
+        UserProperties.registerSubclass()
+        
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         return true
