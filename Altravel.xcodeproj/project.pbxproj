@@ -152,6 +152,7 @@
 				F6489D581BE59BE6003D4435 /* Assets.xcassets */,
 				F6489D5A1BE59BE6003D4435 /* LaunchScreen.storyboard */,
 				F6489D5D1BE59BE6003D4435 /* Info.plist */,
+				F6B0BDDA1C542E6F00A6F7D4 /* Supporting Files */,
 			);
 			path = Altravel;
 			sourceTree = "<group>";
@@ -190,6 +191,13 @@
 				A2C81216316FA6ACFD7E87FE /* Pods_Altravel.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F6B0BDDA1C542E6F00A6F7D4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

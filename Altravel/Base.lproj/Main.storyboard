@@ -19,22 +19,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3g-fj-uuj">
-                                <rect key="frame" x="230" y="285" width="141" height="30"/>
-                                <state key="normal" title="Login with Facebook"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_bg_img" translatesAutoresizingMaskIntoConstraints="NO" id="bFZ-UA-nLX">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3g-fj-uuj">
+                                <rect key="frame" x="139" y="417" width="294" height="128"/>
+                                <state key="normal" image="fb_login_circle">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="onLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ytV-wt-NqG"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="altravel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yn-8e-5RO">
+                                <rect key="frame" x="170" y="77" width="263" height="56"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <color key="textColor" red="0.0" green="0.7137255072593689" blue="0.95294123888015747" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="bFZ-UA-nLX" secondAttribute="trailing" constant="-20" id="AFw-xx-vrO"/>
+                            <constraint firstItem="bFZ-UA-nLX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="OKn-Wn-B24"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bFZ-UA-nLX" secondAttribute="bottom" id="dZD-di-1Md"/>
+                            <constraint firstItem="bFZ-UA-nLX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="oEy-G8-Uxx"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="backgroundImg" destination="bFZ-UA-nLX" id="h1p-he-bxd"/>
                         <segue destination="UyG-Pb-X2Z" kind="show" identifier="loginSuccessSegue" id="oSt-Sq-VOn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="360" y="387"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="LGQ-3h-jia">
@@ -115,5 +134,7 @@
     </scenes>
     <resources>
         <image name="edit" width="40" height="40"/>
+        <image name="fb_login_circle" width="128" height="128"/>
+        <image name="login_bg_img" width="1024" height="682"/>
     </resources>
 </document>

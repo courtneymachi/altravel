@@ -12,8 +12,18 @@ import ParseFacebookUtilsV4;
 
 class ViewController: UIViewController {
 
+  
+    @IBOutlet weak var backgroundImg: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.ExtraLight)
+//        let blurView = UIVisualEffectView(effect: blurEffect)
+//        blurView.frame = backgroundImg.bounds
+//        backgroundImg.addSubview(blurView)
+//        backgroundImg.frame = CGRectMake(0, 0, 100, 100)
+//        
         
     }
 
