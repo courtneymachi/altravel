@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5AF2AB92B23FD430C9241F19 /* Pods_Altravel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2C81216316FA6ACFD7E87FE /* Pods_Altravel.framework */; };
-		DD7ABE571C54321C00BF7C04 /* UserProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7ABE561C54321C00BF7C04 /* UserProperties.swift */; };
+		DD7ABE571C54321C00BF7C04 /* UserProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7ABE561C54321C00BF7C04 /* UserProperty.swift */; };
 		DD7ABE591C54343300BF7C04 /* PFUser+UserProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7ABE581C54343300BF7C04 /* PFUser+UserProperties.swift */; };
 		F6489D521BE59BE6003D4435 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6489D511BE59BE6003D4435 /* AppDelegate.swift */; };
 		F6489D541BE59BE6003D4435 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6489D531BE59BE6003D4435 /* ViewController.swift */; };
@@ -46,7 +46,7 @@
 		68826FA8E64D62511CECEBA8 /* Pods-Altravel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Altravel.release.xcconfig"; path = "Pods/Target Support Files/Pods-Altravel/Pods-Altravel.release.xcconfig"; sourceTree = "<group>"; };
 		9659348E2D87ABE152FE06D2 /* Pods-Altravel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Altravel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Altravel/Pods-Altravel.debug.xcconfig"; sourceTree = "<group>"; };
 		A2C81216316FA6ACFD7E87FE /* Pods_Altravel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Altravel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD7ABE561C54321C00BF7C04 /* UserProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProperties.swift; sourceTree = "<group>"; };
+		DD7ABE561C54321C00BF7C04 /* UserProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProperty.swift; sourceTree = "<group>"; };
 		DD7ABE581C54343300BF7C04 /* PFUser+UserProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PFUser+UserProperties.swift"; sourceTree = "<group>"; };
 		F6489D4E1BE59BE6003D4435 /* Altravel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Altravel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6489D511BE59BE6003D4435 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,7 +112,7 @@
 		DD7ABE551C54320200BF7C04 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DD7ABE561C54321C00BF7C04 /* UserProperties.swift */,
+				DD7ABE561C54321C00BF7C04 /* UserProperty.swift */,
 				DD7ABE581C54343300BF7C04 /* PFUser+UserProperties.swift */,
 			);
 			name = Models;
@@ -376,7 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD7ABE571C54321C00BF7C04 /* UserProperties.swift in Sources */,
+				DD7ABE571C54321C00BF7C04 /* UserProperty.swift in Sources */,
 				F6D8698A1C4C4040004E0BF1 /* ProfileViewController.swift in Sources */,
 				F6489D541BE59BE6003D4435 /* ViewController.swift in Sources */,
 				DD7ABE591C54343300BF7C04 /* PFUser+UserProperties.swift in Sources */,

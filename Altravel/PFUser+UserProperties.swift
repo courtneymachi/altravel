@@ -10,12 +10,12 @@ import Foundation
 import Parse
 
 extension PFUser {
-    func fetchPropertiesInBacground(block: ((PFObject?, NSError?) -> Void)?) {
-        if let query = UserProperties.query() {
+    func fetchPropertiesInBacground(block: ((NSArray?, NSError?) -> Void)?) {
+        if let query = UserProperty.query() {
             query.whereKey("user", equalTo: self)
-            query.getFirstObjectInBackgroundWithBlock { (userProperty, error) -> Void in
+            query.findObjectsInBackgroundWithBlock { (userProperties, error) -> Void in
                 if let completionBlock = block {
-                    completionBlock(userProperty, error)
+                    completionBlock(userProperties, error)
                 }
             }
         }

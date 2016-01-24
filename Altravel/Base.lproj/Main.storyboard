@@ -109,7 +109,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="San Francisco" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHU-4N-nkZ">
-                                <rect key="frame" x="228" y="110" width="352" height="26"/>
+                                <rect key="frame" x="281" y="117" width="299" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -119,6 +119,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7W-xT-Ibh">
+                                <rect key="frame" x="228" y="110" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="CWe-4W-0fs"/>
+                                    <constraint firstAttribute="width" secondItem="a7W-xT-Ibh" secondAttribute="height" multiplier="1:1" id="THa-Ty-jz2"/>
+                                    <constraint firstAttribute="height" constant="40" id="s41-qY-i2o"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="Edit"/>
+                                <connections>
+                                    <action selector="onEdit:" destination="UyG-Pb-X2Z" eventType="touchUpInside" id="f7P-Wa-QTw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -128,6 +140,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="gQv-la-kuh" secondAttribute="trailing" constant="-5" id="XHd-sP-VCQ"/>
                             <constraint firstItem="zJb-ho-stX" firstAttribute="leading" secondItem="9ga-ba-hz1" secondAttribute="leadingMargin" id="XaA-oY-5wR"/>
                             <constraint firstItem="zJb-ho-stX" firstAttribute="top" secondItem="XGM-V0-NsD" secondAttribute="bottom" constant="32" id="bhQ-O5-hrR"/>
+                            <constraint firstItem="a7W-xT-Ibh" firstAttribute="width" secondItem="a7W-xT-Ibh" secondAttribute="height" multiplier="1:1" id="gki-p5-0Mc"/>
                             <constraint firstItem="gQv-la-kuh" firstAttribute="centerY" secondItem="zJb-ho-stX" secondAttribute="centerY" id="he2-pU-Ii7"/>
                             <constraint firstItem="Zab-W5-dxT" firstAttribute="trailing" secondItem="XGM-V0-NsD" secondAttribute="trailing" constant="388" id="ti9-KX-Hhs"/>
                             <constraint firstItem="XGM-V0-NsD" firstAttribute="leading" secondItem="9ga-ba-hz1" secondAttribute="leadingMargin" id="xOm-rz-8fA"/>
