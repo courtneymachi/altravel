@@ -11,7 +11,7 @@ import Parse
 import ParseFacebookUtilsV4;
 import AlamofireImage
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UISearchBarDelegate {
     
     var property:UserProperty?
     
@@ -41,7 +41,6 @@ class ProfileViewController: UIViewController {
                                     self.profileInputField.text = profile
                                 }
                             }
-                            
                         }
                         else {
                             // we need to generate a new user property and store it
