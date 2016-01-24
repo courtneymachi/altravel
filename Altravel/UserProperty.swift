@@ -9,10 +9,15 @@
 import Foundation
 import Parse
 
-class UserProperties: PFObject, PFSubclassing {
+class UserProperty: PFObject, PFSubclassing {
     @NSManaged var user: PFUser
     @NSManaged var profile: String?
     @NSManaged var address: String?
+    
+    convenience init(user: PFUser) {
+        self.init()
+        self.user = user
+    }
     
     override class func initialize() {
         struct Static {

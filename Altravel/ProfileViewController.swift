@@ -13,6 +13,8 @@ import AlamofireImage
 
 class ProfileViewController: UIViewController {
     
+    var property:UserProperty?
+    
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userProfileView: UIImageView!
     @IBOutlet weak var profileInputField: UITextField!
@@ -21,12 +23,36 @@ class ProfileViewController: UIViewController {
         
         super.viewDidLoad()
         
-//        if let currentUser:PFUser = PFUser.currentUser() {
-//            NSLog("current user %@", currentUser);
-//            currentUser.fetchPropertiesInBacground({ (UserProperty, error) -> Void in
-//                
-//            })
-//        }
+        if let currentUser:PFUser = PFUser.currentUser() {
+            NSLog("current user %@", currentUser)
+            currentUser.fetchPropertiesInBacground({(userProperties, error) -> Void in
+                NSLog("%@", currentUser)
+                
+                if (error != nil) {
+                    NSLog("Error retrieving user properties %@", error!)
+                }
+                else {
+                    if let properties = userProperties {
+                        if (properties.count > 0) {
+                            // User property already exist
+                            self.property = properties[0] as? UserProperty
+                            if let property = self.property {
+                                if let profile = property.profile {
+                                    self.profileInputField.text = profile
+                                }
+                            }
+                            
+                        }
+                        else {
+                            // we need to generate a new user property and store it
+                            self.property = UserProperty(user: currentUser)
+                            self.property?.saveEventually()
+                        }
+                    }
+                }
+                
+            })
+        }
         
         let request = FBSDKGraphRequest.init(graphPath: "me", parameters:nil)
     
@@ -60,6 +86,14 @@ class ProfileViewController: UIViewController {
     @IBAction func onEdit(sender: AnyObject) {
         if self.profileInputField.enabled {
             self.profileInputField.enabled = false;
+            // validate if something changed and save user property
+            if let property = self.property {
+                if let description = self.profileInputField.text {
+                    property.profile = description
+                    self.property?.saveEventually()
+                }
+            }
+            
         }
         else {
             self.profileInputField.enabled = true;

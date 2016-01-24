@@ -12,13 +12,10 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import ParseFacebookUtilsV4
 
-
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -27,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions);
         
         // Register Parse subclasses
-        UserProperties.registerSubclass()
+        UserProperty.registerSubclass()
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
