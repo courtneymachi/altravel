@@ -26,8 +26,6 @@ class ProfileViewController: UIViewController, UISearchBarDelegate {
         if let currentUser:PFUser = PFUser.currentUser() {
             NSLog("current user %@", currentUser)
             currentUser.fetchPropertiesInBacground({(userProperties, error) -> Void in
-                NSLog("%@", currentUser)
-                
                 if (error != nil) {
                     NSLog("Error retrieving user properties %@", error!)
                 }
