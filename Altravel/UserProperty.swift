@@ -12,7 +12,8 @@ import Parse
 class UserProperty: PFObject, PFSubclassing {
     @NSManaged var user: PFUser
     @NSManaged var profile: String?
-    @NSManaged var address: String?
+    @NSManaged var city: String?
+    @NSManaged var country: String?
     
     convenience init(user: PFUser) {
         self.init()

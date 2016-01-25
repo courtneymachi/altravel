@@ -11,20 +11,20 @@ import Parse
 import ParseFacebookUtilsV4;
 import AlamofireImage
 
-class ProfileViewController: UIViewController, UISearchBarDelegate {
+class ProfileViewController: UIViewController, UISearchBarDelegate, NavigationListDelegate {
     
     var property:UserProperty?
     
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userProfileView: UIImageView!
     @IBOutlet weak var profileInputField: UITextField!
+    @IBOutlet weak var cityButton: UIButton!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         if let currentUser:PFUser = PFUser.currentUser() {
-            NSLog("current user %@", currentUser)
             currentUser.fetchPropertiesInBacground({(userProperties, error) -> Void in
                 if (error != nil) {
                     NSLog("Error retrieving user properties %@", error!)
@@ -32,7 +32,7 @@ class ProfileViewController: UIViewController, UISearchBarDelegate {
                 else {
                     if let properties = userProperties {
                         if (properties.count > 0) {
-                            // User property already exist
+                            // User property already exists
                             self.property = properties[0] as? UserProperty
                             if let property = self.property {
                                 if let profile = property.profile {
@@ -90,11 +90,32 @@ class ProfileViewController: UIViewController, UISearchBarDelegate {
                     self.property?.saveEventually()
                 }
             }
-            
         }
         else {
             self.profileInputField.enabled = true;
         }
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let indetifier = segue.identifier {
+            switch indetifier {
+            case "pickCitySegue":
+                let destinationViewController = segue.destinationViewController as! CitySearchViewControoler
+                destinationViewController.delegate = self;
+                break
+            default:
+                // do nothing
+                break
+            }
+        }
+        
+    }
+    
+    // NavigationListDelegate delegate
+    func pickEntity(entity: NSDictionary) {
+        let location = Location(data: entity)
+        self.cityButton.titleLabel?.text = "\(location.city!)"
     }
     
 }
