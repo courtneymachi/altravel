@@ -23,6 +23,7 @@
 		F6489D871BE5A609003D4435 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6489D861BE5A609003D4435 /* SystemConfiguration.framework */; };
 		F6489D8C1BE5A7C2003D4435 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F6489D881BE5A739003D4435 /* libstdc++.6.tbd */; };
 		F6489D8D1BE5A7D1003D4435 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F6489D8A1BE5A744003D4435 /* libsqlite3.tbd */; };
+		F683E4111C55BF4A000D8ACA /* TripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F683E4101C55BF4A000D8ACA /* TripsViewController.swift */; };
 		F6D8698A1C4C4040004E0BF1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D869891C4C4040004E0BF1 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +69,7 @@
 		F6489D861BE5A609003D4435 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F6489D881BE5A739003D4435 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		F6489D8A1BE5A744003D4435 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		F683E4101C55BF4A000D8ACA /* TripsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsViewController.swift; sourceTree = "<group>"; };
 		F6D869891C4C4040004E0BF1 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,6 +153,7 @@
 				F6D869891C4C4040004E0BF1 /* ProfileViewController.swift */,
 				F6489D531BE59BE6003D4435 /* ViewController.swift */,
 				F6489D551BE59BE6003D4435 /* Main.storyboard */,
+				F683E4101C55BF4A000D8ACA /* TripsViewController.swift */,
 				F6489D581BE59BE6003D4435 /* Assets.xcassets */,
 				F6489D5A1BE59BE6003D4435 /* LaunchScreen.storyboard */,
 				F6489D5D1BE59BE6003D4435 /* Info.plist */,
@@ -379,6 +382,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F683E4111C55BF4A000D8ACA /* TripsViewController.swift in Sources */,
 				DD7ABE571C54321C00BF7C04 /* UserProperty.swift in Sources */,
 				F6D8698A1C4C4040004E0BF1 /* ProfileViewController.swift in Sources */,
 				DDCF42311C54587200CE81AA /* CitySeachViewController.swift in Sources */,
