@@ -38,6 +38,9 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, NavigationLi
                                 if let profile = property.profile {
                                     self.profileInputField.text = profile
                                 }
+                                if let city = property.city {
+                                    self.cityButton.titleLabel?.text = city
+                                }
                             }
                         }
                         else {
