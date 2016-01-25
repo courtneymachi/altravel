@@ -43,7 +43,16 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, NavigationLi
                         else {
                             // we need to generate a new user property and store it
                             self.property = UserProperty(user: currentUser)
-                            self.property?.saveEventually()
+                            self.property?.saveEventually({ (result, error) -> Void in
+                                if error != nil {
+                                    NSLog("Error saving description: \(error)")
+                                }
+                                else {
+                                    if result == false {
+                                        NSLog("Saving description: no errors but not able to update value");
+                                    }
+                                }
+                            })
                         }
                     }
                 }
@@ -115,6 +124,12 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, NavigationLi
     // NavigationListDelegate delegate
     func pickEntity(entity: NSDictionary) {
         let location = Location(data: entity)
+        // Update parse location
+        self.property?.city = location.city
+        self.property?.cityId = NSNumber(double: location.cityId!)
+        self.property?.country = location.country
+        self.property?.countryId = location.countryId
+        self.property?.saveEventually()
         self.cityButton.titleLabel?.text = "\(location.city!)"
     }
     
