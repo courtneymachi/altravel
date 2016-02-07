@@ -12,12 +12,8 @@ import UIKit
 
 class TripsViewController: UIViewController {
     
-    
     @IBAction func addTripButton(sender: UIButton) {
-        
         self.performSegueWithIdentifier("addTripSuccessSegue", sender: self)
     }
-    
-    
 
 }

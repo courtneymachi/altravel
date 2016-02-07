@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Register Parse subclasses
         UserProperty.registerSubclass()
+        Trip.registerSubclass()
+        TripStep.registerSubclass()
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
