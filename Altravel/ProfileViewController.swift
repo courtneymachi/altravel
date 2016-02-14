@@ -11,23 +11,35 @@ import Parse
 import ParseFacebookUtilsV4;
 import AlamofireImage
 
-class ProfileViewController: UIViewController, UISearchBarDelegate, NavigationListDelegate {
+class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, NavigationListDelegate {
     
     var property:UserProperty?
+    var trips:NSArray?
     
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userProfileView: UIImageView!
     @IBOutlet weak var profileInputField: UITextField!
     @IBOutlet weak var cityButton: UIButton!
+    @IBOutlet weak var tripTableView: UITableView!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         if let currentUser:PFUser = PFUser.currentUser() {
+            currentUser.fetchTripsInBacground({ (trips, error) -> Void in
+                if (error == nil) {
+                    self.trips = trips;
+                    self.tripTableView.reloadData()
+                }
+                else {
+                    NSLog("Error retrieving user trips \(error!)")
+                }
+            })
+            
             currentUser.fetchPropertiesInBacground({(userProperties, error) -> Void in
                 if (error != nil) {
-                    NSLog("Error retrieving user properties %@", error!)
+                    NSLog("Error retrieving user properties \(error!)")
                 }
                 else {
                     if let properties = userProperties {
@@ -66,7 +78,6 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, NavigationLi
         let request = FBSDKGraphRequest.init(graphPath: "me", parameters:nil)
     
         request.startWithCompletionHandler { (connection, userInfo, error) -> Void in
-            
             if ((error == nil)) {
                 if let name = userInfo["name"] as? String {
                     self.userNameLabel.text = "\(name)"
@@ -90,6 +101,9 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, NavigationLi
             }
             
         }
+        
+        
+        
     }
     
     @IBAction func onEdit(sender: AnyObject) {
@@ -136,4 +150,34 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, NavigationLi
         self.cityButton.titleLabel?.text = "\(location.city!)"
     }
     
+    // Table view delegates
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1;
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let trips = self.trips {
+            return trips.count
+        }
+        else {
+            return 0;
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cityCell = tableView.dequeueReusableCellWithIdentifier("tripCell", forIndexPath: indexPath)
+        
+        // retrieve json city object
+        if let trips = self.trips {
+            let trip = trips[indexPath.row] as! Trip;
+            cityCell.detailTextLabel!.text = trip.note
+            cityCell.textLabel!.text = trip.title
+        }
+        
+        return cityCell;
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Trips";
+    }
 }

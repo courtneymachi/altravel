@@ -20,4 +20,14 @@ extension PFUser {
             }
         }
     }
+    func fetchTripsInBackground(block: ((NSArray?, NSError?) -> Void)?) {
+        if let query = Trip.query() {
+            query.whereKey("user", equalTo: self)
+            query.findObjectsInBackgroundWithBlock { (trips, error) -> Void in
+                if let completionBlock = block {
+                    completionBlock(trips, error)
+                }
+            }
+        }
+    }
 }
