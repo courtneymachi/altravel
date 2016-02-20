@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -148,7 +148,7 @@
                                                     <rect key="frame" x="46" y="0.0" width="539" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="plus_icon" id="API-VW-yMN">
@@ -159,6 +159,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="UyG-Pb-X2Z" id="CzS-2g-p7F"/>
+                                    <outlet property="delegate" destination="UyG-Pb-X2Z" id="MMk-nC-NyB"/>
+                                </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zab-W5-dxT">
                                 <rect key="frame" x="20" y="72" width="560" height="35"/>
@@ -445,20 +449,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gmg-DM-dAg">
-                                <rect key="frame" x="38" y="148" width="303" height="57"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gmg-DM-dAg">
+                                <rect key="frame" x="166" y="28" width="269" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="269" id="7Us-Rk-qQJ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Add your first trip page!">
+                                <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Add your first trip!" image="plus_icon">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="Bp9-0q-EmT" kind="show" identifier="addTripSuccessSegue" id="WzG-Un-G5h"/>
                                 </connections>
                             </button>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qqm-F3-1QS">
+                                <rect key="frame" x="0.0" y="20" width="600" height="531"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tripCell" textLabel="ZE9-lx-d3a" detailTextLabel="xZG-Vq-lLa" style="IBUITableViewCellStyleSubtitle" id="TL9-HS-y5W">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TL9-HS-y5W" id="AdY-nv-P6a">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Trip Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZE9-lx-d3a">
+                                                    <rect key="frame" x="15" y="5" width="75" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xZG-Vq-lLa">
+                                                    <rect key="frame" x="15" y="25" width="61" height="14"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="wg4-Tq-NBq" id="W13-ku-Ams"/>
+                                    <outlet property="delegate" destination="wg4-Tq-NBq" id="hZV-09-RcC"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4EG-qe-MNx" firstAttribute="top" secondItem="gmg-DM-dAg" secondAttribute="bottom" constant="478" id="IhN-7a-hkw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qqm-F3-1QS" secondAttribute="trailing" constant="-20" id="L5S-4x-jmp"/>
+                            <constraint firstItem="4EG-qe-MNx" firstAttribute="top" secondItem="qqm-F3-1QS" secondAttribute="bottom" id="Lq8-JS-d0O"/>
+                            <constraint firstItem="qqm-F3-1QS" firstAttribute="top" secondItem="xaF-C5-E5H" secondAttribute="bottom" id="jsp-h8-24Q"/>
+                            <constraint firstItem="qqm-F3-1QS" firstAttribute="leading" secondItem="vtq-1t-Hla" secondAttribute="leadingMargin" constant="-20" id="l6I-6L-QcV"/>
+                            <constraint firstItem="gmg-DM-dAg" firstAttribute="centerX" secondItem="vtq-1t-Hla" secondAttribute="centerX" id="lQc-BI-Hcn"/>
+                            <constraint firstItem="gmg-DM-dAg" firstAttribute="top" secondItem="xaF-C5-E5H" secondAttribute="bottom" constant="8" symbolic="YES" id="zUO-Mh-Kgk"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="My Trips" image="airplane_small" id="vPO-S0-Uzs"/>
+                    <connections>
+                        <outlet property="tripTableView" destination="qqm-F3-1QS" id="Z47-sc-ObN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Wa-B2-GDE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -15,6 +15,7 @@ class Trip: PFObject, PFSubclassing {
     @NSManaged var note: String?
     @NSManaged var starting: NSDate
     @NSManaged var ending: NSDate
+    @NSManaged var isPublic: Bool
     
     convenience init(user: PFUser) {
         self.init()

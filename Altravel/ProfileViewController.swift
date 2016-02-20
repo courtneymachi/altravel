@@ -26,9 +26,6 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
         
         super.viewDidLoad()
         
-        self.tripTableView.delegate = self;
-        self.tripTableView.dataSource = self;
-        
         // setup gradient 
         let view: UIView = self.view;
         let gradient: CAGradientLayer = CAGradientLayer()
@@ -43,7 +40,9 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
             currentUser.fetchTripsInBacground({ (trips, error) -> Void in
                 if (error == nil) {
                     self.trips = trips;
-                    self.tripTableView.reloadData()
+                    if (trips?.count > 0) {
+                        self.tripTableView.reloadData()
+                    }
                 }
                 else {
                     NSLog("Error retrieving user trips \(error!)")
@@ -114,9 +113,6 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
             }
             
         }
-        
-        
-        
     }
     
     @IBAction func onEdit(sender: AnyObject) {

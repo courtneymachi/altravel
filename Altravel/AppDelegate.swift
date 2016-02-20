@@ -28,6 +28,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Trip.registerSubclass()
         TripStep.registerSubclass()
         
+        // set Parse ACL
+
+        PFUser.enableAutomaticUser()
+        
+        let defaultACL = PFACL.init()
+        defaultACL.publicReadAccess = false
+        defaultACL.publicWriteAccess = false
+        PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
+        
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         return true
