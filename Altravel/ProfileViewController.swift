@@ -115,6 +115,19 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let property = self.property {
+            if let profile = property.profile {
+                self.profileInputField.text = profile
+            }
+            if let city = property.city {
+                self.cityButton.titleLabel?.text = city
+            }
+        }
+    }
+    
     @IBAction func onEdit(sender: AnyObject) {
         if self.profileInputField.enabled {
             self.profileInputField.enabled = false;

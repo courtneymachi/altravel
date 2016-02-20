@@ -12,6 +12,10 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import ParseFacebookUtilsV4
 
+import Fabric
+import Crashlytics
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -37,7 +41,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaultACL.publicWriteAccess = false
         PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
         
+        // Facebook
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        // Fabric
+        Fabric.with([Crashlytics.self])
+
         
         return true
     }

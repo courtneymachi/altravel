@@ -236,6 +236,7 @@
 				F6489D4C1BE59BE6003D4435 /* Resources */,
 				688668B26461F77BFADFF3FB /* Embed Pods Frameworks */,
 				BD63D6065CF4FB14841DACC8 /* Copy Pods Resources */,
+				DD6DEF621C792B57005F9362 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -397,6 +398,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Altravel/Pods-Altravel-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		DD6DEF621C792B57005F9362 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 6f59b6c7d34bf970ecc97db70b3ff94f2e2f343a 9e86e32afd9a7b37e4f80ea2db222048b03c27533a01e35f88f09d5b44e04931";
 		};
 /* End PBXShellScriptBuildPhase section */
 
