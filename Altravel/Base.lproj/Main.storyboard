@@ -260,9 +260,6 @@
                                 <rect key="frame" x="51" y="319" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="startDateEditing:" destination="Bp9-0q-EmT" eventType="editingDidBegin" id="jAz-yt-Dth"/>
-                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="When is your trip?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZQ-qt-1lp">
                                 <rect key="frame" x="52" y="245" width="146" height="35"/>
@@ -286,21 +283,31 @@
                                 <rect key="frame" x="249" y="319" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="endDateEditing:" destination="Bp9-0q-EmT" eventType="editingDidBegin" id="n6f-yP-alg"/>
-                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cgh-KA-GE4">
-                                <rect key="frame" x="331" y="479" width="74" height="39"/>
+                                <rect key="frame" x="230" y="479" width="74" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Next"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="Bp9-0q-EmT" eventType="touchUpInside" id="jJD-xv-XZ5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bpn-sZ-i8T">
+                                <rect key="frame" x="330" y="479" width="74" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="Bp9-0q-EmT" eventType="touchUpInside" id="uoL-H9-vgf"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="endDateField" destination="vPf-m6-Jd6" id="Hho-BT-vfI"/>
-                        <outlet property="startDateField" destination="v1h-vf-8Gr" id="NHV-vb-2yP"/>
+                        <outlet property="endDateField" destination="vPf-m6-Jd6" id="wdp-IH-zyS"/>
+                        <outlet property="startDateField" destination="v1h-vf-8Gr" id="T8Q-Bg-w58"/>
+                        <outlet property="tripDetailsField" destination="T1X-gP-sIf" id="KHz-qg-shh"/>
+                        <outlet property="tripNameField" destination="iN8-gS-jZn" id="8K4-QC-cxC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FGM-RK-LWe" userLabel="First Responder" sceneMemberID="firstResponder"/>
