@@ -26,6 +26,19 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
         
         super.viewDidLoad()
         
+        self.tripTableView.delegate = self;
+        self.tripTableView.dataSource = self;
+        
+        // setup gradient 
+        let view: UIView = self.view;
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = view.bounds
+        gradient.colors = [
+            UIColor(red: 52, green: 0, blue: 255, alpha: 1).CGColor,
+            UIColor(red: 0, green: 201, blue: 255, alpha: 1).CGColor
+        ]
+        view.layer.insertSublayer(gradient, atIndex: 0)
+        
         if let currentUser:PFUser = PFUser.currentUser() {
             currentUser.fetchTripsInBacground({ (trips, error) -> Void in
                 if (error == nil) {
@@ -118,7 +131,8 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
             }
         }
         else {
-            self.profileInputField.enabled = true;
+            self.profileInputField.enabled = true
+            self.profileInputField.becomeFirstResponder()
         }
     }
     
@@ -157,24 +171,29 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let trips = self.trips {
-            return trips.count
+            return trips.count + 1
         }
         else {
-            return 0;
+            return 1;
         }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cityCell = tableView.dequeueReusableCellWithIdentifier("tripCell", forIndexPath: indexPath)
+        var tripCell: UITableViewCell
         
-        // retrieve json city object
-        if let trips = self.trips {
-            let trip = trips[indexPath.row] as! Trip;
-            cityCell.detailTextLabel!.text = trip.note
-            cityCell.textLabel!.text = trip.title
+        if indexPath.row >= self.trips?.count {
+            tripCell = tableView.dequeueReusableCellWithIdentifier("newTripCell", forIndexPath: indexPath)
+        }
+        else {
+            tripCell = tableView.dequeueReusableCellWithIdentifier("tripCell", forIndexPath: indexPath)
+            if let trips = self.trips {
+                let trip = trips[indexPath.row] as! Trip;
+                tripCell.detailTextLabel!.text = trip.note
+                tripCell.textLabel!.text = trip.title
+            }
         }
         
-        return cityCell;
+        return tripCell;
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
