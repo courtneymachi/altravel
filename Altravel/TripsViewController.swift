@@ -46,10 +46,10 @@ class TripsViewController: UIViewController {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let trips = self.trips {
-            return trips.count + 1
+            return trips.count
         }
         else {
-            return 1;
+            return 0;
         }
     }
     

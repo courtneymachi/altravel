@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Parse
 
 class CreateTripViewController: UIViewController, UITextFieldDelegate {
     
@@ -20,6 +21,7 @@ class CreateTripViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var tripDetailsField: UITextField!
     @IBOutlet weak var startDateField: UITextField!
     @IBOutlet weak var endDateField: UITextField!
+    @IBOutlet weak var isPublicSwitch: UISwitch!
     
 
     override func viewDidLoad() {
@@ -50,7 +52,29 @@ class CreateTripViewController: UIViewController, UITextFieldDelegate {
     // IBActions
     
     @IBAction func saveButtonTapped(sender: UIButton) {
-        // TODO: save the trip by creating a new trip page
+        let trip = Trip.init(user: PFUser.currentUser()!)
+        
+        
+        trip.title = tripNameField.text
+        trip.note = tripDetailsField.text
+
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .MediumStyle
+        trip.starting = formatter.dateFromString(startDateField.text!)!
+        trip.ending = formatter.dateFromString(endDateField.text!)!
+        trip.isPublic = self.isPublicSwitch.on
+        trip.saveEventually { (success, error) -> Void in
+            if (error != nil) {
+                NSLog("Error while saving the trip \(error)")
+            }
+            else {
+                if (success) {
+                    NSLog("Trip saved correctly")
+                }
+            }
+        }
+
+        
         dismissViewControllerAnimated(true, completion: nil)
         
     }
