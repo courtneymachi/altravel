@@ -15,7 +15,7 @@
 		DDACD6421C67FA9F00978C51 /* PFUser+Trips.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDACD6411C67FA9F00978C51 /* PFUser+Trips.swift */; };
 		DDB59E2C1C55E5C200A466A4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB59E2B1C55E5C200A466A4 /* Location.swift */; };
 		DDCF42311C54587200CE81AA /* CitySeachViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCF42301C54587200CE81AA /* CitySeachViewController.swift */; };
-		F630B1E71C6FFE3C00CDB7B5 /* CreateTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F630B1E61C6FFE3C00CDB7B5 /* CreateTripViewController.swift */; };
+		F630B1E71C6FFE3C00CDB7B5 /* SaveTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F630B1E61C6FFE3C00CDB7B5 /* SaveTripViewController.swift */; };
 		F6489D521BE59BE6003D4435 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6489D511BE59BE6003D4435 /* AppDelegate.swift */; };
 		F6489D541BE59BE6003D4435 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6489D531BE59BE6003D4435 /* ViewController.swift */; };
 		F6489D571BE59BE6003D4435 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6489D551BE59BE6003D4435 /* Main.storyboard */; };
@@ -60,7 +60,7 @@
 		DDACD6411C67FA9F00978C51 /* PFUser+Trips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PFUser+Trips.swift"; sourceTree = "<group>"; };
 		DDB59E2B1C55E5C200A466A4 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		DDCF42301C54587200CE81AA /* CitySeachViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySeachViewController.swift; sourceTree = "<group>"; };
-		F630B1E61C6FFE3C00CDB7B5 /* CreateTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTripViewController.swift; sourceTree = "<group>"; };
+		F630B1E61C6FFE3C00CDB7B5 /* SaveTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveTripViewController.swift; sourceTree = "<group>"; };
 		F6489D4E1BE59BE6003D4435 /* Altravel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Altravel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6489D511BE59BE6003D4435 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6489D531BE59BE6003D4435 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -172,11 +172,11 @@
 				DD7ABE551C54320200BF7C04 /* Models */,
 				F6489D511BE59BE6003D4435 /* AppDelegate.swift */,
 				DDCF42301C54587200CE81AA /* CitySeachViewController.swift */,
-				F630B1E61C6FFE3C00CDB7B5 /* CreateTripViewController.swift */,
+				F630B1E61C6FFE3C00CDB7B5 /* SaveTripViewController.swift */,
 				F6D869891C4C4040004E0BF1 /* ProfileViewController.swift */,
 				F6489D531BE59BE6003D4435 /* ViewController.swift */,
-				F6489D551BE59BE6003D4435 /* Main.storyboard */,
 				F683E4101C55BF4A000D8ACA /* TripsViewController.swift */,
+				F6489D551BE59BE6003D4435 /* Main.storyboard */,
 				F6489D581BE59BE6003D4435 /* Assets.xcassets */,
 				F6489D5A1BE59BE6003D4435 /* LaunchScreen.storyboard */,
 				F6489D5D1BE59BE6003D4435 /* Info.plist */,
@@ -430,7 +430,7 @@
 				F6489D521BE59BE6003D4435 /* AppDelegate.swift in Sources */,
 				DDACD6421C67FA9F00978C51 /* PFUser+Trips.swift in Sources */,
 				DDB59E2C1C55E5C200A466A4 /* Location.swift in Sources */,
-				F630B1E71C6FFE3C00CDB7B5 /* CreateTripViewController.swift in Sources */,
+				F630B1E71C6FFE3C00CDB7B5 /* SaveTripViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

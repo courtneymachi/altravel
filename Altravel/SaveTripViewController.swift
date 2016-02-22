@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 import Parse
 
-class CreateTripViewController: UIViewController, UITextFieldDelegate {
+class SaveTripViewController: UIViewController, UITextFieldDelegate {
     
     var date: NSDate!
     var currentDateField: UITextField?
-    // IBOutlets
+    var currentTrip: Trip?
     
     
     @IBOutlet weak var tripNameField: UITextField!
@@ -26,12 +26,11 @@ class CreateTripViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tripNameField.delegate = self
-        self.tripDetailsField.delegate = self
+
         self.startDateField.delegate = self
         self.endDateField.delegate = self
-        self.date = NSDate()
         
+        self.date = NSDate()
         self.currentDateField = startDateField
         
         let datePicker = UIDatePicker()
@@ -39,6 +38,8 @@ class CreateTripViewController: UIViewController, UITextFieldDelegate {
         startDateField.inputView = datePicker
         endDateField.inputView = datePicker
         datePicker.addTarget(self, action: "datePickerChanged:", forControlEvents: .ValueChanged)
+        
+        self.initUI()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -47,36 +48,53 @@ class CreateTripViewController: UIViewController, UITextFieldDelegate {
         self.date = NSDate()
         displayDate(self.date)
     }
+    
+    func initUI() {
+        if let trip = self.currentTrip {
+            if trip.objectId != nil { // the object was previsouly saved
+                // fetch details in UI
+                self.tripNameField.text = trip.title
+                self.tripDetailsField.text = trip.note
+                
+                let formatter = NSDateFormatter()
+                formatter.dateStyle = .MediumStyle
+                
+                self.startDateField.text = formatter.stringFromDate(trip.starting)
+                self.endDateField.text = formatter.stringFromDate(trip.ending)
+                
+                self.isPublicSwitch.setOn(trip.isPublic, animated: true)
+            }
+        }
+    }
 
     
     // IBActions
-    
     @IBAction func saveButtonTapped(sender: UIButton) {
-        let trip = Trip.init(user: PFUser.currentUser()!)
-        
-        
-        trip.title = tripNameField.text
-        trip.note = tripDetailsField.text
-
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .MediumStyle
-        trip.starting = formatter.dateFromString(startDateField.text!)!
-        trip.ending = formatter.dateFromString(endDateField.text!)!
-        trip.isPublic = self.isPublicSwitch.on
-        trip.saveEventually { (success, error) -> Void in
-            if (error != nil) {
-                NSLog("Error while saving the trip \(error)")
-            }
-            else {
-                if (success) {
-                    NSLog("Trip saved correctly")
+        if let trip = self.currentTrip {
+            trip.title = tripNameField.text
+            trip.note = tripDetailsField.text
+            
+            let formatter = NSDateFormatter()
+            formatter.dateStyle = .MediumStyle
+            trip.starting = formatter.dateFromString(startDateField.text!)!
+            trip.ending = formatter.dateFromString(endDateField.text!)!
+            trip.isPublic = self.isPublicSwitch.on
+            trip.saveEventually { (success, error) -> Void in
+                if (error != nil) {
+                    NSLog("Error while saving the trip \(error)")
+                    let errorAlert = UIAlertView.init(title: "Error", message: "Error saving new trip", delegate: nil, cancelButtonTitle: "Ok")
+                    errorAlert.show()
+                }
+                else {
+                    if (success) {
+                        NSLog("Trip saved correctly")
+                        if let navigationController = self.navigationController {
+                            navigationController.popToRootViewControllerAnimated(true)
+                        }
+                    }
                 }
             }
         }
-
-        
-        dismissViewControllerAnimated(true, completion: nil)
-        
     }
     
     @IBAction func cancelButtonTapped(sender: UIButton) {

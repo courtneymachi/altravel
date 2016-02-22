@@ -10,9 +10,10 @@ import Foundation
 import UIKit
 import Parse
 
-class TripsViewController: UIViewController {
+class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var trips:NSArray?
+    var trips: NSArray?
+    var currentTrip: Trip?
     
     @IBOutlet weak var tripTableView: UITableView!
     
@@ -25,18 +26,14 @@ class TripsViewController: UIViewController {
                 if (error == nil) {
                     self.trips = trips;
                     if (trips?.count > 0) {
-                        self.tripTableView.hidden = false
                         self.tripTableView.reloadData()
                     }
-
                 }
                 else {
                     NSLog("Error retrieving user trips \(error!)")
                 }
             })
-            
         }
-
     }
     
     // Table view delegates
@@ -46,20 +43,27 @@ class TripsViewController: UIViewController {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let trips = self.trips {
-            return trips.count
+            return trips.count + 1
         }
         else {
-            return 0;
+            return 1;
         }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let tripCell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("tripCell", forIndexPath: indexPath)
-        if let trips = self.trips {
-            let trip = trips[indexPath.row] as! Trip;
-            tripCell.detailTextLabel!.text = trip.note
-            tripCell.textLabel!.text = trip.title
+        var tripCell: UITableViewCell
+        
+        if indexPath.row >= self.trips?.count {
+            tripCell = tableView.dequeueReusableCellWithIdentifier("newTripCell", forIndexPath: indexPath)
+        }
+        else {
+            tripCell = tableView.dequeueReusableCellWithIdentifier("tripCell", forIndexPath: indexPath)
+            if let trips = self.trips {
+                let trip = trips[indexPath.row] as! Trip;
+                tripCell.detailTextLabel!.text = trip.note
+                tripCell.textLabel!.text = trip.title
+            }
         }
         
         return tripCell;
@@ -68,5 +72,31 @@ class TripsViewController: UIViewController {
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Trips";
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let row = indexPath.row
+        self.currentTrip = nil;
+        if let trips = self.trips {
+            if row < trips.count {
+                self.currentTrip = trips[row] as? Trip
+            }
+        }
+        self.performSegueWithIdentifier("addTripSuccessSegue", sender: self);
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let identifier = segue.identifier;
+        if identifier == "addTripSuccessSegue" {
+            let saveTripViewController = segue.destinationViewController as! SaveTripViewController
+            if let trip = self.currentTrip {
+                saveTripViewController.currentTrip = trip
+            }
+            else {
+                saveTripViewController.currentTrip = Trip.init(user: PFUser.currentUser()!)
+            }
+        }
+    }
+    
+
 
 }
