@@ -82,15 +82,27 @@ class SaveTripViewController: UIViewController, UITextFieldDelegate {
             trip.saveEventually { (success, error) -> Void in
                 if (error != nil) {
                     NSLog("Error while saving the trip \(error)")
-                    let errorAlert = UIAlertView.init(title: "Error", message: "Error saving new trip", delegate: nil, cancelButtonTitle: "Ok")
-                    errorAlert.show()
+                    let alertController = UIAlertController(title: "Trip", message: "Error saving trip.", preferredStyle: .Alert)
+                    let cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in
+                        // do something else
+                    }
+                    alertController.addAction(cancelAction)
+                    self.presentViewController(alertController, animated: true, completion: { () -> Void in
+                        
+                    })
                 }
                 else {
                     if (success) {
-                        NSLog("Trip saved correctly")
-                        if let navigationController = self.navigationController {
-                            navigationController.popToRootViewControllerAnimated(true)
+                        let alertController = UIAlertController(title: "Trip", message: "Trip saved correctly.", preferredStyle: .Alert)
+                        let cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in
+                            if let navigationController = self.navigationController {
+                                navigationController.popToRootViewControllerAnimated(true)
+                            }
                         }
+                        alertController.addAction(cancelAction)
+                        self.presentViewController(alertController, animated: true, completion: { () -> Void in
+                            
+                        })
                     }
                 }
             }
