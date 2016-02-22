@@ -37,7 +37,7 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
         view.layer.insertSublayer(gradient, atIndex: 0)
         
         if let currentUser:PFUser = PFUser.currentUser() {
-            currentUser.fetchTripsInBacground({ (trips, error) -> Void in
+            currentUser.fetchTripsInBackground({ (trips, error) -> Void in
                 if (error == nil) {
                     self.trips = trips;
                     if (trips?.count > 0) {

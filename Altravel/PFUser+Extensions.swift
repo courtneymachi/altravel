@@ -23,6 +23,7 @@ extension PFUser {
     func fetchTripsInBackground(block: ((NSArray?, NSError?) -> Void)?) {
         if let query = Trip.query() {
             query.whereKey("user", equalTo: self)
+            query.whereKey("isArchived", equalTo: false)
             query.findObjectsInBackgroundWithBlock { (trips, error) -> Void in
                 if let completionBlock = block {
                     completionBlock(trips, error)

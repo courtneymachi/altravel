@@ -12,7 +12,6 @@
 		DD7ABE591C54343300BF7C04 /* PFUser+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7ABE581C54343300BF7C04 /* PFUser+Extensions.swift */; };
 		DDACD63E1C67F7D700978C51 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDACD63D1C67F7D700978C51 /* Trip.swift */; };
 		DDACD6401C67F99600978C51 /* TripStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDACD63F1C67F99600978C51 /* TripStep.swift */; };
-		DDACD6421C67FA9F00978C51 /* PFUser+Trips.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDACD6411C67FA9F00978C51 /* PFUser+Trips.swift */; };
 		DDB59E2C1C55E5C200A466A4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB59E2B1C55E5C200A466A4 /* Location.swift */; };
 		DDCF42311C54587200CE81AA /* CitySeachViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCF42301C54587200CE81AA /* CitySeachViewController.swift */; };
 		F630B1E71C6FFE3C00CDB7B5 /* SaveTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F630B1E61C6FFE3C00CDB7B5 /* SaveTripViewController.swift */; };
@@ -57,7 +56,6 @@
 		DD7ABE581C54343300BF7C04 /* PFUser+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PFUser+Extensions.swift"; sourceTree = "<group>"; };
 		DDACD63D1C67F7D700978C51 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		DDACD63F1C67F99600978C51 /* TripStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripStep.swift; sourceTree = "<group>"; };
-		DDACD6411C67FA9F00978C51 /* PFUser+Trips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PFUser+Trips.swift"; sourceTree = "<group>"; };
 		DDB59E2B1C55E5C200A466A4 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		DDCF42301C54587200CE81AA /* CitySeachViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySeachViewController.swift; sourceTree = "<group>"; };
 		F630B1E61C6FFE3C00CDB7B5 /* SaveTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveTripViewController.swift; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 				DDB59E2A1C55E58000A466A4 /* Parse */,
 				DD7ABE581C54343300BF7C04 /* PFUser+Extensions.swift */,
 				DDB59E2B1C55E5C200A466A4 /* Location.swift */,
-				DDACD6411C67FA9F00978C51 /* PFUser+Trips.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -428,7 +425,6 @@
 				F6489D541BE59BE6003D4435 /* ViewController.swift in Sources */,
 				DD7ABE591C54343300BF7C04 /* PFUser+Extensions.swift in Sources */,
 				F6489D521BE59BE6003D4435 /* AppDelegate.swift in Sources */,
-				DDACD6421C67FA9F00978C51 /* PFUser+Trips.swift in Sources */,
 				DDB59E2C1C55E5C200A466A4 /* Location.swift in Sources */,
 				F630B1E71C6FFE3C00CDB7B5 /* SaveTripViewController.swift in Sources */,
 			);

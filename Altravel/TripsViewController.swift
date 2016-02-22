@@ -12,7 +12,7 @@ import Parse
 
 class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var trips: NSArray?
+    var trips: Array<Trip>?
     var currentTrip: Trip?
     
     @IBOutlet weak var tripTableView: UITableView!
@@ -21,13 +21,16 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.fetchTrips()
+        
+    }
+    
+    func fetchTrips() {
         if let currentUser:PFUser = PFUser.currentUser() {
-            currentUser.fetchTripsInBacground({ (trips, error) -> Void in
+            currentUser.fetchTripsInBackground({ (trips, error) -> Void in
                 if (error == nil) {
-                    self.trips = trips;
-                    if (trips?.count > 0) {
-                        self.tripTableView.reloadData()
-                    }
+                    self.trips = trips as? Array<Trip>;
+                    self.tripTableView.reloadData()
                 }
                 else {
                     NSLog("Error retrieving user trips \(error!)")
@@ -60,7 +63,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         else {
             tripCell = tableView.dequeueReusableCellWithIdentifier("tripCell", forIndexPath: indexPath)
             if let trips = self.trips {
-                let trip = trips[indexPath.row] as! Trip;
+                let trip = trips[indexPath.row] ;
                 tripCell.detailTextLabel!.text = trip.note
                 tripCell.textLabel!.text = trip.title
             }
@@ -78,10 +81,29 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.currentTrip = nil;
         if let trips = self.trips {
             if row < trips.count {
-                self.currentTrip = trips[row] as? Trip
+                self.currentTrip = trips[row]
             }
         }
         self.performSegueWithIdentifier("addTripSuccessSegue", sender: self);
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            if var trips = self.trips {
+                let trip: Trip = trips[indexPath.row] 
+                trip.isArchived = true
+                trip.saveEventually({ (success, error) -> Void in
+                    let alertController = UIAlertController(title: "Trip", message: "Trip archived correctly.", preferredStyle: .Alert)
+                    let cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in
+                        self.fetchTrips()
+                    }
+                    alertController.addAction(cancelAction)
+                    self.presentViewController(alertController, animated: true, completion: { () -> Void in
+                        
+                    })
+                })
+            }
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
