@@ -15,6 +15,7 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
     
     var property:UserProperty?
     var trips:NSArray?
+    var currentTrip: Trip?
     
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userProfileView: UIImageView!
@@ -96,9 +97,6 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
                 }
 
                 if let fbID = userInfo["id"] as? String {
-                    NSLog("captured facebook id")
-                    NSLog("%@", fbID)
-                    
                     let profileImageURL = NSURL(string: "https://graph.facebook.com/\(fbID)/picture?type=large&return_ssl_resources=1")!
                     
                     let filter = AspectScaledToFillSizeWithRoundedCornersFilter(
@@ -146,20 +144,7 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
     }
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let indetifier = segue.identifier {
-            switch indetifier {
-            case "pickCitySegue":
-                let destinationViewController = segue.destinationViewController as! CitySearchViewControoler
-                destinationViewController.delegate = self;
-                break
-            default:
-                // do nothing
-                break
-            }
-        }
-        
-    }
+    
     
     // NavigationListDelegate delegate
     func pickEntity(entity: NSDictionary) {
@@ -180,26 +165,19 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let trips = self.trips {
-            return trips.count + 1
+            return trips.count
         }
         else {
-            return 1;
+            return 0;
         }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var tripCell: UITableViewCell
-        
-        if indexPath.row >= self.trips?.count {
-            tripCell = tableView.dequeueReusableCellWithIdentifier("newTripCell", forIndexPath: indexPath)
-        }
-        else {
-            tripCell = tableView.dequeueReusableCellWithIdentifier("tripCell", forIndexPath: indexPath)
-            if let trips = self.trips {
-                let trip = trips[indexPath.row] as! Trip;
-                tripCell.detailTextLabel!.text = trip.note
-                tripCell.textLabel!.text = trip.title
-            }
+        let tripCell = tableView.dequeueReusableCellWithIdentifier("tripCell", forIndexPath: indexPath)
+        if let trips = self.trips {
+            let trip = trips[indexPath.row] as! Trip;
+            tripCell.detailTextLabel!.text = trip.note
+            tripCell.textLabel!.text = trip.title
         }
         
         return tripCell;
@@ -207,5 +185,37 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Trips";
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let row = indexPath.row
+        self.currentTrip = nil;
+        if let trips = self.trips {
+            if row < trips.count {
+                self.currentTrip = trips[row] as? Trip
+                self.performSegueWithIdentifier("showTrip", sender: self)
+            }   
+        }
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let indetifier = segue.identifier {
+            switch indetifier {
+            case "pickCitySegue":
+                let destinationViewController = segue.destinationViewController as! CitySearchViewControoler
+                destinationViewController.delegate = self;
+                break
+            case "showTrip":
+                if let trip = self.currentTrip {
+                    let destinationViewController = segue.destinationViewController as! TripViewController
+                    destinationViewController.currentTrip = trip
+                }
+                break
+            default:
+                // do nothing
+                break
+            }
+        }
+        
     }
 }

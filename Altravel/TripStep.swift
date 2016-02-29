@@ -12,13 +12,17 @@ import Parse
 class TripStep: PFObject, PFSubclassing {
     @NSManaged var trip: Trip
     @NSManaged var summary: String?
+    @NSManaged var locationStart: String?
+    @NSManaged var locationDestination: String?
     @NSManaged var note: String?
     @NSManaged var starting: NSDate?
     @NSManaged var ending: NSDate?
+    @NSManaged var completed: Bool
     
     convenience init(trip: Trip) {
         self.init()
         self.trip = trip
+        self.completed = false
     }
     
     override class func initialize() {

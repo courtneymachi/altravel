@@ -98,11 +98,12 @@ class SaveTripViewController: UIViewController, UITextFieldDelegate {
                             if let navigationController = self.navigationController {
                                 navigationController.popToRootViewControllerAnimated(true)
                             }
+                            else {
+                                self.dismissViewControllerAnimated(true, completion: nil)
+                            }
                         }
                         alertController.addAction(cancelAction)
-                        self.presentViewController(alertController, animated: true, completion: { () -> Void in
-                            
-                        })
+                        self.presentViewController(alertController, animated: true, completion: nil)
                     }
                 }
             }

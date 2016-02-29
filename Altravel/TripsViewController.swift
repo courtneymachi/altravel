@@ -82,9 +82,15 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if let trips = self.trips {
             if row < trips.count {
                 self.currentTrip = trips[row]
+                self.performSegueWithIdentifier("showTrip", sender: self)
+            }
+            else {
+                self.performSegueWithIdentifier("addTripSegue", sender: self)
             }
         }
-        self.performSegueWithIdentifier("addTripSuccessSegue", sender: self);
+        else {
+            self.performSegueWithIdentifier("addTripSegue", sender: self)
+        }
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -106,16 +112,26 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
+    
+    @IBAction func onAddTrip(sender: AnyObject) {
+        self.performSegueWithIdentifier("addTripSegue", sender: self)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let identifier = segue.identifier;
-        if identifier == "addTripSuccessSegue" {
-            let saveTripViewController = segue.destinationViewController as! SaveTripViewController
-            if let trip = self.currentTrip {
-                saveTripViewController.currentTrip = trip
-            }
-            else {
-                saveTripViewController.currentTrip = Trip.init(user: PFUser.currentUser()!)
-            }
+        let identifier = segue.identifier!;
+        switch identifier {
+            case "addTripSegue":
+                let destinationViewController = segue.destinationViewController as! SaveTripViewController
+                destinationViewController.currentTrip = Trip.init(user: PFUser.currentUser()!)
+                break
+            case "showTrip":
+                if let trip = self.currentTrip {
+                    let destinationViewController = segue.destinationViewController as! TripViewController
+                    destinationViewController.currentTrip = trip
+                }
+                break
+            default:
+                break;
         }
     }
     
