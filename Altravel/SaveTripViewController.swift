@@ -78,35 +78,48 @@ class SaveTripViewController: UIViewController, UITextFieldDelegate {
             formatter.dateStyle = .MediumStyle
             trip.starting = formatter.dateFromString(startDateField.text!)!
             trip.ending = formatter.dateFromString(endDateField.text!)!
-            trip.isPublic = self.isPublicSwitch.on
-            trip.saveEventually { (success, error) -> Void in
-                if (error != nil) {
-                    NSLog("Error while saving the trip \(error)")
-                    let alertController = UIAlertController(title: "Trip", message: "Error saving trip.", preferredStyle: .Alert)
-                    let cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in
-                        // do something else
-                    }
-                    alertController.addAction(cancelAction)
-                    self.presentViewController(alertController, animated: true, completion: { () -> Void in
-                        
-                    })
+            if trip.starting.compare(trip.ending) == .OrderedDescending {
+                let alertController = UIAlertController(title: "Invalid Dates", message: "Are you traveling back in time? Please fix dates and try again.", preferredStyle: .Alert)
+                let cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in
+                    // do something else
                 }
-                else {
-                    if (success) {
-                        let alertController = UIAlertController(title: "Trip", message: "Trip saved correctly.", preferredStyle: .Alert)
+                alertController.addAction(cancelAction)
+                self.presentViewController(alertController, animated: true, completion: { () -> Void in
+                    
+                })
+            }
+            else {
+                trip.isPublic = self.isPublicSwitch.on
+                trip.saveEventually { (success, error) -> Void in
+                    if (error != nil) {
+                        NSLog("Error while saving the trip \(error)")
+                        let alertController = UIAlertController(title: "Error", message: "Error saving trip.", preferredStyle: .Alert)
                         let cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in
-                            if let navigationController = self.navigationController {
-                                navigationController.popToRootViewControllerAnimated(true)
-                            }
-                            else {
-                                self.dismissViewControllerAnimated(true, completion: nil)
-                            }
+                            // do something else
                         }
                         alertController.addAction(cancelAction)
-                        self.presentViewController(alertController, animated: true, completion: nil)
+                        self.presentViewController(alertController, animated: true, completion: { () -> Void in
+                            
+                        })
+                    }
+                    else {
+                        if (success) {
+                            let alertController = UIAlertController(title: "Success!", message: "Trip saved successfully.", preferredStyle: .Alert)
+                            let cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in
+                                if let navigationController = self.navigationController {
+                                    navigationController.popToRootViewControllerAnimated(true)
+                                }
+                                else {
+                                    self.dismissViewControllerAnimated(true, completion: nil)
+                                }
+                            }
+                            alertController.addAction(cancelAction)
+                            self.presentViewController(alertController, animated: true, completion: nil)
+                        }
                     }
                 }
             }
+            
         }
     }
     
