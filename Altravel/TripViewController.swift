@@ -115,11 +115,9 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
         return stepInfoCell;
     }
     
-    @IBAction func onBackToTrips(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true) { () -> Void in
-            
-        }
-    }
+  
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let identifier = segue.identifier;
         switch (identifier!) {
@@ -138,5 +136,9 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
                 break
         }
         
+    }
+    
+    @IBAction func onBackToTrips(sender: UIButton) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
