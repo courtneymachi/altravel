@@ -20,9 +20,11 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         self.fetchTrips()
-        
     }
     
     func fetchTrips() {

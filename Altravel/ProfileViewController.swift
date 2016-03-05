@@ -33,9 +33,6 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
         self.profileTextArea.layer.masksToBounds = true
         self.profileTextArea.layer.cornerRadius = 5;
         
-        self.fetchUserInfo()
-        self.fetchTrips()
-        
         let request = FBSDKGraphRequest.init(graphPath: "me", parameters:nil)
     
         request.startWithCompletionHandler { (connection, userInfo, error) -> Void in
@@ -57,21 +54,14 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
                     )
                 }
             }
-            
         }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let property = self.property {
-            if let profile = property.profile {
-                self.profileTextArea.text = profile
-            }
-            if let city = property.city {
-                self.cityButton.titleLabel?.text = city
-            }
-        }
+        self.fetchUserInfo()
+        self.fetchTrips()
     }
     
     func fetchUserInfo() {
@@ -91,7 +81,11 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
                                     self.profileTextArea.text = profile
                                 }
                                 if let city = property.city {
-                                    self.cityButton.titleLabel?.text = city
+                                    if let cityButton: UIButton = self.cityButton {
+                                        cityButton.setTitle(city, forState: .Normal)
+                                        cityButton.setTitle(city, forState: .Highlighted)
+                                        cityButton.setTitle(city, forState: .Selected)
+                                    }
                                 }
                             }
                         }
@@ -133,18 +127,6 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
         }
     }
     
-    func updateBackground() {
-        // setup gradient
-        let view: UIView = self.view;
-        let gradient: CAGradientLayer = CAGradientLayer()
-        gradient.frame = view.bounds
-        gradient.colors = [
-            UIColor(red: 52, green: 0, blue: 255, alpha: 1).CGColor,
-            UIColor(red: 0, green: 201, blue: 255, alpha: 1).CGColor
-        ]
-        view.layer.insertSublayer(gradient, atIndex: 0)
-    }
-    
     func textViewDidEndEditing(textView: UITextView) {
         if let property = self.property {
             if let description = self.profileTextArea.text {
@@ -172,7 +154,25 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
         self.property?.country = location.country
         self.property?.countryId = location.countryId
         self.property?.saveEventually()
-        self.cityButton.titleLabel?.text = "\(location.city!)"
+        self.property?.saveEventually({ (success, error) -> Void in
+            if (error != nil) {
+                let alertController = UIAlertController(title: "Profile", message: "Error saving profile.", preferredStyle: .Alert)
+                let cancelAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                alertController.addAction(cancelAction)
+            }
+            else {
+                if (success) {
+                    if let city = location.city {
+                        if let cityButton: UIButton = self.cityButton {
+                            cityButton.setTitle(city, forState: UIControlState.Normal)
+                            cityButton.setTitle(city, forState: UIControlState.Highlighted)
+                            cityButton.setTitle(city, forState: UIControlState.Selected)
+                        }
+                    }
+                }
+            }
+        })
+        
     }
     
     // Table view delegates

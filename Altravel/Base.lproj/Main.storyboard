@@ -146,10 +146,10 @@
                                     <outlet property="delegate" destination="UyG-Pb-X2Z" id="Y7V-Vd-Bqo"/>
                                 </connections>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C67-ca-NU6">
-                                <rect key="frame" x="13" y="270" width="575" height="30"/>
-                                <state key="normal" title="San Francisco">
-                                    <color key="titleColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C67-ca-NU6">
+                                <rect key="frame" x="13" y="269" width="575" height="32"/>
+                                <state key="normal" title="San Francisco" image="location_pin">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="OxH-1C-SD8" kind="show" identifier="pickCitySegue" id="pAF-px-PNo"/>
@@ -159,17 +159,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="NUD-wj-yVq" firstAttribute="top" secondItem="FfM-5h-XyS" secondAttribute="bottom" id="4cM-vu-i8S"/>
+                            <constraint firstItem="C67-ca-NU6" firstAttribute="top" secondItem="XGM-V0-NsD" secondAttribute="bottom" constant="13" id="91g-D1-r1v"/>
                             <constraint firstItem="FfM-5h-XyS" firstAttribute="leading" secondItem="9ga-ba-hz1" secondAttribute="leadingMargin" constant="-20" id="9R1-8i-6EW"/>
                             <constraint firstItem="pd9-PZ-PHW" firstAttribute="leading" secondItem="9ga-ba-hz1" secondAttribute="leadingMargin" constant="-20" id="9yG-PQ-mLM"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="C67-ca-NU6" secondAttribute="trailing" constant="-8" id="I36-5m-p3e"/>
+                            <constraint firstItem="C67-ca-NU6" firstAttribute="leading" secondItem="9ga-ba-hz1" secondAttribute="leadingMargin" constant="-7" id="CJL-kj-Mu0"/>
                             <constraint firstItem="XGM-V0-NsD" firstAttribute="top" secondItem="pd9-PZ-PHW" secondAttribute="bottom" constant="8" symbolic="YES" id="LfM-Fx-Dyb"/>
-                            <constraint firstItem="C67-ca-NU6" firstAttribute="leading" secondItem="9ga-ba-hz1" secondAttribute="leadingMargin" constant="-7" id="NPg-iC-0nU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FfM-5h-XyS" secondAttribute="trailing" constant="-20" id="OUm-FY-PhJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="C67-ca-NU6" secondAttribute="trailing" constant="-8" id="UfC-jd-gqp"/>
                             <constraint firstItem="XGM-V0-NsD" firstAttribute="centerX" secondItem="FfM-5h-XyS" secondAttribute="centerX" id="Whc-j6-vhA"/>
                             <constraint firstItem="pd9-PZ-PHW" firstAttribute="top" secondItem="pOM-qa-zZT" secondAttribute="bottom" constant="8" id="Zj9-wP-c9L"/>
                             <constraint firstItem="8ga-vn-a6m" firstAttribute="leading" secondItem="9ga-ba-hz1" secondAttribute="leadingMargin" constant="-7" id="hAq-vA-23b"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8ga-vn-a6m" secondAttribute="trailing" constant="-8" id="iBn-bF-dWY"/>
-                            <constraint firstItem="C67-ca-NU6" firstAttribute="top" secondItem="XGM-V0-NsD" secondAttribute="bottom" constant="14" id="oOm-44-kDN"/>
                             <constraint firstItem="FfM-5h-XyS" firstAttribute="top" secondItem="8ga-vn-a6m" secondAttribute="bottom" constant="8" symbolic="YES" id="tNc-Cw-cFK"/>
                             <constraint firstItem="XGM-V0-NsD" firstAttribute="centerX" secondItem="9ga-ba-hz1" secondAttribute="centerX" id="tuH-f0-n6d"/>
                         </constraints>
@@ -465,7 +465,9 @@
                         <outlet property="datesLabel" destination="Dkr-KL-g4u" id="q2d-VB-mCT"/>
                         <outlet property="descriptionLabel" destination="r80-pB-0X9" id="ecW-Q6-ttC"/>
                         <outlet property="publicImageView" destination="Gcf-Hf-U5J" id="R0J-mw-TTt"/>
+                        <outlet property="stepsLabel" destination="ywC-h0-qje" id="0cP-OU-Uc9"/>
                         <outlet property="stepsTableView" destination="0RQ-3L-zcY" id="ZgG-Le-DgV"/>
+                        <outlet property="tripLabel" destination="UkL-rb-c8h" id="SZw-p9-B53"/>
                         <outlet property="tripTitle" destination="eWJ-z8-J7x" id="Ais-q1-LZu"/>
                     </connections>
                 </viewController>
@@ -700,6 +702,7 @@
         <image name="edit" width="32" height="32"/>
         <image name="fb_login_circle" width="128" height="128"/>
         <image name="global" width="32" height="32"/>
+        <image name="location_pin" width="32" height="32"/>
         <image name="login_bg_img" width="1024" height="682"/>
         <image name="plus_icon" width="16" height="16"/>
         <image name="profile_icon" width="17" height="16"/>
