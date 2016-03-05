@@ -83,6 +83,11 @@ class TripStepViewController: UIViewController, NavigationListDelegate {
         }
     }
     
+    @IBAction func cancelButtonTapped(sender: UIButton) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let indetifier = segue.identifier {
             switch indetifier {
@@ -98,9 +103,6 @@ class TripStepViewController: UIViewController, NavigationListDelegate {
         
     }
     
-//    @IBAction func cancelButtonTapped(sender: UIButton) {
-//        dismissViewControllerAnimated(true, completion: nil)
-//    }
   
     
 }

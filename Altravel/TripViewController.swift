@@ -78,12 +78,7 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
     
     // Table view delegates
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if let steps = self.steps {
-            return steps.count
-        }
-        else {
-            return 0;
-        }
+        return 1;
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -122,7 +117,7 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
     @IBAction func onBackToTrips(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let identifier = segue.identifier;
         switch (identifier!) {
