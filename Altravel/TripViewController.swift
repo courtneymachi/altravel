@@ -20,11 +20,24 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var tripTitle: UILabel!
     @IBOutlet weak var publicImageView: UIImageView!
     
+    @IBOutlet weak var tripLabel: UILabel!
+    @IBOutlet weak var stepsLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.initUI()
+        self.tripLabel.layer.masksToBounds = true
+        self.tripLabel.layer.cornerRadius = 5;
+        
+        self.stepsLabel.layer.masksToBounds = true
+        self.stepsLabel.layer.cornerRadius = 5;
+
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchTrip()
     }
     
     func initUI() {
@@ -38,7 +51,21 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    func fetchTrips() {
+    func fetchTrip() {
+        if let trip = self.currentTrip {
+            trip.fetchIfNeededInBackgroundWithBlock({ (trip, error) -> Void in
+                if (error == nil) {
+                    self.currentTrip = trip as? Trip
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.performSelectorOnMainThread("initUI", withObject: nil, waitUntilDone: false)
+                        self.fetchTripSteps()
+                    })
+                }
+            })
+        }
+    }
+    
+    func fetchTripSteps() {
         if let trip = self.currentTrip {
             trip.fetchStepsInBacground({ (steps, error) -> Void in
                 if (error != nil) {

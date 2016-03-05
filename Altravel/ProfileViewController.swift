@@ -11,7 +11,7 @@ import Parse
 import ParseFacebookUtilsV4;
 import AlamofireImage
 
-class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, NavigationListDelegate {
+class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, NavigationListDelegate {
     
     var property:UserProperty?
     var trips:NSArray?
@@ -19,64 +19,19 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
     
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userProfileView: UIImageView!
-    @IBOutlet weak var profileInputField: UITextField!
     @IBOutlet weak var cityButton: UIButton!
     @IBOutlet weak var tripTableView: UITableView!
+    @IBOutlet weak var profileTextArea: UITextView!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-    
-        if let currentUser:PFUser = PFUser.currentUser() {
-            currentUser.fetchTripsInBackground({ (trips, error) -> Void in
-                if (error == nil) {
-                    self.trips = trips;
-                    if (trips?.count > 0) {
-                        self.tripTableView.reloadData()
-                    }
-                }
-                else {
-                    NSLog("Error retrieving user trips \(error!)")
-                }
-            })
-            
-            currentUser.fetchPropertiesInBacground({(userProperties, error) -> Void in
-                if (error != nil) {
-                    NSLog("Error retrieving user properties \(error!)")
-                }
-                else {
-                    if let properties = userProperties {
-                        if (properties.count > 0) {
-                            // User property already exists
-                            self.property = properties[0] as? UserProperty
-                            if let property = self.property {
-                                if let profile = property.profile {
-                                    self.profileInputField.text = profile
-                                }
-                                if let city = property.city {
-                                    self.cityButton.titleLabel?.text = city
-                                }
-                            }
-                        }
-                        else {
-                            // we need to generate a new user property and store it
-                            self.property = UserProperty(user: currentUser)
-                            self.property?.saveEventually({ (result, error) -> Void in
-                                if error != nil {
-                                    NSLog("Error saving description: \(error)")
-                                }
-                                else {
-                                    if result == false {
-                                        NSLog("Saving description: no errors but not able to update value");
-                                    }
-                                }
-                            })
-                        }
-                    }
-                }
-                
-            })
-        }
+        
+        self.userNameLabel.layer.masksToBounds = true
+        self.userNameLabel.layer.cornerRadius = 5;
+        
+        self.profileTextArea.layer.masksToBounds = true
+        self.profileTextArea.layer.cornerRadius = 5;
         
         let request = FBSDKGraphRequest.init(graphPath: "me", parameters:nil)
     
@@ -99,53 +54,95 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
                     )
                 }
             }
-            
         }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let property = self.property {
-            if let profile = property.profile {
-                self.profileInputField.text = profile
-            }
-            if let city = property.city {
-                self.cityButton.titleLabel?.text = city
-            }
-        }
+        self.fetchUserInfo()
+        self.fetchTrips()
     }
     
-    func updateBackground() {
-        // setup gradient
-        let view: UIView = self.view;
-        let gradient: CAGradientLayer = CAGradientLayer()
-        gradient.frame = view.bounds
-        gradient.colors = [
-            UIColor(red: 52, green: 0, blue: 255, alpha: 1).CGColor,
-            UIColor(red: 0, green: 201, blue: 255, alpha: 1).CGColor
-        ]
-        view.layer.insertSublayer(gradient, atIndex: 0)
-    }
-    
-    @IBAction func onEdit(sender: AnyObject) {
-        if self.profileInputField.enabled {
-            self.profileInputField.enabled = false;
-            // validate if something changed and save user property
-            if let property = self.property {
-                if let description = self.profileInputField.text {
-                    property.profile = description
-                    self.property?.saveEventually()
+    func fetchUserInfo() {
+        if let currentUser:PFUser = PFUser.currentUser() {
+            
+            currentUser.fetchPropertiesInBacground({(userProperties, error) -> Void in
+                if (error != nil) {
+                    NSLog("Error retrieving user properties \(error!)")
                 }
-            }
-        }
-        else {
-            self.profileInputField.enabled = true
-            self.profileInputField.becomeFirstResponder()
+                else {
+                    if let properties = userProperties {
+                        if (properties.count > 0) {
+                            // User property already exists
+                            self.property = properties[0] as? UserProperty
+                            if let property = self.property {
+                                if let profile = property.profile {
+                                    self.profileTextArea.text = profile
+                                }
+                                if let city = property.city {
+                                    if let cityButton: UIButton = self.cityButton {
+                                        cityButton.setTitle(city, forState: .Normal)
+                                        cityButton.setTitle(city, forState: .Highlighted)
+                                        cityButton.setTitle(city, forState: .Selected)
+                                    }
+                                }
+                            }
+                        }
+                        else {
+                            // we need to generate a new user property and store it
+                            self.property = UserProperty(user: currentUser)
+                            self.property?.saveEventually({ (result, error) -> Void in
+                                if error != nil {
+                                    NSLog("Error saving description: \(error)")
+                                }
+                                else {
+                                    if result == false {
+                                        NSLog("Saving description: no errors but not able to update value");
+                                    }
+                                }
+                            })
+                        }
+                    }
+                }
+            })
+            
+            
         }
     }
     
+    func fetchTrips() {
+        if let currentUser:PFUser = PFUser.currentUser() {
+            currentUser.fetchTripsInBackground({ (trips, error) -> Void in
+                if (error == nil) {
+                    self.trips = trips;
+                    if (trips?.count > 0) {
+                        self.tripTableView.reloadData()
+                    }
+                }
+                else {
+                    NSLog("Error retrieving user trips \(error!)")
+                }
+            })
+        }
+    }
     
+    func textViewDidEndEditing(textView: UITextView) {
+        if let property = self.property {
+            if let description = self.profileTextArea.text {
+                property.profile = description
+                self.property?.saveEventually()
+                self.property?.saveEventually({ (success, error) -> Void in
+                    if (error != nil) {
+                        let alertController = UIAlertController(title: "Profile", message: "Error saving profile.", preferredStyle: .Alert)
+                        let cancelAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                        alertController.addAction(cancelAction)
+                    }
+                    
+                })
+            }
+        }
+    }
     
     
     // NavigationListDelegate delegate
@@ -157,7 +154,25 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
         self.property?.country = location.country
         self.property?.countryId = location.countryId
         self.property?.saveEventually()
-        self.cityButton.titleLabel?.text = "\(location.city!)"
+        self.property?.saveEventually({ (success, error) -> Void in
+            if (error != nil) {
+                let alertController = UIAlertController(title: "Profile", message: "Error saving profile.", preferredStyle: .Alert)
+                let cancelAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                alertController.addAction(cancelAction)
+            }
+            else {
+                if (success) {
+                    if let city = location.city {
+                        if let cityButton: UIButton = self.cityButton {
+                            cityButton.setTitle(city, forState: UIControlState.Normal)
+                            cityButton.setTitle(city, forState: UIControlState.Highlighted)
+                            cityButton.setTitle(city, forState: UIControlState.Selected)
+                        }
+                    }
+                }
+            }
+        })
+        
     }
     
     // Table view delegates
