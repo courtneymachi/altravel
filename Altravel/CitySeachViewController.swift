@@ -65,8 +65,14 @@ class CitySearchViewControoler: UIViewController, UISearchBarDelegate, UITableVi
             let city = cities[indexPath.row]
             if (delegate != nil) {
                 delegate?.pickEntity(city as! NSDictionary)
-                let navigationController:UINavigationController = self.parentViewController as! UINavigationController
-                navigationController.popViewControllerAnimated(true)
+                if (self.parentViewController != nil) {
+                    let navigationController:UINavigationController = self.parentViewController as! UINavigationController
+                    navigationController.popViewControllerAnimated(true)
+                }
+                else {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+
             }
         }
     }

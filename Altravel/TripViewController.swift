@@ -13,6 +13,7 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
     var currentTrip: Trip?
     var steps: NSArray?
     var sectionOpenInfo: [String: Bool]?
+    var currentTripStep: TripStep?
     
     @IBOutlet weak var stepsTableView: UITableView!
     @IBOutlet weak var datesLabel: UILabel!
@@ -97,7 +98,10 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
 //            tripCell.detailTextLabel!.text = trip.note
 //            tripCell.textLabel!.text = trip.title
 //        }
-        
+        if let tripSteps = self.steps {
+            self.currentTripStep = tripSteps[indexPath.row] as! TripStep
+            self.performSegueWithIdentifier("showTripStep", sender: self)
+        }
         return stepInfoCell;
     }
     
@@ -108,11 +112,21 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let identifier = segue.identifier;
-        if identifier == "editTripSegue" {
-            let saveTripViewController = segue.destinationViewController as! SaveTripViewController
-            if let trip = self.currentTrip {
-                saveTripViewController.currentTrip = trip
-            }
+        switch (identifier!) {
+            case "editTripSegue":
+                let saveTripViewController = segue.destinationViewController as! SaveTripViewController
+                if let trip = self.currentTrip {
+                    saveTripViewController.currentTrip = trip
+                }
+            break
+            case "newTripStepSegue":
+                let tripStepViewController = segue.destinationViewController as! TripStepViewController
+                self.currentTripStep = TripStep.init(trip: self.currentTrip!)
+                tripStepViewController.currentStep = self.currentTripStep
+                break
+            default:
+                break
         }
+        
     }
 }

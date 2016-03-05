@@ -26,17 +26,7 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        // setup gradient 
-        let view: UIView = self.view;
-        let gradient: CAGradientLayer = CAGradientLayer()
-        gradient.frame = view.bounds
-        gradient.colors = [
-            UIColor(red: 52, green: 0, blue: 255, alpha: 1).CGColor,
-            UIColor(red: 0, green: 201, blue: 255, alpha: 1).CGColor
-        ]
-        view.layer.insertSublayer(gradient, atIndex: 0)
-        
+    
         if let currentUser:PFUser = PFUser.currentUser() {
             currentUser.fetchTripsInBackground({ (trips, error) -> Void in
                 if (error == nil) {
@@ -124,6 +114,18 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
                 self.cityButton.titleLabel?.text = city
             }
         }
+    }
+    
+    func updateBackground() {
+        // setup gradient
+        let view: UIView = self.view;
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = view.bounds
+        gradient.colors = [
+            UIColor(red: 52, green: 0, blue: 255, alpha: 1).CGColor,
+            UIColor(red: 0, green: 201, blue: 255, alpha: 1).CGColor
+        ]
+        view.layer.insertSublayer(gradient, atIndex: 0)
     }
     
     @IBAction func onEdit(sender: AnyObject) {
