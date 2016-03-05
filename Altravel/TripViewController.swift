@@ -56,9 +56,9 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
             trip.fetchIfNeededInBackgroundWithBlock({ (trip, error) -> Void in
                 if (error == nil) {
                     self.currentTrip = trip as? Trip
+                    self.fetchTripSteps()
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.performSelectorOnMainThread("initUI", withObject: nil, waitUntilDone: false)
-                        self.fetchTripSteps()
                     })
                 }
             })
@@ -68,19 +68,19 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
     func fetchTripSteps() {
         if let trip = self.currentTrip {
             trip.fetchStepsInBacground({ (steps, error) -> Void in
-                if (error != nil) {
+                if (error == nil) {
                     self.steps = steps
-                    if let tripSteps = self.steps {
-                        if tripSteps.count > 0 {
-                            self.sectionOpenInfo = Dictionary<String, Bool>()
-                            
-                            for step in tripSteps {
-                                if let objectId = step.objectId {
-                                    self.sectionOpenInfo!.updateValue(false, forKey: objectId!)
-                                }
-                            }
-                        }
-                    }
+//                    if let tripSteps = self.steps {
+//                        if tripSteps.count > 0 {
+//                            self.sectionOpenInfo = Dictionary<String, Bool>()
+//                            
+//                            for step in tripSteps {
+//                                if let objectId = step.objectId {
+//                                    self.sectionOpenInfo!.updateValue(false, forKey: objectId!)
+//                                }
+//                            }
+//                        }
+//                    }
                     self.stepsTableView.reloadData()
                 }
             })
@@ -98,36 +98,19 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let tripSteps = self.steps {
-            let step = tripSteps[section]
-            if let sectionOpenInfo = self.sectionOpenInfo {
-                if sectionOpenInfo[step.objectId!!] == true {
-                    return 2
-                }
-            }
+        if let steps = self.steps {
+            return steps.count
         }
         return 0;
-    }
-    
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if let tripSteps = self.steps {
-            let step = tripSteps[section] as! TripStep
-            return "\(step.locationStart) -> \(step.locationDestination)"
-        }
-        return "STEP"
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let stepInfoCell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("stepInfoCell", forIndexPath: indexPath)
-//        if let trips = self.trips {
-//            let trip = trips[indexPath.row] ;
-//            tripCell.detailTextLabel!.text = trip.note
-//            tripCell.textLabel!.text = trip.title
-//        }
-        if let tripSteps = self.steps {
-            self.currentTripStep = tripSteps[indexPath.row] as! TripStep
-            self.performSegueWithIdentifier("showTripStep", sender: self)
+        if let steps = self.steps {
+            let step = steps[indexPath.row] as! TripStep;
+            stepInfoCell.detailTextLabel!.text = step.note
+            stepInfoCell.textLabel!.text = step.summary
         }
         return stepInfoCell;
     }
