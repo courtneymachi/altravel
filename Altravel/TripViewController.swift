@@ -89,7 +89,6 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let stepInfoCell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("stepInfoCell", forIndexPath: indexPath)
         if let steps = self.steps {
             let step = steps[indexPath.row] as! TripStep;
@@ -105,6 +104,33 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
         if let steps = self.steps {
             self.currentTripStep = steps[indexPath.row] as? TripStep
             self.performSegueWithIdentifier("saveTripStepSegue", sender: self)
+        }
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            if let steps = self.steps {
+                let step: TripStep = steps[indexPath.row] as! TripStep
+                step.isArchived = true
+                step.saveEventually({ (success, error) -> Void in
+                    let message: String
+                    let cancelAction: UIAlertAction
+                    if (error == nil && success == true) {
+                        message = "Step archived correctly."
+                        cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in
+                            self.fetchTripSteps()
+                        }
+                    }
+                    else {
+                        message = "Error while saving step."
+                        cancelAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
+                    }
+                    let alertController = UIAlertController(title: "Trip", message: message, preferredStyle: .Alert)
+                    alertController.addAction(cancelAction)
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                    
+                })
+            }
         }
     }
     

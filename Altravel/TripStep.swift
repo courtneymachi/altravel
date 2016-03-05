@@ -18,11 +18,13 @@ class TripStep: PFObject, PFSubclassing {
     @NSManaged var starting: NSDate?
     @NSManaged var ending: NSDate?
     @NSManaged var completed: Bool
+    @NSManaged var isArchived: Bool
     
     convenience init(trip: Trip) {
         self.init()
         self.trip = trip
         self.completed = false
+        self.isArchived = false
     }
     
     override class func initialize() {

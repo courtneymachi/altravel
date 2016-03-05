@@ -52,6 +52,7 @@ class Trip: PFObject, PFSubclassing {
     func fetchStepsInBacground(block: ((NSArray?, NSError?) -> Void)?) {
         if let query = TripStep.query() {
             query.whereKey("trip", equalTo: self)
+            query.whereKey("isArchived", equalTo: false)
             query.findObjectsInBackgroundWithBlock { (userProperties, error) -> Void in
                 if let completionBlock = block {
                     completionBlock(userProperties, error)

@@ -10,6 +10,7 @@ import Foundation
 import Parse
 
 extension PFUser {
+    
     func fetchPropertiesInBacground(block: ((NSArray?, NSError?) -> Void)?) {
         if let query = UserProperty.query() {
             query.whereKey("user", equalTo: self)
@@ -20,6 +21,7 @@ extension PFUser {
             }
         }
     }
+    
     func fetchTripsInBackground(block: ((NSArray?, NSError?) -> Void)?) {
         if let query = Trip.query() {
             query.whereKey("user", equalTo: self)
