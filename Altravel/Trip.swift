@@ -33,6 +33,18 @@ class Trip: PFObject, PFSubclassing {
         }
     }
     
+    override func saveEventually(callback: PFBooleanResultBlock?) {
+        if (self.isPublic) {
+            // create new acl
+            // set public read permission and write permission only for the current user
+            let tripACL = PFACL.init()
+            tripACL.publicReadAccess = true
+            tripACL.publicWriteAccess = false
+            PFACL.setDefaultACL(tripACL, withAccessForCurrentUser: true)
+        }
+        super.saveEventually(callback)
+    }
+    
     class func parseClassName() -> String {
         return "Trip";
     }

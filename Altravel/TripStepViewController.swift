@@ -23,8 +23,20 @@ class TripStepViewController: UIViewController, NavigationListDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.initUI()
     }
     
+    func initUI() {
+        if let tripStep = self.currentStep {
+            if tripStep.objectId != nil {
+                self.titleTextField.text = tripStep.summary
+                self.descriptionTextField.text = tripStep.note
+                self.locationTextField.text = tripStep.locationStart
+            }
+        }
+    }
+
+    // Navigation list delegate
     func pickEntity(entity: NSDictionary) {
         let location = Location(data: entity)
         // Update parse location

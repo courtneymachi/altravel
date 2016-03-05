@@ -70,17 +70,6 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
             trip.fetchStepsInBacground({ (steps, error) -> Void in
                 if (error == nil) {
                     self.steps = steps
-//                    if let tripSteps = self.steps {
-//                        if tripSteps.count > 0 {
-//                            self.sectionOpenInfo = Dictionary<String, Bool>()
-//                            
-//                            for step in tripSteps {
-//                                if let objectId = step.objectId {
-//                                    self.sectionOpenInfo!.updateValue(false, forKey: objectId!)
-//                                }
-//                            }
-//                        }
-//                    }
                     self.stepsTableView.reloadData()
                 }
             })
@@ -115,11 +104,25 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
         return stepInfoCell;
     }
     
-    @IBAction func onBackToTrips(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true) { () -> Void in
-            
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.currentTripStep = nil;
+        
+        if let steps = self.steps {
+            self.currentTripStep = steps[indexPath.row] as? TripStep
+            self.performSegueWithIdentifier("saveTripStepSegue", sender: self)
         }
     }
+    
+    
+    @IBAction func onNewStep(sender: AnyObject) {
+        self.currentTripStep = nil;
+        self.performSegueWithIdentifier("saveTripStepSegue", sender: self)
+    }
+    
+    @IBAction func onBackToTrips(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let identifier = segue.identifier;
         switch (identifier!) {
@@ -129,10 +132,15 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
                     saveTripViewController.currentTrip = trip
                 }
             break
-            case "newTripStepSegue":
+            case "saveTripStepSegue":
                 let tripStepViewController = segue.destinationViewController as! TripStepViewController
-                self.currentTripStep = TripStep.init(trip: self.currentTrip!)
-                tripStepViewController.currentStep = self.currentTripStep
+                if let currentTripStep = self.currentTripStep {
+                    tripStepViewController.currentStep = currentTripStep
+                }
+                else {
+                    tripStepViewController.currentStep = TripStep.init(trip: self.currentTrip!)
+                }
+                
                 break
             default:
                 break

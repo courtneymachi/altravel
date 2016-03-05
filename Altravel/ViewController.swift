@@ -22,9 +22,7 @@ class ViewController: UIViewController {
         
         self.titleLabel.layer.masksToBounds = true
         self.titleLabel.layer.cornerRadius = self.titleLabel.frame.size.height / 2;
-        
     }
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

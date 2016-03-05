@@ -33,12 +33,12 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
         self.profileTextArea.layer.masksToBounds = true
         self.profileTextArea.layer.cornerRadius = 5;
         
-        let request = FBSDKGraphRequest.init(graphPath: "me", parameters:nil)
+        let request = FBSDKGraphRequest.init(graphPath: "me", parameters:["fields": "id, first_name"])
     
         request.startWithCompletionHandler { (connection, userInfo, error) -> Void in
             if ((error == nil)) {
-                if let name = userInfo["name"] as? String {
-                    self.userNameLabel.text = "\(name)"
+                if let name = userInfo["first_name"] as? String {
+                    self.userNameLabel.text = "Hi, I'm \(name)"
                 }
 
                 if let fbID = userInfo["id"] as? String {

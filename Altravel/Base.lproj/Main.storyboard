@@ -411,7 +411,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="New Step"/>
                                 <connections>
-                                    <segue destination="iDs-gC-yNc" kind="presentation" identifier="newTripStepSegue" id="isu-kr-5xM"/>
+                                    <action selector="onNewStep:" destination="dJX-NQ-hco" eventType="touchUpInside" id="GPq-Vm-Krs"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0RQ-3L-zcY">
@@ -510,6 +510,7 @@
                         <outlet property="stepsTableView" destination="0RQ-3L-zcY" id="ZgG-Le-DgV"/>
                         <outlet property="tripLabel" destination="UkL-rb-c8h" id="SZw-p9-B53"/>
                         <outlet property="tripTitle" destination="eWJ-z8-J7x" id="Ais-q1-LZu"/>
+                        <segue destination="iDs-gC-yNc" kind="presentation" identifier="saveTripStepSegue" id="wfd-bD-wqF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oGt-uO-ijc" userLabel="First Responder" sceneMemberID="firstResponder"/>
