@@ -26,6 +26,11 @@ class SaveTripViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let borderColor : UIColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
+//        tripNameField.layer.borderWidth = 0.5
+//        tripNameField.layer.borderColor = borderColor.CGColor
+//        tripNameField.layer.cornerRadius = 5.0
 
         self.startDateField.delegate = self
         self.endDateField.delegate = self
@@ -44,9 +49,9 @@ class SaveTripViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.currentDateField = startDateField
-        self.date = NSDate()
-        displayDate(self.date)
+//        self.currentDateField = startDateField
+//        self.date = NSDate()
+//        displayDate(self.date)
     }
     
     func initUI() {
