@@ -45,7 +45,7 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
             self.tripTitle.text = trip.title
             let formatter = NSDateFormatter()
             formatter.dateStyle = .MediumStyle
-            self.datesLabel.text = "\(formatter.stringFromDate(trip.starting)) -> \(formatter.stringFromDate(trip.ending))"
+            self.datesLabel.text = "\(formatter.stringFromDate(trip.starting)) to \(formatter.stringFromDate(trip.ending))"
             self.publicImageView.hidden = !trip.isPublic
             self.descriptionLabel.text = trip.note
         }
