@@ -13,8 +13,8 @@ class Trip: PFObject, PFSubclassing {
     @NSManaged var user: PFUser
     @NSManaged var title: String?
     @NSManaged var note: String?
-    @NSManaged var starting: NSDate
-    @NSManaged var ending: NSDate
+    @NSManaged var starting: NSDate?
+    @NSManaged var ending: NSDate?
     @NSManaged var isPublic: Bool
     @NSManaged var isArchived: Bool
     @NSManaged var isCompleted: Bool

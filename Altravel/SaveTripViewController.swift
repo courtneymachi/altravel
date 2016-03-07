@@ -64,8 +64,13 @@ class SaveTripViewController: UIViewController, UITextFieldDelegate {
                 let formatter = NSDateFormatter()
                 formatter.dateStyle = .MediumStyle
                 
-                self.startDateField.text = formatter.stringFromDate(trip.starting)
-                self.endDateField.text = formatter.stringFromDate(trip.ending)
+                if let startDate = trip.starting {
+                    self.startDateField.text = formatter.stringFromDate(startDate)
+                }
+                
+                if let endDate = trip.ending {
+                    self.endDateField.text = formatter.stringFromDate(endDate)
+                }
                 
                 self.isPublicSwitch.setOn(trip.isPublic, animated: true)
             }
@@ -76,25 +81,43 @@ class SaveTripViewController: UIViewController, UITextFieldDelegate {
     // IBActions
     @IBAction func saveButtonTapped(sender: UIButton) {
         if let trip = self.currentTrip {
+            
+            var validTrip = true
+            
             trip.title = tripNameField.text
             trip.note = tripDetailsField.text
+            trip.isPublic = self.isPublicSwitch.on
             
             let formatter = NSDateFormatter()
             formatter.dateStyle = .MediumStyle
-            trip.starting = formatter.dateFromString(startDateField.text!)!
-            trip.ending = formatter.dateFromString(endDateField.text!)!
-            if trip.starting.compare(trip.ending) == .OrderedDescending {
-                let alertController = UIAlertController(title: "Invalid Dates", message: "Are you traveling back in time? Please fix dates and try again.", preferredStyle: .Alert)
-                let cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in
-                    // do something else
-                }
-                alertController.addAction(cancelAction)
-                self.presentViewController(alertController, animated: true, completion: { () -> Void in
-                    
-                })
+            
+            if let startDate = self.startDateField.text {
+                trip.starting = formatter.dateFromString(startDate)
             }
-            else {
-                trip.isPublic = self.isPublicSwitch.on
+            
+            if let endDate = self.endDateField.text {
+                trip.ending = formatter.dateFromString(endDate)
+            }
+
+            
+            if let startDate = trip.starting {
+                if let endDate = trip.ending {
+                    if startDate.compare(endDate) == .OrderedDescending {
+                        validTrip = false
+                        let alertController = UIAlertController(title: "Invalid Dates", message: "Are you traveling back in time? Please fix dates and try again.", preferredStyle: .Alert)
+                        let cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in
+                            // do something else
+                        }
+                        alertController.addAction(cancelAction)
+                        self.presentViewController(alertController, animated: true, completion: { () -> Void in
+                            
+                        })
+                    }
+                }
+            }
+            
+            if (validTrip) {
+                
                 trip.saveEventually { (success, error) -> Void in
                     if (error != nil) {
                         NSLog("Error while saving the trip \(error)")
