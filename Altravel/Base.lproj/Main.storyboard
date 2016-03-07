@@ -314,7 +314,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FGM-RK-LWe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2699" y="1127"/>
+            <point key="canvasLocation" x="2714" y="1689"/>
         </scene>
         <!--Trip View Controller-->
         <scene sceneID="dVx-N8-TXE">
@@ -495,7 +495,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oGt-uO-ijc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2699" y="258"/>
+            <point key="canvasLocation" x="2714" y="709"/>
         </scene>
         <!--Save Trip Step View Controller-->
         <scene sceneID="SPN-c2-SQV">
@@ -744,7 +744,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tripTableView" destination="KWO-y9-ubl" id="LCC-vc-3P9"/>
-                        <segue destination="Bp9-0q-EmT" kind="show" identifier="addTripSegue" id="VXL-3z-wkM"/>
+                        <segue destination="Bp9-0q-EmT" kind="presentation" identifier="addTripSegue" id="VXL-3z-wkM"/>
                         <segue destination="dJX-NQ-hco" kind="presentation" identifier="showTrip" id="clb-ld-RkU"/>
                     </connections>
                 </viewController>
@@ -784,7 +784,7 @@
         <image name="profile_icon" width="17" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ArZ-N9-6Dy"/>
+        <segue reference="clb-ld-RkU"/>
         <segue reference="VYW-zd-Vqn"/>
     </inferredMetricsTieBreakers>
 </document>

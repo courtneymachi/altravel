@@ -83,7 +83,7 @@ class SaveTripViewController: UIViewController, UITextFieldDelegate {
         if let trip = self.currentTrip {
             
             var validTrip = true
-            
+
             trip.title = tripNameField.text
             trip.note = tripDetailsField.text
             trip.isPublic = self.isPublicSwitch.on
@@ -152,7 +152,7 @@ class SaveTripViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func cancelButtonTapped(sender: UIButton) {
-        dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     
@@ -172,7 +172,7 @@ class SaveTripViewController: UIViewController, UITextFieldDelegate {
     } 
     
     func datePickerChanged(sender:UIDatePicker) {
-        displayDate(sender.date)
+        self.displayDate(sender.date)
     }
     
     func displayDate(date: NSDate) {
