@@ -12,8 +12,10 @@ import Parse
 class TripStep: PFObject, PFSubclassing {
     @NSManaged var trip: Trip
     @NSManaged var summary: String?
-    @NSManaged var locationStart: String?
-    @NSManaged var locationDestination: String?
+    @NSManaged var originPlace: String?
+    @NSManaged var originPlaceId: String?
+    @NSManaged var destinationPlace: String?
+    @NSManaged var destinationPlaceId: String?
     @NSManaged var note: String?
     @NSManaged var starting: NSDate?
     @NSManaged var ending: NSDate?

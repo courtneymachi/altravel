@@ -17,11 +17,15 @@ class Trip: PFObject, PFSubclassing {
     @NSManaged var ending: NSDate
     @NSManaged var isPublic: Bool
     @NSManaged var isArchived: Bool
+    @NSManaged var isCompleted: Bool
+    @NSManaged var place: String?
+    @NSManaged var placeId: String?
     
     convenience init(user: PFUser) {
         self.init()
         self.user = user
         self.isArchived = false
+        self.isCompleted = false
     }
     
     override class func initialize() {

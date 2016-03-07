@@ -4,8 +4,8 @@
 use_frameworks!
 
 
-
 target 'Altravel' do
+pod 'GoogleMaps'
 pod 'Alamofire', '~> 3.1'
 pod 'AlamofireImage', '~> 2.3'
 pod 'Parse', '~> 1.12'

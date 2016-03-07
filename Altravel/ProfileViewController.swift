@@ -11,7 +11,9 @@ import Parse
 import ParseFacebookUtilsV4;
 import AlamofireImage
 
-class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, NavigationListDelegate {
+import GoogleMaps
+
+class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, GMSAutocompleteViewControllerDelegate {
     
     var property:UserProperty?
     var trips:NSArray?
@@ -55,13 +57,14 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
                 }
             }
         }
+        self.fetchUserInfo()
+        self.fetchTrips()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.fetchUserInfo()
-        self.fetchTrips()
+        
     }
     
     func fetchUserInfo() {
@@ -80,7 +83,7 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
                                 if let profile = property.profile {
                                     self.profileTextArea.text = profile
                                 }
-                                if let city = property.city {
+                                if let city = property.place {
                                     if let cityButton: UIButton = self.cityButton {
                                         cityButton.setTitle(city, forState: .Normal)
                                         cityButton.setTitle(city, forState: .Highlighted)
@@ -145,34 +148,62 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
     }
     
     
-    // NavigationListDelegate delegate
-    func pickEntity(entity: NSDictionary) {
-        let location = Location(data: entity)
-        // Update parse location
-        self.property?.city = location.city
-        self.property?.cityId = NSNumber(double: location.cityId!)
-        self.property?.country = location.country
-        self.property?.countryId = location.countryId
-        self.property?.saveEventually()
-        self.property?.saveEventually({ (success, error) -> Void in
-            if (error != nil) {
-                let alertController = UIAlertController(title: "Profile", message: "Error saving profile.", preferredStyle: .Alert)
-                let cancelAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
-                alertController.addAction(cancelAction)
-            }
-            else {
-                if (success) {
-                    if let city = location.city {
+    @IBAction func onPickCityButton(sender: AnyObject) {
+        let autocompleteController = GMSAutocompleteViewController()
+        autocompleteController.delegate = self
+        self.presentViewController(autocompleteController, animated: true, completion: nil)
+    }
+
+    // Google Places delegate
+    // Handle the user's selection.
+    func viewController(viewController: GMSAutocompleteViewController, didAutocompleteWithPlace place: GMSPlace) {
+        print("Place name: ", place.name)
+        print("Place address: ", place.formattedAddress)
+        print("Place attributions: ", place.attributions)
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        if let property = self.property {
+            property.place = place.name
+            property.placeId = place.placeID
+            
+            property.saveEventually({ (success, error) -> Void in
+                if (error != nil) {
+                    let alertController = UIAlertController(title: "Profile", message: "Error saving profile.", preferredStyle: .Alert)
+                    let cancelAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                    alertController.addAction(cancelAction)
+                }
+                else {
+                    if (success) {
+                        let city = place.name
                         if let cityButton: UIButton = self.cityButton {
                             cityButton.setTitle(city, forState: UIControlState.Normal)
                             cityButton.setTitle(city, forState: UIControlState.Highlighted)
                             cityButton.setTitle(city, forState: UIControlState.Selected)
                         }
+                        
                     }
                 }
-            }
-        })
-        
+            })
+        }
+    }
+    
+    func viewController(viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: NSError) {
+        // TODO: handle the error.
+        print("Error: ", error.description)
+    }
+    
+    // User canceled the operation.
+    func wasCancelled(viewController: GMSAutocompleteViewController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // Turn the network activity indicator on and off again.
+    func didRequestAutocompletePredictions(viewController: GMSAutocompleteViewController) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+    }
+    
+    func didUpdateAutocompletePredictions(viewController: GMSAutocompleteViewController) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
     }
     
     // Table view delegates
@@ -210,7 +241,7 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
         if let trips = self.trips {
             if row < trips.count {
                 self.currentTrip = trips[row] as? Trip
-                self.performSegueWithIdentifier("showTrip", sender: self)
+                self.performSegueWithIdentifier("showTripSegue", sender: self)
             }   
         }
     }
@@ -218,11 +249,7 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let indetifier = segue.identifier {
             switch indetifier {
-            case "pickCitySegue":
-                let destinationViewController = segue.destinationViewController as! CitySearchViewControoler
-                destinationViewController.delegate = self;
-                break
-            case "showTrip":
+            case "showTripSegue":
                 if let trip = self.currentTrip {
                     let destinationViewController = segue.destinationViewController as! TripViewController
                     destinationViewController.currentTrip = trip

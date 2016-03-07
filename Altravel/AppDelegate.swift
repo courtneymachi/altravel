@@ -15,6 +15,7 @@ import ParseFacebookUtilsV4
 import Fabric
 import Crashlytics
 
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -46,6 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Fabric
         Fabric.with([Crashlytics.self])
+        
+        // Google Maps
+        GMSServices.provideAPIKey("AIzaSyA1tR4TwwuHmTnRY2TgpZwfqkDIla_5ugM")
 
         
         return true

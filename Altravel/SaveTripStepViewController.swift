@@ -10,7 +10,9 @@ import Foundation
 import UIKit
 import Parse
 
-class TripStepViewController: UIViewController, NavigationListDelegate {
+import GoogleMaps
+
+class SaveTripStepViewController: UIViewController, GMSAutocompleteViewControllerDelegate {
     
 //IBOutlets
     
@@ -31,27 +33,60 @@ class TripStepViewController: UIViewController, NavigationListDelegate {
             if tripStep.objectId != nil {
                 self.titleTextField.text = tripStep.summary
                 self.descriptionTextField.text = tripStep.note
-                self.locationTextField.text = tripStep.locationStart
+                self.locationTextField.text = tripStep.originPlace
             }
         }
     }
-
-    // Navigation list delegate
-    func pickEntity(entity: NSDictionary) {
-        let location = Location(data: entity)
-        // Update parse location
-        self.locationTextField?.text = "\(location.city!)"
+    
+    
+    @IBAction func onLocationClickButton(sender: AnyObject) {
+        let autocompleteController = GMSAutocompleteViewController()
+        autocompleteController.delegate = self
+        self.presentViewController(autocompleteController, animated: true, completion: nil)
     }
     
+    // Google Places delegate
+    // Handle the user's selection.
+    func viewController(viewController: GMSAutocompleteViewController, didAutocompleteWithPlace place: GMSPlace) {
+        print("Place name: ", place.name)
+        print("Place address: ", place.formattedAddress)
+        print("Place attributions: ", place.attributions)
+        
+        if let locationTextField = self.locationTextField {
+            locationTextField.text = "\(place.name)"
+            if let currentStep = self.currentStep {
+                currentStep.originPlace = place.name
+                currentStep.originPlaceId = place.placeID
+            }
+        }
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
+    func viewController(viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: NSError) {
+        // TODO: handle the error.
+        print("Error: ", error.description)
+    }
+    
+    // User canceled the operation.
+    func wasCancelled(viewController: GMSAutocompleteViewController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // Turn the network activity indicator on and off again.
+    func didRequestAutocompletePredictions(viewController: GMSAutocompleteViewController) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+    }
+    
+    func didUpdateAutocompletePredictions(viewController: GMSAutocompleteViewController) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    }
 
     @IBAction func saveButtonTapped(sender: UIButton) {
-        self.currentStep?.summary = self.titleTextField.text
-        self.currentStep?.locationStart = self.locationTextField.text
-        self.currentStep?.note = self.descriptionTextField.text
-        
-        if let step = self.currentStep {
-            step.saveEventually { (success, error) -> Void in
+        if let currentStep = self.currentStep {
+            currentStep.summary = self.titleTextField.text
+            currentStep.note = self.descriptionTextField.text
+            currentStep.saveEventually { (success, error) -> Void in
                 if (error != nil) {
                     NSLog("Error while saving the step \(error)")
                     let alertController = UIAlertController(title: "Error", message: "Error saving step.", preferredStyle: .Alert)
@@ -79,30 +114,13 @@ class TripStepViewController: UIViewController, NavigationListDelegate {
                     }
                 }
             }
-
         }
+        
     }
     
     @IBAction func cancelButtonTapped(sender: UIButton) {
         dismissViewControllerAnimated(true, completion: nil)
     }
-
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let indetifier = segue.identifier {
-            switch indetifier {
-            case "locationPickSegue":
-                let destinationViewController = segue.destinationViewController as! CitySearchViewControoler
-                destinationViewController.delegate = self;
-                break
-            default:
-                // do nothing
-                break
-            }
-        }
-        
-    }
-    
   
     
 }

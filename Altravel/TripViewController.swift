@@ -12,7 +12,6 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
     
     var currentTrip: Trip?
     var steps: NSArray?
-    var sectionOpenInfo: [String: Bool]?
     var currentTripStep: TripStep?
     
     @IBOutlet weak var stepsTableView: UITableView!
@@ -20,15 +19,14 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var tripTitle: UILabel!
     @IBOutlet weak var publicImageView: UIImageView!
     
-    @IBOutlet weak var tripLabel: UILabel!
     @IBOutlet weak var stepsLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tripLabel.layer.masksToBounds = true
-        self.tripLabel.layer.cornerRadius = 5;
+        self.tripTitle.layer.masksToBounds = true
+        self.tripTitle.layer.cornerRadius = 5;
         
         self.stepsLabel.layer.masksToBounds = true
         self.stepsLabel.layer.cornerRadius = 5;
@@ -55,11 +53,8 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
         if let trip = self.currentTrip {
             trip.fetchIfNeededInBackgroundWithBlock({ (trip, error) -> Void in
                 if (error == nil) {
-                    self.currentTrip = trip as? Trip
                     self.fetchTripSteps()
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.performSelectorOnMainThread("initUI", withObject: nil, waitUntilDone: false)
-                    })
+                    self.initUI()
                 }
             })
         }
@@ -154,7 +149,7 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
                 }
             break
             case "saveTripStepSegue":
-                let tripStepViewController = segue.destinationViewController as! TripStepViewController
+                let tripStepViewController = segue.destinationViewController as! SaveTripStepViewController
                 if let currentTripStep = self.currentTripStep {
                     tripStepViewController.currentStep = currentTripStep
                 }
