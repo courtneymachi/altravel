@@ -86,6 +86,14 @@ class SaveTripStepViewController: UIViewController, GMSAutocompleteViewControlle
         if let currentStep = self.currentStep {
             currentStep.summary = self.titleTextField.text
             currentStep.note = self.descriptionTextField.text
+            
+            if (currentStep.originPlace == nil) {
+                if let locationTextField = self.locationTextField {
+                    currentStep.originPlace = locationTextField.text
+                    currentStep.originPlaceId = NSUUID().UUIDString
+                }
+            }
+            
             currentStep.saveEventually { (success, error) -> Void in
                 if (error != nil) {
                     NSLog("Error while saving the step \(error)")
