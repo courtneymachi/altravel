@@ -26,6 +26,7 @@ class Trip: PFObject, PFSubclassing {
         self.user = user
         self.isArchived = false
         self.isCompleted = false
+        self.isPublic = true
     }
     
     override class func initialize() {
@@ -38,14 +39,10 @@ class Trip: PFObject, PFSubclassing {
     }
     
     override func saveEventually(callback: PFBooleanResultBlock?) {
-        if (self.isPublic) {
-            // create new acl
-            // set public read permission and write permission only for the current user
-            let tripACL = PFACL.init()
-            tripACL.publicReadAccess = true
-            tripACL.publicWriteAccess = false
-            PFACL.setDefaultACL(tripACL, withAccessForCurrentUser: true)
-        }
+        let tripACL = PFACL.init()
+        tripACL.publicReadAccess = self.isPublic
+        tripACL.publicWriteAccess = false
+        PFACL.setDefaultACL(tripACL, withAccessForCurrentUser: true)
         super.saveEventually(callback)
     }
     

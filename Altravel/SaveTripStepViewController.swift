@@ -129,6 +129,21 @@ class SaveTripStepViewController: UIViewController, GMSAutocompleteViewControlle
     @IBAction func cancelButtonTapped(sender: UIButton) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let identifier = segue.identifier;
+        switch (identifier!) {
+        case "addTripStepToTripSegue":
+            let addTripStepToTripViewController = segue.destinationViewController as! AddTripStepToTripViewController
+            if let currentStep = self.currentStep {
+                addTripStepToTripViewController.currentTripStep = currentStep
+            }
+            break
+        default:
+            break
+        }
+        
+    }
   
     
 }
