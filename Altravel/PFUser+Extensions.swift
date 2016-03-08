@@ -33,4 +33,18 @@ extension PFUser {
             }
         }
     }
+    
+    func fetchAllUsersExpectCurrentOne(user: PFUser?, block: ((NSArray?, NSError?) -> Void)?) {
+        if let currentUser = user {
+            if let query = PFUser.query() {
+                query.whereKey("objectId", notEqualTo: currentUser.objectId!)
+                query.findObjectsInBackgroundWithBlock({ (users, error) -> Void in
+                    if let completionBlock = block {
+                        completionBlock(users, error)
+                    }
+                })
+            }
+        }
+
+    }
 }
