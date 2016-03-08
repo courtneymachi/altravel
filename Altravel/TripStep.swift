@@ -29,6 +29,21 @@ class TripStep: PFObject, PFSubclassing {
         self.isArchived = false
     }
     
+    static func copyStepInTrip(trip: Trip, step: TripStep) -> TripStep {
+        let newStep = TripStep.init(trip: trip)
+        newStep.summary = step.summary
+        newStep.originPlace = step.originPlace
+        newStep.originPlaceId = step.originPlaceId
+        newStep.destinationPlace = step.destinationPlace
+        newStep.destinationPlaceId = step.destinationPlaceId
+        newStep.note = step.note
+        newStep.starting = step.starting
+        newStep.ending = step.ending
+        newStep.completed = step.completed
+        newStep.isArchived = step.isArchived
+        return newStep;
+    }
+    
     override class func initialize() {
         struct Static {
             static var onceToken: dispatch_once_t = 0;
@@ -36,6 +51,14 @@ class TripStep: PFObject, PFSubclassing {
         dispatch_once(&Static.onceToken) {
             self.registerSubclass()
         }
+    }
+    
+    override func saveEventually(callback: PFBooleanResultBlock?) {
+        let tripStepACL = PFACL.init()
+        tripStepACL.publicReadAccess = true
+        tripStepACL.publicWriteAccess = false
+        PFACL.setDefaultACL(tripStepACL, withAccessForCurrentUser: true)
+        super.saveEventually(callback)
     }
     
     class func parseClassName() -> String {

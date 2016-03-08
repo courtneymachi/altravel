@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5AF2AB92B23FD430C9241F19 /* Pods_Altravel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2C81216316FA6ACFD7E87FE /* Pods_Altravel.framework */; };
+		DD33DF8B1C8E6F6B00A134DC /* AddTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33DF8A1C8E6F6B00A134DC /* AddTripViewController.swift */; };
 		DD7ABE571C54321C00BF7C04 /* UserProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7ABE561C54321C00BF7C04 /* UserProperty.swift */; };
 		DD7ABE591C54343300BF7C04 /* PFUser+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7ABE581C54343300BF7C04 /* PFUser+Extensions.swift */; };
 		DDACD63E1C67F7D700978C51 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDACD63D1C67F7D700978C51 /* Trip.swift */; };
@@ -52,6 +53,7 @@
 		68826FA8E64D62511CECEBA8 /* Pods-Altravel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Altravel.release.xcconfig"; path = "Pods/Target Support Files/Pods-Altravel/Pods-Altravel.release.xcconfig"; sourceTree = "<group>"; };
 		9659348E2D87ABE152FE06D2 /* Pods-Altravel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Altravel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Altravel/Pods-Altravel.debug.xcconfig"; sourceTree = "<group>"; };
 		A2C81216316FA6ACFD7E87FE /* Pods_Altravel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Altravel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD33DF8A1C8E6F6B00A134DC /* AddTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTripViewController.swift; sourceTree = "<group>"; };
 		DD7ABE561C54321C00BF7C04 /* UserProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProperty.swift; sourceTree = "<group>"; };
 		DD7ABE581C54343300BF7C04 /* PFUser+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PFUser+Extensions.swift"; sourceTree = "<group>"; };
 		DDACD63D1C67F7D700978C51 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				F61E983B1C8A5A0800171FFE /* SaveTripStepViewController.swift */,
 				F6D869891C4C4040004E0BF1 /* ProfileViewController.swift */,
 				F6489D531BE59BE6003D4435 /* ViewController.swift */,
+				DD33DF8A1C8E6F6B00A134DC /* AddTripViewController.swift */,
 				F683E4101C55BF4A000D8ACA /* TripsViewController.swift */,
 				DDC919E71C83CE190034201F /* TripViewController.swift */,
 				F6489D551BE59BE6003D4435 /* Main.storyboard */,
@@ -421,6 +424,7 @@
 				F6D8698A1C4C4040004E0BF1 /* ProfileViewController.swift in Sources */,
 				DDACD63E1C67F7D700978C51 /* Trip.swift in Sources */,
 				DDACD6401C67F99600978C51 /* TripStep.swift in Sources */,
+				DD33DF8B1C8E6F6B00A134DC /* AddTripViewController.swift in Sources */,
 				F61E983C1C8A5A0800171FFE /* SaveTripStepViewController.swift in Sources */,
 				F6489D541BE59BE6003D4435 /* ViewController.swift in Sources */,
 				DD7ABE591C54343300BF7C04 /* PFUser+Extensions.swift in Sources */,
