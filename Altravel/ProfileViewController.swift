@@ -16,8 +16,11 @@ import GoogleMaps
 class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, GMSAutocompleteViewControllerDelegate {
     
     var property:UserProperty?
-    var trips:NSArray?
+    var trips: NSArray?
     var currentTrip: Trip?
+    
+    var firstName: String?
+    var lastName: String?
     
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userProfileView: UIImageView!
@@ -35,14 +38,19 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
         self.profileTextArea.layer.masksToBounds = true
         self.profileTextArea.layer.cornerRadius = 5;
         
-        let request = FBSDKGraphRequest.init(graphPath: "me", parameters:["fields": "id, first_name"])
+        let request = FBSDKGraphRequest.init(graphPath: "me", parameters:["fields": "id, first_name, last_name"])
     
         request.startWithCompletionHandler { (connection, userInfo, error) -> Void in
             if ((error == nil)) {
-                if let name = userInfo["first_name"] as? String {
-                    self.userNameLabel.text = "Hi, I'm \(name)"
+                if let firstName = userInfo["first_name"] as? String {
+                    self.firstName = firstName;
+                    self.userNameLabel.text = "Hi, I'm \(firstName)"
                 }
-
+                
+                if let lastName = userInfo["last_name"] as? String {
+                    self.lastName = lastName;
+                }
+ 
                 if let fbID = userInfo["id"] as? String {
                     let profileImageURL = NSURL(string: "https://graph.facebook.com/\(fbID)/picture?type=large&return_ssl_resources=1")!
                     
@@ -55,6 +63,7 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
                         filter: filter
                     )
                 }
+                
             }
         }
         self.fetchUserInfo()
@@ -90,17 +99,38 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
                                         cityButton.setTitle(city, forState: .Selected)
                                     }
                                 }
+                                
+                                if property.firstName != self.firstName {
+                                    property.firstName = self.firstName
+                                }
+                                
+                                if property.lastName != self.lastName {
+                                    property.lastName = self.lastName
+                                }
+                                
+                                if property.isDirtyForKey("lastName") || property.isDirtyForKey("firstName") {
+                                   property.saveEventually({ (success, error) -> Void in
+                                        if error != nil {
+                                            NSLog("Error saving first or last name: \(error)")
+                                        }
+                                        else {
+                                            if success == false {
+                                                NSLog("Saving first or last name: no errors but not able to update value");
+                                            }
+                                        }
+                                   })
+                                }
                             }
                         }
                         else {
                             // we need to generate a new user property and store it
                             self.property = UserProperty(user: currentUser)
-                            self.property?.saveEventually({ (result, error) -> Void in
+                            self.property?.saveEventually({ (success, error) -> Void in
                                 if error != nil {
                                     NSLog("Error saving description: \(error)")
                                 }
                                 else {
-                                    if result == false {
+                                    if success == false {
                                         NSLog("Saving description: no errors but not able to update value");
                                     }
                                 }
