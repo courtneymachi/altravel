@@ -13,6 +13,7 @@ import UIKit
 class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var friends: Array<PFUser>?
+    var currentFriend: PFUser?
     
     @IBOutlet weak var friendTableView: UITableView!
     
@@ -62,15 +63,32 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
         return friendCell;
     }
-        
+    
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        self.currentTripStep = nil;
-//        
-//        if let steps = self.steps {
-//            self.currentTripStep = steps[indexPath.row] as? TripStep
-//            self.performSegueWithIdentifier("saveTripStepSegue", sender: self)
+        self.currentFriend = nil
+        
+        if let friends = self.friends {
+            self.currentFriend = friends[indexPath.row]
+            self.performSegueWithIdentifier("showProfileSegue", sender: self)
         }
     }
+    
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let identifier = segue.identifier!;
+        switch identifier {
+        case "showProfileSegue":
+            let destinationViewController = segue.destinationViewController as! ProfileViewController
+            destinationViewController.currentFriend = self.currentFriend
+            break
+        default:
+            break;
+        }
+    }
+    
+    
+
     
         

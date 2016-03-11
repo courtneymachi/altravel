@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
     var property:UserProperty?
     var trips: NSArray?
     var currentTrip: Trip?
+    var currentUser: PFUser?
     
     var firstName: String?
     var lastName: String?

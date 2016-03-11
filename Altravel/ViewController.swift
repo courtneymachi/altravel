@@ -13,6 +13,8 @@ import QuartzCore;
 
 class ViewController: UIViewController {
 
+    var firstName: String?
+    var lastName: String?
   
     @IBOutlet weak var backgroundImg: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -52,8 +54,29 @@ class ViewController: UIViewController {
             
             if (error == nil) {
                 if user != nil {
+                    
                     NSLog("User logged in through facebook");
                     //move to the next scene
+                    
+                    let request = FBSDKGraphRequest.init(graphPath: "me", parameters:["fields": "id, first_name, last_name"])
+                    
+                    request.startWithCompletionHandler { (connection, userInfo, error) -> Void in
+                        if ((error == nil)) {
+                            if let firstName = userInfo["first_name"] as? String {
+                                self.firstName = firstName;
+                            }
+                            
+                            if let lastName = userInfo["last_name"] as? String {
+                                self.lastName = lastName;
+                            }
+                            
+                            if let fbID = userInfo["id"] as? String {
+                            }
+                            
+                        }
+                    }
+
+                    
                     self.performSegueWithIdentifier("loginSuccessSegue", sender: self)
                 }
                 else {

@@ -857,7 +857,7 @@
                                 <rect key="frame" x="0.0" y="75" width="600" height="476"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="friendCell" textLabel="wVg-BQ-4VO" detailTextLabel="vX7-bc-qle" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="ETT-gc-yAT">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="friendCell" textLabel="wVg-BQ-4VO" detailTextLabel="vX7-bc-qle" imageView="dV2-Gu-e7p" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="ETT-gc-yAT">
                                         <rect key="frame" x="0.0" y="28" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ETT-gc-yAT" id="x3S-ww-J5m">
@@ -865,19 +865,23 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wVg-BQ-4VO">
-                                                    <rect key="frame" x="15" y="13" width="32" height="20"/>
+                                                    <rect key="frame" x="47" y="13" width="32" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vX7-bc-qle">
-                                                    <rect key="frame" x="15" y="33" width="41" height="14"/>
+                                                    <rect key="frame" x="47" y="33" width="41" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="profile_icon" id="dV2-Gu-e7p">
+                                                    <rect key="frame" x="15" y="21" width="17" height="16"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -887,12 +891,24 @@
                                     <outlet property="delegate" destination="xV3-99-e0o" id="TYC-Li-1Mn"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPX-Vo-qMn">
+                                <rect key="frame" x="265" y="28" width="70" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="b7b-aP-BEQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="QO7-zw-oPl" firstAttribute="top" secondItem="ObK-Z8-n66" secondAttribute="bottom" id="Gd7-G2-Zvn"/>
                             <constraint firstItem="ObK-Z8-n66" firstAttribute="top" secondItem="fqf-ka-rdH" secondAttribute="bottom" constant="55" id="TY9-qr-d4d"/>
+                            <constraint firstItem="ObK-Z8-n66" firstAttribute="top" secondItem="tPX-Vo-qMn" secondAttribute="bottom" constant="20" id="Vcx-H3-UrZ"/>
                             <constraint firstItem="ObK-Z8-n66" firstAttribute="leading" secondItem="QIv-s0-CAJ" secondAttribute="leading" id="dpe-SE-avO"/>
+                            <constraint firstItem="tPX-Vo-qMn" firstAttribute="top" secondItem="fqf-ka-rdH" secondAttribute="bottom" constant="8" symbolic="YES" id="eac-QS-Bnw"/>
+                            <constraint firstItem="tPX-Vo-qMn" firstAttribute="centerX" secondItem="ObK-Z8-n66" secondAttribute="centerX" id="nrK-Ai-VEF"/>
                             <constraint firstAttribute="trailing" secondItem="ObK-Z8-n66" secondAttribute="trailing" id="r1n-sv-jtv"/>
                         </constraints>
                     </view>
@@ -939,6 +955,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ArZ-N9-6Dy"/>
-        <segue reference="VYW-zd-Vqn"/>
+        <segue reference="VXL-3z-wkM"/>
     </inferredMetricsTieBreakers>
 </document>
