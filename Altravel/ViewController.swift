@@ -15,6 +15,7 @@ class ViewController: UIViewController {
 
     var firstName: String?
     var lastName: String?
+    var id: String?
   
     @IBOutlet weak var backgroundImg: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -71,6 +72,7 @@ class ViewController: UIViewController {
                             }
                             
                             if let fbID = userInfo["id"] as? String {
+                                self.id = fbID;
                             }
                             
                         }
@@ -84,7 +86,7 @@ class ViewController: UIViewController {
                     if PFUser.currentUser() != nil {
                         self.performSegueWithIdentifier("loginSuccessSegue", sender: self)
                     }
-                }
+                }   
             }
             else {
                 NSLog("%s", error!)

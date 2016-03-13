@@ -67,7 +67,6 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.currentFriend = nil
-        
         if let friends = self.friends {
             self.currentFriend = friends[indexPath.row]
             self.performSegueWithIdentifier("showProfileSegue", sender: self)
@@ -81,14 +80,14 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         switch identifier {
         case "showProfileSegue":
             let destinationViewController = segue.destinationViewController as! ProfileViewController
-            destinationViewController.currentFriend = self.currentFriend
+            destinationViewController.currentUser = self.currentFriend
             break
         default:
             break;
         }
     }
-    
-    
 
     
-        
+
+}
+
