@@ -45,6 +45,36 @@ extension PFUser {
                 })
             }
         }
-
+    }
+    
+    func fetchFavoritesInBackground(block: ((NSArray?, NSError?) -> Void)?) {
+        if let query = UserFavorite.query() {
+            query.whereKey("user", equalTo: self)
+            query.whereKey("isArchived", equalTo: false)
+            query.includeKey("trip")
+            query.findObjectsInBackgroundWithBlock { (favorites, error) -> Void in
+                if let completionBlock = block {
+                    completionBlock(favorites, error)
+                }
+            }
+        }
+    }
+    
+    
+    func fetchFavoriteForTrip(trip: Trip, block: ((UserFavorite?, NSError?) -> Void)?) {
+        if let query = UserFavorite.query() {
+            query.whereKey("user", equalTo: self)
+            query.includeKey("trip")
+            query.whereKey("trip", equalTo: trip)
+            query.findObjectsInBackgroundWithBlock { (favorites, error) -> Void in
+                if let completionBlock = block {
+                    if let favs = favorites {
+                        let favorite = favs[0] as! UserFavorite
+                        completionBlock(favorite, error)
+                    }
+                    
+                }
+            }
+        }
     }
 }

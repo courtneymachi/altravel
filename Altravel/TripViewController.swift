@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Parse
 
 class TripViewController : UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var currentTrip: Trip?
     var steps: NSArray?
     var currentTripStep: TripStep?
+    var userFavorite: UserFavorite?
     
     @IBOutlet weak var stepsTableView: UITableView!
     @IBOutlet weak var datesLabel: UILabel!
@@ -22,6 +24,7 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var stepsLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    @IBOutlet weak var favoriteButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +33,12 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
         
         self.stepsLabel.layer.masksToBounds = true
         self.stepsLabel.layer.cornerRadius = 5;
-
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        fetchTrip()
+        self.fetchTrip()
+        self.fetchFavoriteTrip()
     }
     
     func initUI() {
@@ -74,6 +77,24 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
                 }
             })
         }
+    }
+    
+    func fetchFavoriteTrip() {
+        if let user = PFUser.currentUser() {
+            if let trip = self.currentTrip {
+                user.fetchFavoriteForTrip(trip, block: { (userFavorite, error) -> Void in
+                    if let favorite = userFavorite {
+                        self.userFavorite = favorite
+                        if favorite.isArchived == false {
+                            let favoriteButton = self.favoriteButton
+                            favoriteButton.setImage(UIImage(named: "favorite_on"), forState: .Normal)
+                        }
+                    }
+                })
+            }
+            
+        }
+        
     }
     
     // Table view delegates
@@ -144,6 +165,62 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
+    @IBAction func onFavoriteTrip(sender: AnyObject) {
+        if let currentTrip = self.currentTrip {
+            if let user = PFUser.currentUser() {
+                if let userFavorite = self.userFavorite {
+                    userFavorite.isArchived = !userFavorite.isArchived
+                    userFavorite.saveEventually({ (success, error) -> Void in
+                        var message: String
+                        let cancelAction: UIAlertAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
+                        if (error == nil && success == true) {
+                            let favoriteButton = self.favoriteButton
+                            if userFavorite.isArchived == false {
+                                message = "Trip added to your favorites."
+                                favoriteButton.setImage(UIImage(named: "favorite_on"), forState: .Normal)
+                            }
+                            else {
+                                message = "Trip removed from your favorites."
+                                favoriteButton.setImage(UIImage(named: "favorite"), forState: .Normal)
+                            }
+                        }
+                        else {
+                            message = "Error while updating your profile."
+                        }
+                        let alertController = UIAlertController(title: "Trip", message: message, preferredStyle: .Alert)
+                        alertController.addAction(cancelAction)
+                        self.presentViewController(alertController, animated: true, completion: nil)
+                    })
+
+                }
+                else {
+                    let userFavorite = UserFavorite.init(user: user, trip: currentTrip)
+                    userFavorite.saveEventually({ (success, error) -> Void in
+                        let message: String
+                        let cancelAction: UIAlertAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
+                        if (error == nil && success == true) {
+                            message = "Added trip to your favorites."
+                            let favoriteButton = self.favoriteButton
+                            favoriteButton.setImage(UIImage(named: "favorite_on"), forState: .Normal)
+                        }
+                        else {
+                            message = "Error while adding trip to your favorites."
+                        }
+                        let alertController = UIAlertController(title: "Trip", message: message, preferredStyle: .Alert)
+                        alertController.addAction(cancelAction)
+                        self.presentViewController(alertController, animated: true, completion: nil)
+                    })
+                }
+                
+                
+                
+            }
+            
+        }
+        
+    }
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let identifier = segue.identifier;
         switch (identifier!) {

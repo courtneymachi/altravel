@@ -16,7 +16,6 @@ class SaveTripViewController: UIViewController, UITextFieldDelegate {
     var currentDateField: UITextField?
     var currentTrip: Trip?
     
-    
     @IBOutlet weak var tripNameField: UITextField!
     @IBOutlet weak var tripDetailsField: UITextField!
     @IBOutlet weak var startDateField: UITextField!
@@ -26,11 +25,6 @@ class SaveTripViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let borderColor : UIColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
-//        tripNameField.layer.borderWidth = 0.5
-//        tripNameField.layer.borderColor = borderColor.CGColor
-//        tripNameField.layer.cornerRadius = 5.0
 
         self.startDateField.delegate = self
         self.endDateField.delegate = self
@@ -49,9 +43,6 @@ class SaveTripViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-//        self.currentDateField = startDateField
-//        self.date = NSDate()
-//        displayDate(self.date)
     }
     
     func initUI() {
@@ -118,8 +109,17 @@ class SaveTripViewController: UIViewController, UITextFieldDelegate {
             
             if (validTrip) {
                 
+                let requiresStepsUpdate = trip.isDirtyForKey("isPublic");
+                
                 trip.saveEventually { (success, error) -> Void in
                     if (error != nil) {
+                        
+                        // TODO need to update all the step ACLs to switch to public/private
+                        if requiresStepsUpdate == true {
+                            // retrieve all the steps
+                            // update ACL for each and every steo
+                        }
+                        
                         NSLog("Error while saving the trip \(error)")
                         let alertController = UIAlertController(title: "Error", message: "Error saving trip.", preferredStyle: .Alert)
                         let cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in

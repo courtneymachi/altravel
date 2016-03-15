@@ -68,13 +68,11 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
             }
         }
         self.fetchUserInfo()
-        self.fetchTrips()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        
+        self.fetchFavoriteTrips()
     }
     
     func fetchUserInfo() {
@@ -146,13 +144,17 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
         }
     }
     
-    func fetchTrips() {
-       // if let currentUser:PFUser = PFUser.currentUser() {
-        if let currentUser:PFUser = self.currentUser {
-            currentUser.fetchTripsInBackground({ (trips, error) -> Void in
+
+    func fetchFavoriteTrips() {
+        if let currentUser:PFUser = PFUser.currentUser() {
+            currentUser.fetchFavoritesInBackground({ (userFavorites, error) -> Void in
                 if (error == nil) {
-                    self.trips = trips;
-                    if (trips?.count > 0) {
+                    if let favorites = userFavorites {
+                        let trips = favorites.map({ (favoriteObject) -> Trip in
+                            let favorite = favoriteObject as! UserFavorite
+                            return favorite.trip
+                        })
+                        self.trips = trips;
                         self.tripTableView.reloadData()
                     }
                 }
@@ -265,7 +267,7 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Trips";
+        return "Favorite Trips";
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

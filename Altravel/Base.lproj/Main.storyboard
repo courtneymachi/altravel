@@ -451,6 +451,9 @@
                                     <constraint firstAttribute="width" constant="28" id="bng-Th-9ey"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="favorite"/>
+                                <connections>
+                                    <action selector="onFavoriteTrip:" destination="dJX-NQ-hco" eventType="touchUpInside" id="bLs-8j-NfG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -489,6 +492,7 @@
                     <connections>
                         <outlet property="datesLabel" destination="Dkr-KL-g4u" id="q2d-VB-mCT"/>
                         <outlet property="descriptionLabel" destination="r80-pB-0X9" id="ecW-Q6-ttC"/>
+                        <outlet property="favoriteButton" destination="OaG-9B-mkt" id="iRS-e5-aJL"/>
                         <outlet property="publicImageView" destination="Gcf-Hf-U5J" id="R0J-mw-TTt"/>
                         <outlet property="stepsLabel" destination="ywC-h0-qje" id="0cP-OU-Uc9"/>
                         <outlet property="stepsTableView" destination="0RQ-3L-zcY" id="ZgG-Le-DgV"/>

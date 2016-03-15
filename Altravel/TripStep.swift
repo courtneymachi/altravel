@@ -55,9 +55,10 @@ class TripStep: PFObject, PFSubclassing {
     
     override func saveEventually(callback: PFBooleanResultBlock?) {
         let tripStepACL = PFACL.init()
-        tripStepACL.publicReadAccess = true
+        tripStepACL.publicReadAccess = self.trip.isPublic
         tripStepACL.publicWriteAccess = false
         PFACL.setDefaultACL(tripStepACL, withAccessForCurrentUser: true)
+        
         super.saveEventually(callback)
     }
     
