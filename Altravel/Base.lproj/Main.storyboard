@@ -727,7 +727,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qSs-Vx-P1L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1124" y="258"/>
+            <point key="canvasLocation" x="1129" y="-556"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="udi-x3-dF7">
@@ -884,9 +884,6 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="UyG-Pb-X2Z" kind="show" identifier="showProfileSegue" id="q2P-3P-HqT"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -919,11 +916,12 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="friendTableView" destination="ObK-Z8-n66" id="ifq-3r-45F"/>
+                        <segue destination="UyG-Pb-X2Z" kind="show" identifier="showProfileSegue" id="l5J-jP-weN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="am2-Ax-TmH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1129" y="1895"/>
+            <point key="canvasLocation" x="1145" y="258"/>
         </scene>
         <!--My Trips-->
         <scene sceneID="CLa-vP-T3V">
@@ -957,7 +955,7 @@
         <image name="profile_icon" width="17" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="q2P-3P-HqT"/>
+        <segue reference="RCK-hy-4VD"/>
         <segue reference="ArZ-N9-6Dy"/>
         <segue reference="VXL-3z-wkM"/>
     </inferredMetricsTieBreakers>

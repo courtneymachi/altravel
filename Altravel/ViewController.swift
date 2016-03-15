@@ -94,6 +94,28 @@ class ViewController: UIViewController {
         }
 
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let identifier = segue.identifier!;
+        switch identifier {
+        case "loginSuccessSegue":
+            let destinationViewController = segue.destinationViewController as! UITabBarController
+            if let tabControllers = destinationViewController.viewControllers {
+                let navigationController: UINavigationController = tabControllers[0] as! UINavigationController
+                
+                let navigationControllerChildren = navigationController.viewControllers
+                let profileViewController: ProfileViewController = navigationControllerChildren[0] as! ProfileViewController
+                profileViewController.currentUser = PFUser.currentUser()
+                
+            }
+            
+            
+//            destinationViewController.currentUser = PFUser.currentUser()
+            break
+        default:
+            break;
+        }
+    }
 }
 
 

@@ -78,7 +78,8 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
     }
     
     func fetchUserInfo() {
-        if let currentUser:PFUser = PFUser.currentUser() {
+       // if let currentUser:PFUser = PFUser.currentUser() {
+        if let currentUser:PFUser = self.currentUser {
             
             currentUser.fetchPropertiesInBacground({(userProperties, error) -> Void in
                 if (error != nil) {
@@ -146,7 +147,8 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
     }
     
     func fetchTrips() {
-        if let currentUser:PFUser = PFUser.currentUser() {
+       // if let currentUser:PFUser = PFUser.currentUser() {
+        if let currentUser:PFUser = self.currentUser {
             currentUser.fetchTripsInBackground({ (trips, error) -> Void in
                 if (error == nil) {
                     self.trips = trips;
