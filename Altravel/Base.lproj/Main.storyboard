@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Altravel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Altravel" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -80,14 +80,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XGM-V0-NsD">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XGM-V0-NsD">
                                 <rect key="frame" x="240" y="136" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="5rt-ZQ-Pig"/>
                                     <constraint firstAttribute="width" constant="120" id="lxM-ka-NKi"/>
                                 </constraints>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FfM-5h-XyS">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FfM-5h-XyS">
                                 <rect key="frame" x="0.0" y="410" width="600" height="141"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -121,7 +121,7 @@
                                     <outlet property="delegate" destination="UyG-Pb-X2Z" id="Www-zi-uaj"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hi, I'm Courtney" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="pd9-PZ-PHW">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi, I'm Courtney" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="pd9-PZ-PHW">
                                 <rect key="frame" x="0.0" y="72" width="302" height="42"/>
                                 <color key="backgroundColor" red="0.40182827958254907" green="0.86905998801636208" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -132,7 +132,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="Your story" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8ga-vn-a6m">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Your story" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8ga-vn-a6m">
                                 <rect key="frame" x="13" y="308" width="575" height="94"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -144,7 +144,7 @@
                                     <outlet property="delegate" destination="UyG-Pb-X2Z" id="Y7V-Vd-Bqo"/>
                                 </connections>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C67-ca-NU6">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C67-ca-NU6">
                                 <rect key="frame" x="13" y="269" width="575" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Click to set your location" image="location_pin">
@@ -154,21 +154,31 @@
                                     <action selector="onPickCityButton:" destination="UyG-Pb-X2Z" eventType="touchUpInside" id="5rX-MF-fUD"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="js6-38-lrM">
+                                <rect key="frame" x="538" y="75" width="39" height="30"/>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="onCloseButton:" destination="UyG-Pb-X2Z" eventType="touchUpInside" id="2kx-iI-aBG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="NUD-wj-yVq" firstAttribute="top" secondItem="FfM-5h-XyS" secondAttribute="bottom" id="4cM-vu-i8S"/>
+                            <constraint firstItem="NUD-wj-yVq" firstAttribute="top" secondItem="FfM-5h-XyS" secondAttribute="bottom" constant="49" id="4cM-vu-i8S"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="js6-38-lrM" secondAttribute="trailing" constant="3" id="8BZ-4I-2eh"/>
                             <constraint firstItem="C67-ca-NU6" firstAttribute="top" secondItem="XGM-V0-NsD" secondAttribute="bottom" constant="13" id="91g-D1-r1v"/>
                             <constraint firstItem="FfM-5h-XyS" firstAttribute="leading" secondItem="9ga-ba-hz1" secondAttribute="leadingMargin" constant="-20" id="9R1-8i-6EW"/>
                             <constraint firstItem="pd9-PZ-PHW" firstAttribute="leading" secondItem="9ga-ba-hz1" secondAttribute="leadingMargin" constant="-20" id="9yG-PQ-mLM"/>
                             <constraint firstItem="C67-ca-NU6" firstAttribute="leading" secondItem="9ga-ba-hz1" secondAttribute="leadingMargin" constant="-7" id="CJL-kj-Mu0"/>
+                            <constraint firstItem="8ga-vn-a6m" firstAttribute="top" secondItem="C67-ca-NU6" secondAttribute="bottom" constant="7" id="Jk6-gl-Km2"/>
                             <constraint firstItem="XGM-V0-NsD" firstAttribute="top" secondItem="pd9-PZ-PHW" secondAttribute="bottom" constant="22" id="LfM-Fx-Dyb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FfM-5h-XyS" secondAttribute="trailing" constant="-20" id="OUm-FY-PhJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="C67-ca-NU6" secondAttribute="trailing" constant="-8" id="UfC-jd-gqp"/>
                             <constraint firstItem="XGM-V0-NsD" firstAttribute="centerX" secondItem="FfM-5h-XyS" secondAttribute="centerX" id="Whc-j6-vhA"/>
-                            <constraint firstItem="pd9-PZ-PHW" firstAttribute="top" secondItem="pOM-qa-zZT" secondAttribute="bottom" constant="8" id="Zj9-wP-c9L"/>
+                            <constraint firstItem="pd9-PZ-PHW" firstAttribute="top" secondItem="pOM-qa-zZT" secondAttribute="bottom" constant="52" id="Zj9-wP-c9L"/>
                             <constraint firstItem="8ga-vn-a6m" firstAttribute="leading" secondItem="9ga-ba-hz1" secondAttribute="leadingMargin" constant="-7" id="hAq-vA-23b"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8ga-vn-a6m" secondAttribute="trailing" constant="-8" id="iBn-bF-dWY"/>
+                            <constraint firstItem="js6-38-lrM" firstAttribute="top" secondItem="pOM-qa-zZT" secondAttribute="bottom" constant="55" id="mfP-g1-siI"/>
                             <constraint firstItem="FfM-5h-XyS" firstAttribute="top" secondItem="8ga-vn-a6m" secondAttribute="bottom" constant="8" symbolic="YES" id="tNc-Cw-cFK"/>
                             <constraint firstItem="XGM-V0-NsD" firstAttribute="centerX" secondItem="9ga-ba-hz1" secondAttribute="centerX" id="tuH-f0-n6d"/>
                         </constraints>
@@ -177,6 +187,7 @@
                     <navigationItem key="navigationItem" title="Profile" id="8iP-fH-Z0s"/>
                     <connections>
                         <outlet property="cityButton" destination="C67-ca-NU6" id="OlJ-Gk-GSK"/>
+                        <outlet property="closeButton" destination="js6-38-lrM" id="CNj-6A-FdI"/>
                         <outlet property="profileTextArea" destination="8ga-vn-a6m" id="hxV-Hm-bwf"/>
                         <outlet property="tripTableView" destination="FfM-5h-XyS" id="ENF-Jx-rlE"/>
                         <outlet property="userNameLabel" destination="pd9-PZ-PHW" id="YC8-O1-TXC"/>
@@ -920,7 +931,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="friendTableView" destination="ObK-Z8-n66" id="ifq-3r-45F"/>
-                        <segue destination="UyG-Pb-X2Z" kind="show" identifier="showProfileSegue" id="l5J-jP-weN"/>
+                        <segue destination="UyG-Pb-X2Z" kind="presentation" identifier="showProfileSegue" modalPresentationStyle="currentContext" id="l5J-jP-weN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="am2-Ax-TmH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -959,8 +970,8 @@
         <image name="profile_icon" width="17" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RCK-hy-4VD"/>
-        <segue reference="ArZ-N9-6Dy"/>
         <segue reference="VXL-3z-wkM"/>
+        <segue reference="l5J-jP-weN"/>
+        <segue reference="ArZ-N9-6Dy"/>
     </inferredMetricsTieBreakers>
 </document>

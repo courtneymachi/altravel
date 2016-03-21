@@ -18,7 +18,7 @@
 		F61E983C1C8A5A0800171FFE /* SaveTripStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E983B1C8A5A0800171FFE /* SaveTripStepViewController.swift */; };
 		F630B1E71C6FFE3C00CDB7B5 /* SaveTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F630B1E61C6FFE3C00CDB7B5 /* SaveTripViewController.swift */; };
 		F6489D521BE59BE6003D4435 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6489D511BE59BE6003D4435 /* AppDelegate.swift */; };
-		F6489D541BE59BE6003D4435 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6489D531BE59BE6003D4435 /* ViewController.swift */; };
+		F6489D541BE59BE6003D4435 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6489D531BE59BE6003D4435 /* LoginViewController.swift */; };
 		F6489D571BE59BE6003D4435 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6489D551BE59BE6003D4435 /* Main.storyboard */; };
 		F6489D591BE59BE6003D4435 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6489D581BE59BE6003D4435 /* Assets.xcassets */; };
 		F6489D5C1BE59BE6003D4435 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6489D5A1BE59BE6003D4435 /* LaunchScreen.storyboard */; };
@@ -66,7 +66,7 @@
 		F630B1E61C6FFE3C00CDB7B5 /* SaveTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveTripViewController.swift; sourceTree = "<group>"; };
 		F6489D4E1BE59BE6003D4435 /* Altravel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Altravel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6489D511BE59BE6003D4435 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F6489D531BE59BE6003D4435 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F6489D531BE59BE6003D4435 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F6489D561BE59BE6003D4435 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F6489D581BE59BE6003D4435 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F6489D5B1BE59BE6003D4435 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -178,7 +178,7 @@
 				F630B1E61C6FFE3C00CDB7B5 /* SaveTripViewController.swift */,
 				F61E983B1C8A5A0800171FFE /* SaveTripStepViewController.swift */,
 				F6D869891C4C4040004E0BF1 /* ProfileViewController.swift */,
-				F6489D531BE59BE6003D4435 /* ViewController.swift */,
+				F6489D531BE59BE6003D4435 /* LoginViewController.swift */,
 				F683E4101C55BF4A000D8ACA /* TripsViewController.swift */,
 				DDC919E71C83CE190034201F /* TripViewController.swift */,
 				F684C5E91C8E734300264B6D /* FriendsViewController.swift */,
@@ -433,7 +433,7 @@
 				DDACD6401C67F99600978C51 /* TripStep.swift in Sources */,
 				DD33DF8D1C94FD7300A134DC /* UserFavorite.swift in Sources */,
 				F61E983C1C8A5A0800171FFE /* SaveTripStepViewController.swift in Sources */,
-				F6489D541BE59BE6003D4435 /* ViewController.swift in Sources */,
+				F6489D541BE59BE6003D4435 /* LoginViewController.swift in Sources */,
 				DD7ABE591C54343300BF7C04 /* PFUser+Extensions.swift in Sources */,
 				F6489D521BE59BE6003D4435 /* AppDelegate.swift in Sources */,
 				DDC919E81C83CE190034201F /* TripViewController.swift in Sources */,

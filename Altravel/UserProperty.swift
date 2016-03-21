@@ -16,6 +16,7 @@ class UserProperty: PFObject, PFSubclassing {
     @NSManaged var placeId: String?
     @NSManaged var firstName: String?
     @NSManaged var lastName: String?
+    @NSManaged var facebookId: String?
     
     convenience init(user: PFUser) {
         self.init()

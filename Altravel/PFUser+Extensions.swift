@@ -11,12 +11,17 @@ import Parse
 
 extension PFUser {
     
-    func fetchPropertiesInBacground(block: ((NSArray?, NSError?) -> Void)?) {
+    func fetchPropertiesInBacground(block: ((UserProperty?, NSError?) -> Void)?) {
         if let query = UserProperty.query() {
             query.whereKey("user", equalTo: self)
+            query.includeKey("user")
             query.findObjectsInBackgroundWithBlock { (userProperties, error) -> Void in
                 if let completionBlock = block {
-                    completionBlock(userProperties, error)
+                    if let properties = userProperties {
+                        let property = properties[0] as! UserProperty
+                        completionBlock(property, error)
+                    }
+                    
                 }
             }
         }
@@ -43,6 +48,18 @@ extension PFUser {
                         completionBlock(users, error)
                     }
                 })
+            }
+        }
+    }
+    
+    func fetchFriendsPropertiesInBacground(block: ((NSArray?, NSError?) -> Void)?) {
+        if let query = UserProperty.query() {
+            query.whereKey("user", notEqualTo: self)
+            query.includeKey("user")
+            query.findObjectsInBackgroundWithBlock { (userProperties, error) -> Void in
+                if let completionBlock = block {
+                    completionBlock(userProperties, error)
+                }
             }
         }
     }

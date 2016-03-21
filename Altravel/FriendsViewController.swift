@@ -12,8 +12,8 @@ import UIKit
 
 class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var friends: Array<PFUser>?
-    var currentFriend: PFUser?
+    var friendsUserProperties: Array<UserProperty>?
+    var currentFriendUserProperty: UserProperty?
     
     @IBOutlet weak var friendTableView: UITableView!
     
@@ -29,15 +29,16 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func fetchFriends() {
         if let currentUser:PFUser = PFUser.currentUser() {
-            currentUser.fetchAllUsersExpectCurrentOne(PFUser.currentUser(), block: { (users, error) -> Void in
+            currentUser.fetchFriendsPropertiesInBacground({ (friendsUserProperties, error) -> Void in
                 if (error == nil) {
-                    self.friends = users as? Array<PFUser>;
+                    self.friendsUserProperties = friendsUserProperties as? Array<UserProperty>;
                     self.friendTableView.reloadData()
                 }
                 else {
                     NSLog("Error retrieving friends \(error!)")
                 }
-            })
+            });
+            
         }
     }
     
@@ -47,18 +48,18 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let friends = self.friends {
-            return friends.count
+        if let friendsUserProperties = self.friendsUserProperties {
+            return friendsUserProperties.count
         }
         return 0;
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let friendCell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("friendCell", forIndexPath: indexPath)
-        if let friends = self.friends {
-            let friend = friends[indexPath.row] 
-            friendCell.detailTextLabel!.text = friend.objectId
-            friendCell.textLabel!.text = friend.username
+        if let friendsUserProperties = self.friendsUserProperties {
+            let friendUserProperty = friendsUserProperties[indexPath.row]
+            friendCell.textLabel!.text = friendUserProperty.firstName
+            friendCell.detailTextLabel!.text = friendUserProperty.place
         }
     
         return friendCell;
@@ -66,28 +67,23 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.currentFriend = nil
-        if let friends = self.friends {
-            self.currentFriend = friends[indexPath.row]
+        self.currentFriendUserProperty = nil
+        if let friendsUserProperties = self.friendsUserProperties {
+            self.currentFriendUserProperty = friendsUserProperties[indexPath.row]
             self.performSegueWithIdentifier("showProfileSegue", sender: self)
         }
     }
-    
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let identifier = segue.identifier!;
         switch identifier {
         case "showProfileSegue":
             let destinationViewController = segue.destinationViewController as! ProfileViewController
-            destinationViewController.currentUser = self.currentFriend
+            destinationViewController.currentUserProperty = self.currentFriendUserProperty
             break
         default:
             break;
         }
     }
-
-    
-
 }
 

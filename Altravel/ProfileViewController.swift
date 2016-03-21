@@ -15,19 +15,22 @@ import GoogleMaps
 
 class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, GMSAutocompleteViewControllerDelegate {
     
-    var property:UserProperty?
     var trips: NSArray?
     var currentTrip: Trip?
-    var currentUser: PFUser?
+    var currentUserProperty: UserProperty?
     
     var firstName: String?
     var lastName: String?
+    
+    var isAFriend: Bool = false
+    
     
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userProfileView: UIImageView!
     @IBOutlet weak var cityButton: UIButton!
     @IBOutlet weak var tripTableView: UITableView!
     @IBOutlet weak var profileTextArea: UITextView!
+    @IBOutlet weak var closeButton: UIButton!
     
     override func viewDidLoad() {
         
@@ -39,35 +42,21 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
         self.profileTextArea.layer.masksToBounds = true
         self.profileTextArea.layer.cornerRadius = 5;
         
-        let request = FBSDKGraphRequest.init(graphPath: "me", parameters:["fields": "id, first_name, last_name"])
-    
-        request.startWithCompletionHandler { (connection, userInfo, error) -> Void in
-            if ((error == nil)) {
-                if let firstName = userInfo["first_name"] as? String {
-                    self.firstName = firstName;
-                    self.userNameLabel.text = "Hi, I'm \(firstName)"
+        if let property = self.currentUserProperty {
+            
+            if let propertyACL = property.ACL {
+                if let currentUser = PFUser.currentUser() {
+                    if propertyACL.getWriteAccessForUser(currentUser) {
+                        self.isAFriend = false;
+                    }
+                    else {
+                        self.isAFriend = true;
+                    }
                 }
-                
-                if let lastName = userInfo["last_name"] as? String {
-                    self.lastName = lastName;
-                }
- 
-                if let fbID = userInfo["id"] as? String {
-                    let profileImageURL = NSURL(string: "https://graph.facebook.com/\(fbID)/picture?type=large&return_ssl_resources=1")!
-                    
-                    let filter = AspectScaledToFillSizeWithRoundedCornersFilter(
-                        size: self.userProfileView.frame.size,
-                        radius: self.userProfileView.frame.size.width / 2
-                    )
-                    self.userProfileView.af_setImageWithURL(
-                        profileImageURL,
-                        filter: filter
-                    )
-                }
-                
             }
         }
-        self.fetchUserInfo()
+        
+        self.diplayUserInfo()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -76,101 +65,95 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
     }
     
     func fetchUserInfo() {
-       // if let currentUser:PFUser = PFUser.currentUser() {
-        if let currentUser:PFUser = self.currentUser {
-            
-            currentUser.fetchPropertiesInBacground({(userProperties, error) -> Void in
-                if (error != nil) {
-                    NSLog("Error retrieving user properties \(error!)")
-                }
-                else {
-                    if let properties = userProperties {
-                        if (properties.count > 0) {
-                            // User property already exists
-                            self.property = properties[0] as? UserProperty
-                            if let property = self.property {
-                                if let profile = property.profile {
-                                    self.profileTextArea.text = profile
-                                }
-                                if let city = property.place {
-                                    if let cityButton: UIButton = self.cityButton {
-                                        cityButton.setTitle(city, forState: .Normal)
-                                        cityButton.setTitle(city, forState: .Highlighted)
-                                        cityButton.setTitle(city, forState: .Selected)
-                                    }
-                                }
-                                
-                                if property.firstName != self.firstName {
-                                    property.firstName = self.firstName
-                                }
-                                
-                                if property.lastName != self.lastName {
-                                    property.lastName = self.lastName
-                                }
-                                
-                                if property.isDirtyForKey("lastName") || property.isDirtyForKey("firstName") {
-                                   property.saveEventually({ (success, error) -> Void in
-                                        if error != nil {
-                                            NSLog("Error saving first or last name: \(error)")
-                                        }
-                                        else {
-                                            if success == false {
-                                                NSLog("Saving first or last name: no errors but not able to update value");
-                                            }
-                                        }
-                                   })
-                                }
-                            }
-                        }
-                        else {
-                            // we need to generate a new user property and store it
-                            self.property = UserProperty(user: currentUser)
-                            self.property?.saveEventually({ (success, error) -> Void in
-                                if error != nil {
-                                    NSLog("Error saving description: \(error)")
-                                }
-                                else {
-                                    if success == false {
-                                        NSLog("Saving description: no errors but not able to update value");
-                                    }
-                                }
-                            })
-                        }
-                    }
-                }
+        if let property = self.currentUserProperty {
+            property.fetchInBackgroundWithBlock({ (userProperty, error) -> Void in
+                self.diplayUserInfo()
             })
+        }
+    }
+    
+    func diplayUserInfo() {
+        if let property = self.currentUserProperty {
+            
+            if self.isAFriend {
+                self.closeButton.hidden = false;
+                if let cityButton: UIButton = self.cityButton {
+                    cityButton.enabled = false;
+                }
+                self.profileTextArea.editable = false;
+            }
+            else {
+                self.closeButton.hidden = true;
+                if let cityButton: UIButton = self.cityButton {
+                    cityButton.enabled = true;
+                }
+                self.profileTextArea.editable = true;
+            }
+            
+            if let profile = property.profile {
+                self.profileTextArea.text = profile
+            }
+            if let city = property.place {
+                if let cityButton: UIButton = self.cityButton {
+                    cityButton.setTitle(city, forState: .Normal)
+                    cityButton.setTitle(city, forState: .Highlighted)
+                    cityButton.setTitle(city, forState: .Selected)
+                }
+            }
+            if let firstName = property.firstName {
+                self.userNameLabel.text = "Hello, I'm \(firstName)"
+            }
+            
+            
+            if let fbID = property.facebookId {
+                let profileImageURL = NSURL(string: "https://graph.facebook.com/\(fbID)/picture?type=large&return_ssl_resources=1")!
+                
+                let filter = AspectScaledToFillSizeWithRoundedCornersFilter(
+                    size: self.userProfileView.frame.size,
+                    radius: self.userProfileView.frame.size.width / 2
+                )
+                self.userProfileView.af_setImageWithURL(
+                    profileImageURL,
+                    filter: filter
+                )
+            }
+            
+            
+            
             
             
         }
     }
-    
 
     func fetchFavoriteTrips() {
-        if let currentUser:PFUser = PFUser.currentUser() {
-            currentUser.fetchFavoritesInBackground({ (userFavorites, error) -> Void in
-                if (error == nil) {
-                    if let favorites = userFavorites {
-                        let trips = favorites.map({ (favoriteObject) -> Trip in
-                            let favorite = favoriteObject as! UserFavorite
-                            return favorite.trip
-                        })
-                        self.trips = trips;
-                        self.tripTableView.reloadData()
+        if let userProperty = self.currentUserProperty {
+            if let currentUser:PFUser = userProperty.user {
+                currentUser.fetchFavoritesInBackground({ (userFavorites, error) -> Void in
+                    if (error == nil) {
+                        if let favorites = userFavorites {
+                            let trips = favorites.map({ (favoriteObject) -> Trip in
+                                let favorite = favoriteObject as! UserFavorite
+                                return favorite.trip
+                            })
+                            self.trips = trips;
+                            self.tripTableView.reloadData()
+                        }
                     }
-                }
-                else {
-                    NSLog("Error retrieving user trips \(error!)")
-                }
-            })
+                    else {
+                        NSLog("Error retrieving user trips \(error!)")
+                    }
+                })
+            }
         }
+        
     }
     
     func textViewDidEndEditing(textView: UITextView) {
-        if let property = self.property {
+        if let property = self.currentUserProperty {
             if let description = self.profileTextArea.text {
                 property.profile = description
-                self.property?.saveEventually()
-                self.property?.saveEventually({ (success, error) -> Void in
+                property.saveEventually()
+                property.saveEventually({ (success, error) -> Void in
                     if (error != nil) {
                         let alertController = UIAlertController(title: "Profile", message: "Error saving profile.", preferredStyle: .Alert)
                         let cancelAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
@@ -197,7 +180,7 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
         print("Place attributions: ", place.attributions)
         self.dismissViewControllerAnimated(true, completion: nil)
         
-        if let property = self.property {
+        if let property = self.currentUserProperty {
             property.place = place.name
             property.placeId = place.placeID
             
@@ -215,7 +198,6 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
                             cityButton.setTitle(city, forState: UIControlState.Highlighted)
                             cityButton.setTitle(city, forState: UIControlState.Selected)
                         }
-                        
                     }
                 }
             })
@@ -280,7 +262,32 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
             }   
         }
     }
+    
+    func isModal() -> Bool {
+        if self.presentingViewController != nil {
+            return true
+        }
+        
+        if self.presentingViewController?.presentedViewController == self {
+            return true
+        }
+        
+        if self.navigationController?.presentingViewController?.presentedViewController == self.navigationController  {
+            return true
+        }
+        
+        if self.tabBarController?.presentingViewController is UITabBarController {
+            return true
+        }
+        
+        return false
+    }
 
+    @IBAction func onCloseButton(sender: AnyObject) {
+        if self.isModal() {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let indetifier = segue.identifier {
             switch indetifier {
@@ -295,6 +302,5 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
                 break
             }
         }
-        
     }
 }
