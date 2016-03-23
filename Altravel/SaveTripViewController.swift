@@ -100,9 +100,7 @@ class SaveTripViewController: UIViewController, UITextFieldDelegate {
                             // do something else
                         }
                         alertController.addAction(cancelAction)
-                        self.presentViewController(alertController, animated: true, completion: { () -> Void in
-                            
-                        })
+                        self.presentViewController(alertController, animated: true, completion: nil)
                     }
                 }
             }
@@ -126,9 +124,7 @@ class SaveTripViewController: UIViewController, UITextFieldDelegate {
                             // do something else
                         }
                         alertController.addAction(cancelAction)
-                        self.presentViewController(alertController, animated: true, completion: { () -> Void in
-                            
-                        })
+                        self.presentViewController(alertController, animated: true, completion: nil)
                     }
                     else {
                         if (success) {

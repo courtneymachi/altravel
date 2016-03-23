@@ -102,9 +102,7 @@ class SaveTripStepViewController: UIViewController, GMSAutocompleteViewControlle
                         // do something else
                     }
                     alertController.addAction(cancelAction)
-                    self.presentViewController(alertController, animated: true,  completion: { () -> Void in
-                        
-                    })
+                    self.presentViewController(alertController, animated: true,  completion: nil)
                 }
                 else {
                     if (success) {
@@ -123,7 +121,6 @@ class SaveTripStepViewController: UIViewController, GMSAutocompleteViewControlle
                 }
             }
         }
-        
     }
     
     @IBAction func cancelButtonTapped(sender: UIButton) {

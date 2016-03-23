@@ -106,9 +106,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         self.fetchTrips()
                     }
                     alertController.addAction(cancelAction)
-                    self.presentViewController(alertController, animated: true, completion: { () -> Void in
-                        
-                    })
+                    self.presentViewController(alertController, animated: true, completion: nil)
                 })
             }
         }

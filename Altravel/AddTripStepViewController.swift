@@ -88,6 +88,7 @@ class AddTripStepToTripViewController: UIViewController {
                     }
                     let alertController = UIAlertController(title: "Trip", message: message, preferredStyle: .Alert)
                     alertController.addAction(cancelAction)
+                    self.presentViewController(alertController, animated: true,  completion: nil)
                 })
             }
         }

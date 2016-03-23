@@ -117,11 +117,6 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
                     filter: filter
                 )
             }
-            
-            
-            
-            
-            
         }
     }
 
@@ -158,6 +153,7 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
                         let alertController = UIAlertController(title: "Profile", message: "Error saving profile.", preferredStyle: .Alert)
                         let cancelAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
                         alertController.addAction(cancelAction)
+                        self.presentViewController(alertController, animated: true,  completion: nil)
                     }
                     
                 })
@@ -189,6 +185,7 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
                     let alertController = UIAlertController(title: "Profile", message: "Error saving profile.", preferredStyle: .Alert)
                     let cancelAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
                     alertController.addAction(cancelAction)
+                    self.presentViewController(alertController, animated: true,  completion: nil)
                 }
                 else {
                     if (success) {
@@ -240,9 +237,16 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let tripCell = tableView.dequeueReusableCellWithIdentifier("tripCell", forIndexPath: indexPath)
         if let trips = self.trips {
-            let trip = trips[indexPath.row] as! Trip;
-            tripCell.detailTextLabel!.text = trip.note
-            tripCell.textLabel!.text = trip.title
+            let tripObject:NSObject? = trips[indexPath.row] as? NSObject
+            if tripObject != nil {
+                let trip = trips[indexPath.row] as! Trip;
+                tripCell.detailTextLabel!.text = trip.note
+                tripCell.textLabel!.text = trip.title
+            }
+            else {
+                tripCell.detailTextLabel!.text = "UNKNOWN"
+                tripCell.textLabel!.text = "UNKNOWN"
+            }
         }
         
         return tripCell;
