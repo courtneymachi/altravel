@@ -34,4 +34,14 @@ class UserFavorite: PFObject, PFSubclassing {
     class func parseClassName() -> String {
         return "UserFavorite"
     }
+    
+    override func saveEventually(callback: PFBooleanResultBlock?) {
+        let tripFavoriteACL = PFACL.init()
+        tripFavoriteACL.publicReadAccess = self.trip.ACL!.publicReadAccess
+        tripFavoriteACL.publicWriteAccess = false
+        tripFavoriteACL.setWriteAccess(true, forUser: PFUser.currentUser()!)
+        self.ACL = tripFavoriteACL;
+        
+        super.saveEventually(callback)
+    }
 }
