@@ -11,7 +11,7 @@ import UIKit
 import Parse
 import Crashlytics
 
-class SaveTripViewController: UIViewController, UITextFieldDelegate {
+class SaveTripViewController: BaseViewController, UITextFieldDelegate {
     
     var date: NSDate!
     var currentDateField: UITextField?

@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import Crashlytics
 
-class TripViewController : UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TripViewController : BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
     var currentTrip: Trip?
     var steps: NSArray?

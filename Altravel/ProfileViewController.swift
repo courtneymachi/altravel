@@ -15,7 +15,7 @@ import Crashlytics
 
 import GoogleMaps
 
-class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, GMSAutocompleteViewControllerDelegate {
+class ProfileViewController: BaseViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, GMSAutocompleteViewControllerDelegate {
     
     var trips: NSArray?
     var currentTrip: Trip?

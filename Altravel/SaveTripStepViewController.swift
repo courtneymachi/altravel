@@ -12,7 +12,7 @@ import Parse
 
 import GoogleMaps
 
-class SaveTripStepViewController: UIViewController, GMSAutocompleteViewControllerDelegate {
+class SaveTripStepViewController: BaseViewController, GMSAutocompleteViewControllerDelegate {
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!

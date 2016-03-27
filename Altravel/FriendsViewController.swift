@@ -10,7 +10,7 @@ import Foundation
 import Parse
 import UIKit
 
-class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FriendsViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     var friendsUserProperties: Array<UserProperty>?
     var currentFriendUserProperty: UserProperty?
