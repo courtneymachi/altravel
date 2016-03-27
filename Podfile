@@ -12,6 +12,7 @@ pod 'Parse', '~> 1.12'
 pod 'ParseFacebookUtilsV4', '~> 1.11'
 pod 'Fabric'
 pod 'Crashlytics'
+pod 'Google/Analytics'
 end
 
 target 'AltravelTests' do

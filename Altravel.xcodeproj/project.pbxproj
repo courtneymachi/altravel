@@ -19,6 +19,7 @@
 		DDACD6401C67F99600978C51 /* TripStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDACD63F1C67F99600978C51 /* TripStep.swift */; };
 		DDC919E81C83CE190034201F /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC919E71C83CE190034201F /* TripViewController.swift */; };
 		F61E983C1C8A5A0800171FFE /* SaveTripStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E983B1C8A5A0800171FFE /* SaveTripStepViewController.swift */; };
+		F62A96221CA88035003FFA3B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F62A96211CA88035003FFA3B /* GoogleService-Info.plist */; };
 		F630B1E71C6FFE3C00CDB7B5 /* SaveTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F630B1E61C6FFE3C00CDB7B5 /* SaveTripViewController.swift */; };
 		F6489D521BE59BE6003D4435 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6489D511BE59BE6003D4435 /* AppDelegate.swift */; };
 		F6489D541BE59BE6003D4435 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6489D531BE59BE6003D4435 /* LoginViewController.swift */; };
@@ -70,6 +71,8 @@
 		DDACD63F1C67F99600978C51 /* TripStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripStep.swift; sourceTree = "<group>"; };
 		DDC919E71C83CE190034201F /* TripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
 		F61E983B1C8A5A0800171FFE /* SaveTripStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveTripStepViewController.swift; sourceTree = "<group>"; };
+		F62A96211CA88035003FFA3B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F62A96231CA88137003FFA3B /* Altravel-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Altravel-Bridging-Header.h"; sourceTree = "<group>"; };
 		F630B1E61C6FFE3C00CDB7B5 /* SaveTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveTripViewController.swift; sourceTree = "<group>"; };
 		F6489D4E1BE59BE6003D4435 /* Altravel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Altravel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6489D511BE59BE6003D4435 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -193,6 +196,7 @@
 				DD5825E51CA7597400501354 /* Helpers */,
 				DD7ABE551C54320200BF7C04 /* Models */,
 				F6489D511BE59BE6003D4435 /* AppDelegate.swift */,
+				F62A96231CA88137003FFA3B /* Altravel-Bridging-Header.h */,
 				DD46B12F1C97952E00C23386 /* AddTripStepViewController.swift */,
 				F630B1E61C6FFE3C00CDB7B5 /* SaveTripViewController.swift */,
 				F61E983B1C8A5A0800171FFE /* SaveTripStepViewController.swift */,
@@ -253,6 +257,7 @@
 		F6B0BDDA1C542E6F00A6F7D4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F62A96211CA88035003FFA3B /* GoogleService-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -366,6 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6489D5C1BE59BE6003D4435 /* LaunchScreen.storyboard in Resources */,
+				F62A96221CA88035003FFA3B /* GoogleService-Info.plist in Resources */,
 				F6489D591BE59BE6003D4435 /* Assets.xcassets in Resources */,
 				F6489D571BE59BE6003D4435 /* Main.storyboard in Resources */,
 			);
@@ -621,7 +627,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.courtney.Altravel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Altravel/Altravel-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -638,7 +644,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.courtney.Altravel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Altravel/Altravel-Bridging-Header.h";
 			};
 			name = Release;
 		};

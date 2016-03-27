@@ -50,6 +50,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Google Maps
         GMSServices.provideAPIKey("AIzaSyA1tR4TwwuHmTnRY2TgpZwfqkDIla_5ugM")
+        
+        // Configure tracker from GoogleService-Info.plist.
+        var configureError:NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
 
         
         return true
