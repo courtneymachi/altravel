@@ -145,6 +145,7 @@ class SaveTripStepViewController: UIViewController, GMSAutocompleteViewControlle
             if (validTrip) {
                 currentStep.saveEventually { (success, error) -> Void in
                     if (error != nil) {
+                        DataCollector.sharedInstance.addStep(false)
                         NSLog("Error while saving the step \(error)")
                         let alertController = UIAlertController(title: "Error", message: "Error saving step.", preferredStyle: .Alert)
                         let cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in
@@ -156,6 +157,7 @@ class SaveTripStepViewController: UIViewController, GMSAutocompleteViewControlle
                     else {
                         if (success) {
                             let alertController = UIAlertController(title: "Success!", message: "Trip step saved successfully.", preferredStyle: .Alert)
+                            DataCollector.sharedInstance.addStep(true)
                             let cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in
                                 if let navigationController = self.navigationController {
                                     navigationController.popToRootViewControllerAnimated(true)

@@ -133,7 +133,6 @@ class SaveTripViewController: UIViewController, UITextFieldDelegate {
                     else {
                         if (success) {
                             let alertController = UIAlertController(title: "Success!", message: "Trip saved successfully.", preferredStyle: .Alert)
-//                            Answers.logCustomEventWithName("Trip", customAttributes: ["action": "creation", "outcome": true])
                             DataCollector.sharedInstance.addTrip(true)
 
                             let cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in
