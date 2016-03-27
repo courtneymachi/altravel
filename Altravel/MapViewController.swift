@@ -24,10 +24,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     coordinates.append(step)
                 }
             }
-            
-            self.mapView.addAnnotations(coordinates)
+
+            self.mapView.showAnnotations(coordinates, animated: true)
         }
     }
+
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? TripStep {
@@ -55,6 +56,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
 
+    
+    @IBAction func onTripTouch(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     
     
 }

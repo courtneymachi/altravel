@@ -681,6 +681,7 @@
                                 </state>
                                 <connections>
                                     <action selector="onBackToTrips:" destination="dJX-NQ-hco" eventType="touchUpInside" id="F4M-2h-Dts"/>
+                                    <action selector="onTripTouch:" destination="RJf-tb-EPw" eventType="touchUpInside" id="QrA-QV-5yG"/>
                                 </connections>
                             </button>
                         </subviews>
