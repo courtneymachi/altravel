@@ -15,9 +15,14 @@ class DataCollector {
     static let sharedInstance = DataCollector()
     private init() {} //This prevents others from using the default '()' initializer for this class.
     
-    
+    //implemented in SaveTripVC
     func addTrip(outcome: Bool) {
         Answers.logCustomEventWithName("Trip", customAttributes: ["action": "creation", "outcome": outcome])
+    }
+    
+    //implemented in SaveTripVC
+    func cancelTrip() {
+        Answers.logCustomEventWithName("Trip", customAttributes: ["action": "cancel"])
     }
 }
 
