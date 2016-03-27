@@ -242,9 +242,6 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
                         self.presentViewController(alertController, animated: true, completion: nil)
                     })
                 }
-                
-                
-                
             }
             
         }
@@ -267,10 +264,14 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
                     tripStepViewController.currentStep = currentTripStep
                 }
                 else {
-                    tripStepViewController.currentStep = TripStep.init(trip: self.currentTrip!)
+                    if let trip = self.currentTrip {
+                        tripStepViewController.currentStep = TripStep.init(trip: trip)
+                    }
                 }
-                
                 break
+            case "showMapSegue":
+                let mapViewController = segue.destinationViewController as! MapViewController
+                mapViewController.steps = self.steps
             default:
                 break
         }

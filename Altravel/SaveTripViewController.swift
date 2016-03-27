@@ -75,9 +75,17 @@ class SaveTripViewController: UIViewController, UITextFieldDelegate {
         if let trip = self.currentTrip {
             
             var validTrip = true
-
-            trip.title = tripNameField.text
-            trip.note = tripDetailsField.text
+            var errors = Dictionary<String, String>()
+            
+            if self.tripNameField.text == nil ||  self.tripNameField.text == "" {
+                validTrip = false;
+                errors["name"] = "Trip name is required"
+            }
+            else {
+                trip.title = self.tripNameField.text!
+            }
+            
+            trip.note = self.tripDetailsField.text
             trip.isPublic = self.isPublicSwitch.on
             
             let formatter = NSDateFormatter()
@@ -96,12 +104,7 @@ class SaveTripViewController: UIViewController, UITextFieldDelegate {
                 if let endDate = trip.ending {
                     if startDate.compare(endDate) == .OrderedDescending {
                         validTrip = false
-                        let alertController = UIAlertController(title: "Invalid Dates", message: "Are you traveling back in time? Please fix dates and try again.", preferredStyle: .Alert)
-                        let cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in
-                            // do something else
-                        }
-                        alertController.addAction(cancelAction)
-                        self.presentViewController(alertController, animated: true, completion: nil)
+                        errors["name"] = "Are you traveling back in time? Please fix dates and try again"
                     }
                 }
             }
@@ -146,6 +149,21 @@ class SaveTripViewController: UIViewController, UITextFieldDelegate {
                         }
                     }
                 }
+            }
+            else {
+                
+                // TODO: extract error messages
+                var feedback: String = "Errors: "
+                for (_, message) in errors {
+                    feedback += "\(message) "
+                }
+                
+                let alertController = UIAlertController(title: "Trip", message: feedback, preferredStyle: .Alert)
+                let cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in
+                    // do something else
+                }
+                alertController.addAction(cancelAction)
+                self.presentViewController(alertController, animated: true, completion: nil)
             }
             
         }
