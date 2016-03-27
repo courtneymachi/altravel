@@ -23,6 +23,7 @@ class TripsViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     override func viewWillAppear(animated: Bool) {
+        DataCollector.sharedInstance.anyView("Trips")
         super.viewWillAppear(animated)
         self.fetchTrips()
     }

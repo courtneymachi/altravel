@@ -23,6 +23,7 @@ class FriendsViewController: BaseViewController, UITableViewDelegate, UITableVie
     }
     
     override func viewWillAppear(animated: Bool) {
+        DataCollector.sharedInstance.anyView("Friends")
         super.viewWillAppear(animated)
         self.fetchFriends()
     }

@@ -61,6 +61,7 @@ class ProfileViewController: BaseViewController, UISearchBarDelegate, UITableVie
     }
     
     override func viewWillAppear(animated: Bool) {
+        DataCollector.sharedInstance.anyView("Profile")
         super.viewWillAppear(animated)
         self.fetchFavoriteTrips()
     }

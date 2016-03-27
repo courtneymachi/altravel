@@ -43,6 +43,11 @@ class SaveTripStepViewController: BaseViewController, GMSAutocompleteViewControl
         self.initUI()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        DataCollector.sharedInstance.anyView("Save Trip Step")
+        super.viewWillAppear(animated)
+    }
+    
     func initUI() {
         if let tripStep = self.currentStep {
             if tripStep.objectId != nil {

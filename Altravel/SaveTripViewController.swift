@@ -43,6 +43,7 @@ class SaveTripViewController: BaseViewController, UITextFieldDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
+        DataCollector.sharedInstance.anyView("Save Trip")
         super.viewWillAppear(animated)
     }
     

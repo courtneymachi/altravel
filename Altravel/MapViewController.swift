@@ -28,6 +28,11 @@ class MapViewController: BaseViewController, MKMapViewDelegate {
             self.mapView.showAnnotations(coordinates, animated: true)
         }
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        DataCollector.sharedInstance.anyView("Map")
+        super.viewWillAppear(animated)
+    }
 
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {

@@ -31,7 +31,9 @@ class LoginViewController: BaseViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        DataCollector.sharedInstance.anyView("Login")
         super.viewWillAppear(animated);
+        
     }
     
     override func viewDidAppear(animated: Bool) {

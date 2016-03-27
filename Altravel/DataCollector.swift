@@ -9,28 +9,16 @@
 import Foundation
 import Crashlytics
 
+
 // Use this to collect analytics events across the app.
 
 class DataCollector {
     static let sharedInstance = DataCollector()
     private init() {} //This prevents others from using the default '()' initializer for this class.
     
-    //TODO: implement in AppDelegate
+    //TODO: implement in LoginVc
     func loginAttempt(outcome: Bool) {
         Answers.logCustomEventWithName("Login", customAttributes: ["action": "login", "outcome": outcome])
-    }
-    
-    //TODO: implement in tab controller & create VC for tab controller
-    func clickProfile() {
-        Answers.logCustomEventWithName("TabClick", customAttributes: ["action": "profile"])
-    }
-    
-    func clickTrips() {
-        Answers.logCustomEventWithName("TabClick", customAttributes: ["action": "trips"])
-    }
-    
-    func clickFriends() {
-        Answers.logCustomEventWithName("TabClick", customAttributes: ["action": "friends"])
     }
     
     //TODO: implement in TripVC
@@ -79,7 +67,16 @@ class DataCollector {
         Answers.logCustomEventWithName("Friend", customAttributes: ["action": "view"])
     }
     
-    func anyView() {
+    func anyView(viewName: String) {
+        
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: viewName)
+        
+        let builder = GAIDictionaryBuilder.createScreenView()
+        tracker.send(builder.build() as [NSObject : AnyObject])
+        
+        Answers.logContentViewWithName(viewName, contentType: nil, contentId: nil, customAttributes: nil)
+
     }
     
     

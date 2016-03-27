@@ -58,6 +58,7 @@ class TripViewController : BaseViewController, UITableViewDataSource, UITableVie
     }
     
     override func viewWillAppear(animated: Bool) {
+        DataCollector.sharedInstance.anyView("Trip")
         super.viewWillAppear(animated)
         self.fetchTrip()
         self.fetchFavoriteTrip()

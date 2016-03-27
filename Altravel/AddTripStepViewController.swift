@@ -21,6 +21,7 @@ class AddTripStepToTripViewController: BaseViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        DataCollector.sharedInstance.anyView("Copy Step")
         super.viewWillAppear(animated)
         self.fetchTrips()
     }
