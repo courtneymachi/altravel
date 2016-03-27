@@ -7,7 +7,10 @@
 //
 
 import UIKit
+import Parse
 
 class BaseViewController : UIViewController {
-    
+
+    // This will validate whther the user has the permission to edit the current page object
+    var isEditable: Bool = false
 }
