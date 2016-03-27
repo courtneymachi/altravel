@@ -33,6 +33,7 @@
 		F6489D871BE5A609003D4435 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6489D861BE5A609003D4435 /* SystemConfiguration.framework */; };
 		F6489D8C1BE5A7C2003D4435 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F6489D881BE5A739003D4435 /* libstdc++.6.tbd */; };
 		F6489D8D1BE5A7D1003D4435 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F6489D8A1BE5A744003D4435 /* libsqlite3.tbd */; };
+		F64CCAD91CA76023004148F8 /* DataCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CCAD81CA76023004148F8 /* DataCollector.swift */; };
 		F683E4111C55BF4A000D8ACA /* TripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F683E4101C55BF4A000D8ACA /* TripsViewController.swift */; };
 		F684C5EA1C8E734300264B6D /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F684C5E91C8E734300264B6D /* FriendsViewController.swift */; };
 		F6D8698A1C4C4040004E0BF1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D869891C4C4040004E0BF1 /* ProfileViewController.swift */; };
@@ -90,6 +91,7 @@
 		F6489D861BE5A609003D4435 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F6489D881BE5A739003D4435 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		F6489D8A1BE5A744003D4435 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		F64CCAD81CA76023004148F8 /* DataCollector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataCollector.swift; sourceTree = "<group>"; };
 		F683E4101C55BF4A000D8ACA /* TripsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsViewController.swift; sourceTree = "<group>"; };
 		F684C5E91C8E734300264B6D /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		F6D869891C4C4040004E0BF1 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 		F6489D501BE59BE6003D4435 /* Altravel */ = {
 			isa = PBXGroup;
 			children = (
+				F64CCAD71CA75FFA004148F8 /* Analytics */,
 				DD5825E51CA7597400501354 /* Helpers */,
 				DD7ABE551C54320200BF7C04 /* Models */,
 				F6489D511BE59BE6003D4435 /* AppDelegate.swift */,
@@ -240,6 +243,14 @@
 				A2C81216316FA6ACFD7E87FE /* Pods_Altravel.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F64CCAD71CA75FFA004148F8 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				F64CCAD81CA76023004148F8 /* DataCollector.swift */,
+			);
+			name = Analytics;
 			sourceTree = "<group>";
 		};
 		F6B0BDDA1C542E6F00A6F7D4 /* Supporting Files */ = {
@@ -446,6 +457,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F683E4111C55BF4A000D8ACA /* TripsViewController.swift in Sources */,
+				F64CCAD91CA76023004148F8 /* DataCollector.swift in Sources */,
 				DD7ABE571C54321C00BF7C04 /* UserProperty.swift in Sources */,
 				F6D8698A1C4C4040004E0BF1 /* ProfileViewController.swift in Sources */,
 				DDACD63E1C67F7D700978C51 /* Trip.swift in Sources */,

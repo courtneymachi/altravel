@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import Crashlytics
 
 class TripViewController : UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -33,6 +34,8 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        
         self.tripTitle.layer.masksToBounds = true
         self.tripTitle.layer.cornerRadius = 5;
         

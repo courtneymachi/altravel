@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Parse
+import Crashlytics
 
 class SaveTripViewController: UIViewController, UITextFieldDelegate {
     
@@ -114,7 +115,7 @@ class SaveTripViewController: UIViewController, UITextFieldDelegate {
                 
                 trip.saveEventually { (success, error) -> Void in
                     if (error != nil) {
-                        
+                        DataCollector.sharedInstance.addTrip(false)
                         // TODO need to update all the step ACLs to switch to public/private
                         if requiresStepsUpdate == true {
                             // retrieve all the steps
@@ -132,6 +133,8 @@ class SaveTripViewController: UIViewController, UITextFieldDelegate {
                     else {
                         if (success) {
                             let alertController = UIAlertController(title: "Success!", message: "Trip saved successfully.", preferredStyle: .Alert)
+                            DataCollector.sharedInstance.addTrip(true)
+
                             let cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in
                                 if let navigationController = self.navigationController {
                                     navigationController.popToRootViewControllerAnimated(true)
@@ -166,8 +169,11 @@ class SaveTripViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func cancelButtonTapped(sender: UIButton) {
+        DataCollector.sharedInstance.cancelTrip()
         self.dismissViewControllerAnimated(true, completion: nil)
+        
     }
+
     
     
     // functions

@@ -10,6 +10,8 @@ import UIKit
 import Parse
 import ParseFacebookUtilsV4;
 import AlamofireImage
+import Crashlytics
+
 
 import GoogleMaps
 
@@ -34,7 +36,7 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+
         self.userNameLabel.layer.masksToBounds = true
         self.userNameLabel.layer.cornerRadius = 5;
         
