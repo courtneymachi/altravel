@@ -42,6 +42,7 @@ class Trip: PFObject, PFSubclassing {
         let tripACL = PFACL.init()
         tripACL.publicReadAccess = self.isPublic
         tripACL.publicWriteAccess = false
+        tripACL.setWriteAccess(true, forUser: PFUser.currentUser()!)
         self.ACL = tripACL
         super.saveEventually(callback)
     }

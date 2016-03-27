@@ -14,17 +14,32 @@ import GoogleMaps
 
 class SaveTripStepViewController: UIViewController, GMSAutocompleteViewControllerDelegate {
     
-//IBOutlets
-    
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
+    @IBOutlet weak var locationButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     var currentStep: TripStep?
     
+    var isAFriend: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let currentStep = self.currentStep {
+            if let currentStepACL = currentStep.ACL {
+                if let currentUser = PFUser.currentUser() {
+                    if currentStepACL.getWriteAccessForUser(currentUser) {
+                        self.isAFriend = false;
+                    }
+                    else {
+                        self.isAFriend = true
+                    }
+                }
+            }
+        }
+        
         self.initUI()
     }
     
@@ -33,10 +48,27 @@ class SaveTripStepViewController: UIViewController, GMSAutocompleteViewControlle
             if tripStep.objectId != nil {
                 self.titleTextField.text = tripStep.summary
                 self.descriptionTextField.text = tripStep.note
-                self.locationTextField.text = tripStep.originPlace
+                self.locationButton.setTitleForAllStates(tripStep.originPlace)
+                
+                if (isAFriend) {
+                    self.titleTextField.enabled = false
+                    self.descriptionTextField.enabled = false
+                    self.locationButton.enabled = false
+                    self.saveButton.hidden = true
+                    self.cancelButton.setTitleForAllStates("Close")
+                }
+                else {
+                    self.titleTextField.enabled = true
+                    self.descriptionTextField.enabled = true
+                    self.locationButton.enabled = true
+                    self.saveButton.hidden = false
+                    self.cancelButton.setTitleForAllStates("Cancel")
+                }
             }
         }
     }
+    
+    
     
     
     @IBAction func onLocationClickButton(sender: AnyObject) {
@@ -52,8 +84,8 @@ class SaveTripStepViewController: UIViewController, GMSAutocompleteViewControlle
         print("Place address: ", place.formattedAddress)
         print("Place attributions: ", place.attributions)
         
-        if let locationTextField = self.locationTextField {
-            locationTextField.text = "\(place.name)"
+        if let locationButton = self.locationButton {
+            locationButton.setTitleForAllStates("\(place.name)")
             if let currentStep = self.currentStep {
                 currentStep.originPlace = place.name
                 currentStep.originPlaceId = place.placeID
@@ -88,8 +120,8 @@ class SaveTripStepViewController: UIViewController, GMSAutocompleteViewControlle
             currentStep.note = self.descriptionTextField.text
             
             if (currentStep.originPlace == nil) {
-                if let locationTextField = self.locationTextField {
-                    currentStep.originPlace = locationTextField.text
+                if let locationButton = self.locationButton {
+                    currentStep.originPlace = locationButton.titleLabel?.text
                     currentStep.originPlaceId = NSUUID().UUIDString
                 }
             }

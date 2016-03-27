@@ -10,6 +10,8 @@
 		5AF2AB92B23FD430C9241F19 /* Pods_Altravel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2C81216316FA6ACFD7E87FE /* Pods_Altravel.framework */; };
 		DD33DF8D1C94FD7300A134DC /* UserFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33DF8C1C94FD7300A134DC /* UserFavorite.swift */; };
 		DD46B1301C97952E00C23386 /* AddTripStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD46B12F1C97952E00C23386 /* AddTripStepViewController.swift */; };
+		DD5825E71CA7598900501354 /* ACLValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5825E61CA7598900501354 /* ACLValidator.swift */; };
+		DD5825E91CA75F7700501354 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5825E81CA75F7700501354 /* UIButton+Extensions.swift */; };
 		DD7ABE571C54321C00BF7C04 /* UserProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7ABE561C54321C00BF7C04 /* UserProperty.swift */; };
 		DD7ABE591C54343300BF7C04 /* PFUser+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7ABE581C54343300BF7C04 /* PFUser+Extensions.swift */; };
 		DDACD63E1C67F7D700978C51 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDACD63D1C67F7D700978C51 /* Trip.swift */; };
@@ -58,6 +60,8 @@
 		A2C81216316FA6ACFD7E87FE /* Pods_Altravel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Altravel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD33DF8C1C94FD7300A134DC /* UserFavorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFavorite.swift; sourceTree = "<group>"; };
 		DD46B12F1C97952E00C23386 /* AddTripStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTripStepViewController.swift; sourceTree = "<group>"; };
+		DD5825E61CA7598900501354 /* ACLValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACLValidator.swift; sourceTree = "<group>"; };
+		DD5825E81CA75F7700501354 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		DD7ABE561C54321C00BF7C04 /* UserProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProperty.swift; sourceTree = "<group>"; };
 		DD7ABE581C54343300BF7C04 /* PFUser+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PFUser+Extensions.swift"; sourceTree = "<group>"; };
 		DDACD63D1C67F7D700978C51 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
@@ -129,11 +133,20 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DD5825E51CA7597400501354 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DD5825E61CA7598900501354 /* ACLValidator.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		DD7ABE551C54320200BF7C04 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				DDB59E2A1C55E58000A466A4 /* Parse */,
 				DD7ABE581C54343300BF7C04 /* PFUser+Extensions.swift */,
+				DD5825E81CA75F7700501354 /* UIButton+Extensions.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -175,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				F64CCAD71CA75FFA004148F8 /* Analytics */,
+				DD5825E51CA7597400501354 /* Helpers */,
 				DD7ABE551C54320200BF7C04 /* Models */,
 				F6489D511BE59BE6003D4435 /* AppDelegate.swift */,
 				DD46B12F1C97952E00C23386 /* AddTripStepViewController.swift */,
@@ -445,6 +459,8 @@
 				DDACD6401C67F99600978C51 /* TripStep.swift in Sources */,
 				DD33DF8D1C94FD7300A134DC /* UserFavorite.swift in Sources */,
 				F61E983C1C8A5A0800171FFE /* SaveTripStepViewController.swift in Sources */,
+				DD5825E71CA7598900501354 /* ACLValidator.swift in Sources */,
+				DD5825E91CA75F7700501354 /* UIButton+Extensions.swift in Sources */,
 				F6489D541BE59BE6003D4435 /* LoginViewController.swift in Sources */,
 				DD7ABE591C54343300BF7C04 /* PFUser+Extensions.swift in Sources */,
 				F6489D521BE59BE6003D4435 /* AppDelegate.swift in Sources */,
