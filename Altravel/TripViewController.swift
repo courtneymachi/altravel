@@ -16,6 +16,8 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
     var currentTripStep: TripStep?
     var userFavorite: UserFavorite?
     
+    var isAFriend: Bool = false
+    
     @IBOutlet weak var stepsTableView: UITableView!
     @IBOutlet weak var datesLabel: UILabel!
     @IBOutlet weak var tripTitle: UILabel!
@@ -25,7 +27,10 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var descriptionLabel: UILabel!
     
     @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var newStepButton: UIButton!
 
+    @IBOutlet weak var editButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tripTitle.layer.masksToBounds = true
@@ -33,6 +38,20 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
         
         self.stepsLabel.layer.masksToBounds = true
         self.stepsLabel.layer.cornerRadius = 5;
+        
+        if let currentTrip = self.currentTrip {
+            if let currentTripACL = currentTrip.ACL {
+                if let currentUser = PFUser.currentUser() {
+                    if currentTripACL.getWriteAccessForUser(currentUser) {
+                        self.isAFriend = false;
+                    }
+                    else {
+                        self.isAFriend = true
+                    }
+                }
+            }
+        }
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -43,6 +62,15 @@ class TripViewController : UIViewController, UITableViewDataSource, UITableViewD
     
     func initUI() {
         if let trip = self.currentTrip {
+            if self.isAFriend {
+                self.newStepButton.hidden = true
+                self.editButton.hidden = true
+            }
+            else {
+                self.newStepButton.hidden = false
+                self.editButton.hidden = false
+            }
+            
             self.tripTitle.text = trip.title
             let formatter = NSDateFormatter()
             formatter.dateStyle = .MediumStyle

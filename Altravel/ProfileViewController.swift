@@ -24,7 +24,6 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
     
     var isAFriend: Bool = false
     
-    
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userProfileView: UIImageView!
     @IBOutlet weak var cityButton: UIButton!
@@ -95,9 +94,7 @@ class ProfileViewController: UIViewController, UISearchBarDelegate, UITableViewD
             }
             if let city = property.place {
                 if let cityButton: UIButton = self.cityButton {
-                    cityButton.setTitle(city, forState: .Normal)
-                    cityButton.setTitle(city, forState: .Highlighted)
-                    cityButton.setTitle(city, forState: .Selected)
+                    cityButton.setTitleForAllStates(city)
                 }
             }
             if let firstName = property.firstName {
