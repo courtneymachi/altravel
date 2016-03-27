@@ -17,6 +17,8 @@ class SaveTripViewController: BaseViewController, UITextFieldDelegate {
     var currentDateField: UITextField?
     var currentTrip: Trip?
     
+    var isNewTrip: Bool = true
+    
     @IBOutlet weak var tripNameField: UITextField!
     @IBOutlet weak var tripDetailsField: UITextField!
     @IBOutlet weak var startDateField: UITextField!
@@ -49,7 +51,8 @@ class SaveTripViewController: BaseViewController, UITextFieldDelegate {
     
     func initUI() {
         if let trip = self.currentTrip {
-            if trip.objectId != nil { // the object was previsouly saved
+            if trip.objectId != nil { // the object was previously saved
+                self.isNewTrip = false
                 // fetch details in UI
                 self.tripNameField.text = trip.title
                 self.tripDetailsField.text = trip.note
@@ -66,6 +69,9 @@ class SaveTripViewController: BaseViewController, UITextFieldDelegate {
                 }
                 
                 self.isPublicSwitch.setOn(trip.isPublic, animated: true)
+            }
+            else {
+                self.isNewTrip = true
             }
         }
     }
@@ -116,7 +122,7 @@ class SaveTripViewController: BaseViewController, UITextFieldDelegate {
                 
                 trip.saveEventually { (success, error) -> Void in
                     if (error != nil) {
-                        DataCollector.sharedInstance.addTrip(false)
+                        self.isNewTrip ? DataCollector.sharedInstance.addTrip(false) : DataCollector.sharedInstance.editTrip(false)
                         // TODO need to update all the step ACLs to switch to public/private
                         if requiresStepsUpdate == true {
                             // retrieve all the steps
@@ -134,7 +140,7 @@ class SaveTripViewController: BaseViewController, UITextFieldDelegate {
                     else {
                         if (success) {
                             let alertController = UIAlertController(title: "Success!", message: "Trip saved successfully.", preferredStyle: .Alert)
-                            DataCollector.sharedInstance.addTrip(true)
+                            self.isNewTrip ? DataCollector.sharedInstance.addTrip(true) : DataCollector.sharedInstance.editTrip(true)
 
                             let cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in
                                 if let navigationController = self.navigationController {

@@ -58,7 +58,7 @@ class LoginViewController: BaseViewController {
             
             if (error == nil) {
                 if user != nil {
-                    
+                    DataCollector.sharedInstance.loginAttempt(true)
                     NSLog("User logged in through facebook");
                     //move to the next scene
                     
@@ -67,13 +67,14 @@ class LoginViewController: BaseViewController {
                 }
                 else {
                     NSLog("User cancelled");
-                    
+                    DataCollector.sharedInstance.loginAttempt(false)
                     if PFUser.currentUser() != nil {
                         self.fetchUserInfo()
                     }
                 }   
             }
             else {
+                DataCollector.sharedInstance.loginAttempt(false)
                 NSLog("%s", error!)
             }
         }

@@ -22,6 +22,8 @@ class SaveTripStepViewController: BaseViewController, GMSAutocompleteViewControl
     
     var currentStep: TripStep?
     
+    var isNewStep: Bool = true
+    
     var isAFriend: Bool = false
 
     override func viewDidLoad() {
@@ -44,13 +46,13 @@ class SaveTripStepViewController: BaseViewController, GMSAutocompleteViewControl
     }
     
     override func viewWillAppear(animated: Bool) {
-        DataCollector.sharedInstance.anyView("Save Trip Step")
         super.viewWillAppear(animated)
     }
     
     func initUI() {
         if let tripStep = self.currentStep {
-            if tripStep.objectId != nil {
+            if tripStep.objectId != nil { // step exists
+                self.isNewStep = false
                 self.titleTextField.text = tripStep.summary
                 self.descriptionTextField.text = tripStep.note
                 self.locationButton.setTitleForAllStates(tripStep.originPlace)
@@ -69,6 +71,9 @@ class SaveTripStepViewController: BaseViewController, GMSAutocompleteViewControl
                     self.saveButton.hidden = false
                     self.cancelButton.setTitleForAllStates("Cancel")
                 }
+            }
+            else {
+                self.isNewStep = true
             }
         }
     }
@@ -150,7 +155,7 @@ class SaveTripStepViewController: BaseViewController, GMSAutocompleteViewControl
             if (validTrip) {
                 currentStep.saveEventually { (success, error) -> Void in
                     if (error != nil) {
-                        DataCollector.sharedInstance.addStep(false)
+                        self.isNewStep ? DataCollector.sharedInstance.addStep(false) : DataCollector.sharedInstance.editStep(false)
                         NSLog("Error while saving the step \(error)")
                         let alertController = UIAlertController(title: "Error", message: "Error saving step.", preferredStyle: .Alert)
                         let cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in
@@ -162,7 +167,7 @@ class SaveTripStepViewController: BaseViewController, GMSAutocompleteViewControl
                     else {
                         if (success) {
                             let alertController = UIAlertController(title: "Success!", message: "Trip step saved successfully.", preferredStyle: .Alert)
-                            DataCollector.sharedInstance.addStep(true)
+                            self.isNewStep ? DataCollector.sharedInstance.addStep(true) : DataCollector.sharedInstance.editStep(true)
                             let cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in
                                 if let navigationController = self.navigationController {
                                     navigationController.popToRootViewControllerAnimated(true)
@@ -197,6 +202,7 @@ class SaveTripStepViewController: BaseViewController, GMSAutocompleteViewControl
     }
     
     @IBAction func cancelButtonTapped(sender: UIButton) {
+        DataCollector.sharedInstance.cancelStep()
         dismissViewControllerAnimated(true, completion: nil)
     }
     

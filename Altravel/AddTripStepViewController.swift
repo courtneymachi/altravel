@@ -79,9 +79,11 @@ class AddTripStepToTripViewController: BaseViewController {
                     let message: String
                     let cancelAction: UIAlertAction
                     if (error == nil && success == true) {
+                        DataCollector.sharedInstance.copyStep(true)
                         message = "Step added to your trip correctly."
                     }
                     else {
+                        DataCollector.sharedInstance.copyStep(false)
                         message = "Error while saving step."
                     }
                     cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in
@@ -97,6 +99,7 @@ class AddTripStepToTripViewController: BaseViewController {
     
     
     @IBAction func onCancelButton(sender: AnyObject) {
+        DataCollector.sharedInstance.cancelStepCopy()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

@@ -231,12 +231,14 @@ class TripViewController : BaseViewController, UITableViewDataSource, UITableVie
                         let message: String
                         let cancelAction: UIAlertAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
                         if (error == nil && success == true) {
-                            message = "Added trip to your favorites."
+                            message = "Trip added to your favorites."
+                            
                             let favoriteButton = self.favoriteButton
                             favoriteButton.setImage(UIImage(named: "favorite_on"), forState: .Normal)
                         }
                         else {
                             message = "Error while adding trip to your favorites."
+                            
                         }
                         let alertController = UIAlertController(title: "Trip", message: message, preferredStyle: .Alert)
                         alertController.addAction(cancelAction)

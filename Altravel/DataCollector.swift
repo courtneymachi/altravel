@@ -16,9 +16,11 @@ class DataCollector {
     static let sharedInstance = DataCollector()
     private init() {} //This prevents others from using the default '()' initializer for this class.
     
-    //TODO: implement in LoginVc
+    //implemented in LoginVC
     func loginAttempt(outcome: Bool) {
-        Answers.logCustomEventWithName("Login", customAttributes: ["action": "login", "outcome": outcome])
+        Answers.logLoginWithMethod("Facebook",
+            success: outcome,
+            customAttributes: nil)
     }
     
     //TODO: implement in TripVC
@@ -26,6 +28,7 @@ class DataCollector {
         Answers.logCustomEventWithName("Favorite", customAttributes: ["action": "own_trip"])
     }
     
+    //TODO: implement in TripVC
     func favoriteFriendTrip() {
         Answers.logCustomEventWithName("Favorite", customAttributes: ["action": "friend_trip"])
     }
@@ -40,26 +43,34 @@ class DataCollector {
         Answers.logCustomEventWithName("Trip", customAttributes: ["action": "cancel"])
     }
     
-    //TODO: implement in SaveTrip VC
-    func editTrip() {
-        Answers.logCustomEventWithName("Trip", customAttributes: ["action": "edit"])
+    //implemented in SaveTripStepVC
+    func editTrip(outcome: Bool) {
+        Answers.logCustomEventWithName("Trip", customAttributes: ["action": "edit", "outcome": outcome])
     }
     
-    //TODO: implement in SaveTripStepVC
+    //implemented in SaveTripStepVC
     func addStep(outcome: Bool) {
         Answers.logCustomEventWithName("Step", customAttributes: ["action": "creation", "outcome": outcome])
     }
     
+     //implemented in SaveTripStepVC
     func cancelStep() {
         Answers.logCustomEventWithName("Step", customAttributes: ["action": "cancel"])
     }
     
+    //implemented in AddTripStepVC
     func copyStep(outcome: Bool) {
         Answers.logCustomEventWithName("Step", customAttributes: ["action": "copy", "outcome": outcome])
     }
     
-    func editStep() {
-        Answers.logCustomEventWithName("Step", customAttributes: ["action": "edit"])
+    //implemented in AddTripStepVC
+    func cancelStepCopy() {
+        Answers.logCustomEventWithName("Step", customAttributes: ["action": "cancel_copy"])
+    }
+    
+    //implemented in SaveTripStepVC
+    func editStep(outcome: Bool) {
+        Answers.logCustomEventWithName("Step", customAttributes: ["action": "edit", "outcome": outcome])
     }
     
     //TODO: implement in FriendsVC
