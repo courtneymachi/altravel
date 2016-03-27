@@ -24,8 +24,6 @@ class ProfileViewController: BaseViewController, UISearchBarDelegate, UITableVie
     var firstName: String?
     var lastName: String?
     
-    var isAFriend: Bool = false
-    
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userProfileView: UIImageView!
     @IBOutlet weak var cityButton: UIButton!
@@ -44,17 +42,7 @@ class ProfileViewController: BaseViewController, UISearchBarDelegate, UITableVie
         self.profileTextArea.layer.cornerRadius = 5;
         
         if let property = self.currentUserProperty {
-            
-            if let propertyACL = property.ACL {
-                if let currentUser = PFUser.currentUser() {
-                    if propertyACL.getWriteAccessForUser(currentUser) {
-                        self.isAFriend = false;
-                    }
-                    else {
-                        self.isAFriend = true;
-                    }
-                }
-            }
+            self.isEditable = ACLValidator.sharedInstance.isEditable(property)
         }
         
         self.diplayUserInfo()
@@ -76,7 +64,7 @@ class ProfileViewController: BaseViewController, UISearchBarDelegate, UITableVie
     func diplayUserInfo() {
         if let property = self.currentUserProperty {
             
-            if self.isAFriend {
+            if self.isEditable {
                 self.closeButton.hidden = false;
                 if let cityButton: UIButton = self.cityButton {
                     cityButton.enabled = false;

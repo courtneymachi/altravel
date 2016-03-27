@@ -17,8 +17,6 @@ class TripViewController : BaseViewController, UITableViewDataSource, UITableVie
     var currentTripStep: TripStep?
     var userFavorite: UserFavorite?
     
-    var isAFriend: Bool = false
-    
     @IBOutlet weak var stepsTableView: UITableView!
     @IBOutlet weak var datesLabel: UILabel!
     @IBOutlet weak var tripTitle: UILabel!
@@ -43,16 +41,7 @@ class TripViewController : BaseViewController, UITableViewDataSource, UITableVie
         self.stepsLabel.layer.cornerRadius = 5;
         
         if let currentTrip = self.currentTrip {
-            if let currentTripACL = currentTrip.ACL {
-                if let currentUser = PFUser.currentUser() {
-                    if currentTripACL.getWriteAccessForUser(currentUser) {
-                        self.isAFriend = false;
-                    }
-                    else {
-                        self.isAFriend = true
-                    }
-                }
-            }
+            self.isEditable = ACLValidator.sharedInstance.isEditable(currentTrip)
         }
         
     }
@@ -65,7 +54,7 @@ class TripViewController : BaseViewController, UITableViewDataSource, UITableVie
     
     func initUI() {
         if let trip = self.currentTrip {
-            if self.isAFriend {
+            if self.isEditable {
                 self.newStepButton.hidden = true
                 self.editButton.hidden = true
             }

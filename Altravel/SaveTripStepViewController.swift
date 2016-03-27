@@ -22,22 +22,12 @@ class SaveTripStepViewController: BaseViewController, GMSAutocompleteViewControl
     
     var currentStep: TripStep?
     
-    var isAFriend: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let currentStep = self.currentStep {
-            if let currentStepACL = currentStep.ACL {
-                if let currentUser = PFUser.currentUser() {
-                    if currentStepACL.getWriteAccessForUser(currentUser) {
-                        self.isAFriend = false;
-                    }
-                    else {
-                        self.isAFriend = true
-                    }
-                }
-            }
+            self.isEditable = ACLValidator.sharedInstance.isEditable(currentStep)
         }
         
         self.initUI()
@@ -50,7 +40,7 @@ class SaveTripStepViewController: BaseViewController, GMSAutocompleteViewControl
                 self.descriptionTextField.text = tripStep.note
                 self.locationButton.setTitleForAllStates(tripStep.originPlace)
                 
-                if (isAFriend) {
+                if (self.isEditable) {
                     self.titleTextField.enabled = false
                     self.descriptionTextField.enabled = false
                     self.locationButton.enabled = false

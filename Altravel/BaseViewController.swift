@@ -7,11 +7,10 @@
 //
 
 import UIKit
+import Parse
 
 class BaseViewController : UIViewController {
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        DataCollector.sharedInstance.anyView()
-    }
 
+    // This will validate whther the user has the permission to edit the current page object
+    var isEditable: Bool = false
 }
