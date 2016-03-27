@@ -82,13 +82,16 @@ class SaveTripStepViewController: UIViewController, GMSAutocompleteViewControlle
     func viewController(viewController: GMSAutocompleteViewController, didAutocompleteWithPlace place: GMSPlace) {
         print("Place name: ", place.name)
         print("Place address: ", place.formattedAddress)
+        print("Place location: ", place.coordinate)
         print("Place attributions: ", place.attributions)
+        
         
         if let locationButton = self.locationButton {
             locationButton.setTitleForAllStates("\(place.name)")
             if let currentStep = self.currentStep {
                 currentStep.originPlace = place.name
                 currentStep.originPlaceId = place.placeID
+                currentStep.coordinates = PFGeoPoint.init(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
             }
         }
         

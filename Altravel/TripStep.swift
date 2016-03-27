@@ -8,8 +8,9 @@
 
 import Foundation
 import Parse
+import MapKit
 
-class TripStep: PFObject, PFSubclassing {
+class TripStep: PFObject, PFSubclassing, MKAnnotation {
     @NSManaged var trip: Trip
     @NSManaged var summary: String
     @NSManaged var originPlace: String?
@@ -21,6 +22,32 @@ class TripStep: PFObject, PFSubclassing {
     @NSManaged var ending: NSDate?
     @NSManaged var completed: Bool
     @NSManaged var isArchived: Bool
+    
+    // MKAnnotation protocol
+    @NSManaged var coordinates: PFGeoPoint?
+    
+    // Title and subtitle for use by selection UI.
+    var title: String? {
+        get {
+            return self.summary
+        }
+    }
+    var subtitle: String? {
+        get {
+            return self.originPlace
+        }
+    }
+    
+    var coordinate: CLLocationCoordinate2D {
+        get {
+            if let coordinates = self.coordinates {
+                return CLLocationCoordinate2D.init(latitude: coordinates.latitude, longitude: coordinates.longitude)
+            }
+            else {
+                return CLLocationCoordinate2D.init()
+            }
+        }
+    }
     
     convenience init(trip: Trip) {
         self.init()

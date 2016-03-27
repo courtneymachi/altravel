@@ -20,6 +20,8 @@ class Trip: PFObject, PFSubclassing {
     @NSManaged var isCompleted: Bool
     @NSManaged var place: String?
     @NSManaged var placeId: String?
+    @NSManaged var latitude: Double
+    @NSManaged var longitude: Double
     
     convenience init(user: PFUser) {
         self.init()
@@ -55,6 +57,7 @@ class Trip: PFObject, PFSubclassing {
         if let query = TripStep.query() {
             query.whereKey("trip", equalTo: self)
             query.whereKey("isArchived", equalTo: false)
+            query.includeKey("trip")
             query.findObjectsInBackgroundWithBlock { (userProperties, error) -> Void in
                 if let completionBlock = block {
                     completionBlock(userProperties, error)
