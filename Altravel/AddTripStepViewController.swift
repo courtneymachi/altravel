@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class AddTripStepToTripViewController: UIViewController {
+class AddTripStepToTripViewController: BaseViewController {
     
     var trips: Array<Trip>?
     var currentTripStep: TripStep?

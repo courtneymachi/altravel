@@ -79,6 +79,9 @@ class DataCollector {
         Answers.logCustomEventWithName("Friend", customAttributes: ["action": "view"])
     }
     
+    func anyView() {
+    }
+    
     
 }
 

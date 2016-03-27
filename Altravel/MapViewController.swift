@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: BaseViewController, MKMapViewDelegate {
     var steps: NSArray?
     
     @IBOutlet weak var mapView: MKMapView!

@@ -11,7 +11,7 @@ import Parse
 import ParseFacebookUtilsV4
 import QuartzCore;
 
-class LoginViewController: UIViewController {
+class LoginViewController: BaseViewController {
 
     var userProperty: UserProperty?
   

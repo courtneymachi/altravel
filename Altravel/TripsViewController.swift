@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Parse
 
-class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TripsViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     var trips: Array<Trip>?
     var currentTrip: Trip?
