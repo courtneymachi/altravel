@@ -116,8 +116,21 @@ class SaveTripStepViewController: UIViewController, GMSAutocompleteViewControlle
 
     @IBAction func saveButtonTapped(sender: UIButton) {
         if let currentStep = self.currentStep {
-            currentStep.summary = self.titleTextField.text
+            
+            var validTrip = true
+            var errors = Dictionary<String, String>()
+            
+            
+            if self.titleTextField.text == nil || self.titleTextField.text! == "" {
+                validTrip = false;
+                errors["name"] = "Step name is required"
+            }
+            else {
+                currentStep.summary = self.titleTextField.text!
+            }
+            
             currentStep.note = self.descriptionTextField.text
+            
             
             if (currentStep.originPlace == nil) {
                 if let locationButton = self.locationButton {
@@ -126,32 +139,50 @@ class SaveTripStepViewController: UIViewController, GMSAutocompleteViewControlle
                 }
             }
             
-            currentStep.saveEventually { (success, error) -> Void in
-                if (error != nil) {
-                    NSLog("Error while saving the step \(error)")
-                    let alertController = UIAlertController(title: "Error", message: "Error saving step.", preferredStyle: .Alert)
-                    let cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in
-                        // do something else
-                    }
-                    alertController.addAction(cancelAction)
-                    self.presentViewController(alertController, animated: true,  completion: nil)
-                }
-                else {
-                    if (success) {
-                        let alertController = UIAlertController(title: "Success!", message: "Trip step saved successfully.", preferredStyle: .Alert)
+            if (validTrip) {
+                currentStep.saveEventually { (success, error) -> Void in
+                    if (error != nil) {
+                        NSLog("Error while saving the step \(error)")
+                        let alertController = UIAlertController(title: "Error", message: "Error saving step.", preferredStyle: .Alert)
                         let cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in
-                            if let navigationController = self.navigationController {
-                                navigationController.popToRootViewControllerAnimated(true)
-                            }
-                            else {
-                                self.dismissViewControllerAnimated(true, completion: nil)
-                            }
+                            // do something else
                         }
                         alertController.addAction(cancelAction)
-                        self.presentViewController(alertController, animated: true, completion: nil)
+                        self.presentViewController(alertController, animated: true,  completion: nil)
+                    }
+                    else {
+                        if (success) {
+                            let alertController = UIAlertController(title: "Success!", message: "Trip step saved successfully.", preferredStyle: .Alert)
+                            let cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in
+                                if let navigationController = self.navigationController {
+                                    navigationController.popToRootViewControllerAnimated(true)
+                                }
+                                else {
+                                    self.dismissViewControllerAnimated(true, completion: nil)
+                                }
+                            }
+                            alertController.addAction(cancelAction)
+                            self.presentViewController(alertController, animated: true, completion: nil)
+                        }
                     }
                 }
             }
+            else {
+                // TODO: extract error messages
+                var feedback: String = "Errors: "
+                for (_, message) in errors {
+                    feedback += "\(message) "
+                }
+                
+                let alertController = UIAlertController(title: "Trip", message: feedback, preferredStyle: .Alert)
+                let cancelAction = UIAlertAction(title: "Ok", style: .Cancel) { (action) in
+                    // do something else
+                }
+                alertController.addAction(cancelAction)
+                self.presentViewController(alertController, animated: true, completion: nil)
+            }
+            
+            
         }
     }
     

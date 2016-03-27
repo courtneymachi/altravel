@@ -11,7 +11,7 @@ import Parse
 
 class Trip: PFObject, PFSubclassing {
     @NSManaged var user: PFUser
-    @NSManaged var title: String?
+    @NSManaged var title: String
     @NSManaged var note: String?
     @NSManaged var starting: NSDate?
     @NSManaged var ending: NSDate?
