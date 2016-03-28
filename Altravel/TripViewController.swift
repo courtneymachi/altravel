@@ -43,7 +43,6 @@ class TripViewController : BaseViewController, UITableViewDataSource, UITableVie
         if let currentTrip = self.currentTrip {
             self.isEditable = ACLValidator.sharedInstance.isEditable(currentTrip)
         }
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -199,14 +198,22 @@ class TripViewController : BaseViewController, UITableViewDataSource, UITableVie
                             if userFavorite.isArchived == false {
                                 message = "Trip added to your favorites."
                                 favoriteButton.setImage(UIImage(named: "favorite_on"), forState: .Normal)
+                                DataCollector.sharedInstance.favoriteTrip(true, friendTrip: !self.isEditable)
                             }
                             else {
                                 message = "Trip removed from your favorites."
                                 favoriteButton.setImage(UIImage(named: "favorite"), forState: .Normal)
+                                DataCollector.sharedInstance.unfavoriteTrip(true, friendTrip: !self.isEditable)
                             }
                         }
                         else {
                             message = "Error while updating your profile."
+                            if userFavorite.isArchived {
+                                DataCollector.sharedInstance.unfavoriteTrip(false, friendTrip: !self.isEditable)
+                            }
+                            else {
+                                DataCollector.sharedInstance.favoriteTrip(false, friendTrip: !self.isEditable)
+                            }
                         }
                         let alertController = UIAlertController(title: "Trip", message: message, preferredStyle: .Alert)
                         alertController.addAction(cancelAction)
@@ -224,9 +231,11 @@ class TripViewController : BaseViewController, UITableViewDataSource, UITableVie
                             
                             let favoriteButton = self.favoriteButton
                             favoriteButton.setImage(UIImage(named: "favorite_on"), forState: .Normal)
+                            DataCollector.sharedInstance.favoriteTrip(true, friendTrip: !self.isEditable)
                         }
                         else {
                             message = "Error while adding trip to your favorites."
+                            DataCollector.sharedInstance.favoriteTrip(false, friendTrip: !self.isEditable)
                             
                         }
                         let alertController = UIAlertController(title: "Trip", message: message, preferredStyle: .Alert)

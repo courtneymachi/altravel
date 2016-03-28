@@ -200,7 +200,7 @@ class SaveTripStepViewController: BaseViewController, GMSAutocompleteViewControl
         let identifier = segue.identifier;
         switch (identifier!) {
         case "addTripStepToTripSegue":
-            let addTripStepToTripViewController = segue.destinationViewController as! AddTripStepToTripViewController
+            let addTripStepToTripViewController = segue.destinationViewController as! CopyTripStepViewController
             if let currentStep = self.currentStep {
                 addTripStepToTripViewController.currentTripStep = currentStep
             }

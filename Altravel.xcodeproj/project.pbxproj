@@ -10,7 +10,7 @@
 		5AF2AB92B23FD430C9241F19 /* Pods_Altravel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2C81216316FA6ACFD7E87FE /* Pods_Altravel.framework */; };
 		DD33DF8D1C94FD7300A134DC /* UserFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33DF8C1C94FD7300A134DC /* UserFavorite.swift */; };
 		DD352FC11CA87EBB00F235AC /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD352FC01CA87EBB00F235AC /* BaseViewController.swift */; };
-		DD46B1301C97952E00C23386 /* AddTripStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD46B12F1C97952E00C23386 /* AddTripStepViewController.swift */; };
+		DD46B1301C97952E00C23386 /* CopyTripStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD46B12F1C97952E00C23386 /* CopyTripStepViewController.swift */; };
 		DD5825E71CA7598900501354 /* ACLValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5825E61CA7598900501354 /* ACLValidator.swift */; };
 		DD5825E91CA75F7700501354 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5825E81CA75F7700501354 /* UIButton+Extensions.swift */; };
 		DD780F901CA7A5B7006FDCE4 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD780F8F1CA7A5B7006FDCE4 /* MapViewController.swift */; };
@@ -63,7 +63,7 @@
 		A2C81216316FA6ACFD7E87FE /* Pods_Altravel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Altravel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD33DF8C1C94FD7300A134DC /* UserFavorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFavorite.swift; sourceTree = "<group>"; };
 		DD352FC01CA87EBB00F235AC /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		DD46B12F1C97952E00C23386 /* AddTripStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTripStepViewController.swift; sourceTree = "<group>"; };
+		DD46B12F1C97952E00C23386 /* CopyTripStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopyTripStepViewController.swift; sourceTree = "<group>"; };
 		DD5825E61CA7598900501354 /* ACLValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACLValidator.swift; sourceTree = "<group>"; };
 		DD5825E81CA75F7700501354 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		DD780F8F1CA7A5B7006FDCE4 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -199,7 +199,7 @@
 				DD7ABE551C54320200BF7C04 /* Models */,
 				F6489D511BE59BE6003D4435 /* AppDelegate.swift */,
 				F62A96231CA88137003FFA3B /* Altravel-Bridging-Header.h */,
-				DD46B12F1C97952E00C23386 /* AddTripStepViewController.swift */,
+				DD46B12F1C97952E00C23386 /* CopyTripStepViewController.swift */,
 				DD352FC01CA87EBB00F235AC /* BaseViewController.swift */,
 				F630B1E61C6FFE3C00CDB7B5 /* SaveTripViewController.swift */,
 				F61E983B1C8A5A0800171FFE /* SaveTripStepViewController.swift */,
@@ -479,7 +479,7 @@
 				F6489D521BE59BE6003D4435 /* AppDelegate.swift in Sources */,
 				DDC919E81C83CE190034201F /* TripViewController.swift in Sources */,
 				F630B1E71C6FFE3C00CDB7B5 /* SaveTripViewController.swift in Sources */,
-				DD46B1301C97952E00C23386 /* AddTripStepViewController.swift in Sources */,
+				DD46B1301C97952E00C23386 /* CopyTripStepViewController.swift in Sources */,
 				DD780F901CA7A5B7006FDCE4 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

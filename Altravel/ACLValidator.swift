@@ -16,10 +16,10 @@ class ACLValidator {
         if let objectACL = object.ACL {
             if let currentUser = PFUser.currentUser() {
                 if objectACL.getWriteAccessForUser(currentUser) {
-                    return false;
+                    return true
                 }
                 else {
-                    return true
+                    return false
                 }
             }
         }

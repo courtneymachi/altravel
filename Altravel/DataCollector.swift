@@ -14,28 +14,36 @@ import Crashlytics
 
 class DataCollector {
     static let sharedInstance = DataCollector()
+    let tracker = GAI.sharedInstance().defaultTracker
+    
     private init() {} //This prevents others from using the default '()' initializer for this class.
     
     //implemented in LoginVC
-    func loginAttempt(outcome: Bool) {
-        Answers.logLoginWithMethod("Facebook",
-            success: outcome,
-            customAttributes: nil)
+    func loginAttempt(success: Bool) {
+        Answers.logLoginWithMethod("Facebook", success: success, customAttributes: nil)
     }
     
-    //TODO: implement in TripVC
-    func favoriteOwnTrip() {
-        Answers.logCustomEventWithName("Favorite", customAttributes: ["action": "own_trip"])
+    //implemented in TripVC
+    func favoriteTrip(success: Bool, friendTrip: Bool) {
+        var source = "own"
+        if (friendTrip) {
+            source = "friend"
+        }
+        Answers.logCustomEventWithName("Favorite", customAttributes: ["action": "add", "source": source, "success": success])
     }
     
-    //TODO: implement in TripVC
-    func favoriteFriendTrip() {
-        Answers.logCustomEventWithName("Favorite", customAttributes: ["action": "friend_trip"])
+    //implemented in TripVC
+    func unfavoriteTrip(success: Bool, friendTrip: Bool) {
+        var source = "own"
+        if (friendTrip) {
+            source = "friend"
+        }
+        Answers.logCustomEventWithName("Favorite", customAttributes: ["action": "remove", "source": source, "success": success])
     }
     
     //implemented in SaveTripVC
-    func addTrip(outcome: Bool) {
-        Answers.logCustomEventWithName("Trip", customAttributes: ["action": "creation", "outcome": outcome])
+    func addTrip(success: Bool) {
+        Answers.logCustomEventWithName("Trip", customAttributes: ["action": "creation", "success": success])
     }
     
     //implemented in SaveTripVC
@@ -44,13 +52,13 @@ class DataCollector {
     }
     
     //implemented in SaveTripStepVC
-    func editTrip(outcome: Bool) {
-        Answers.logCustomEventWithName("Trip", customAttributes: ["action": "edit", "outcome": outcome])
+    func editTrip(success: Bool) {
+        Answers.logCustomEventWithName("Trip", customAttributes: ["action": "edit", "success": success])
     }
     
     //implemented in SaveTripStepVC
-    func addStep(outcome: Bool) {
-        Answers.logCustomEventWithName("Step", customAttributes: ["action": "creation", "outcome": outcome])
+    func addStep(success: Bool) {
+        Answers.logCustomEventWithName("Step", customAttributes: ["action": "creation", "success": success])
     }
     
      //implemented in SaveTripStepVC
@@ -59,8 +67,8 @@ class DataCollector {
     }
     
     //implemented in AddTripStepVC
-    func copyStep(outcome: Bool) {
-        Answers.logCustomEventWithName("Step", customAttributes: ["action": "copy", "outcome": outcome])
+    func copyStep(success: Bool) {
+        Answers.logCustomEventWithName("Step", customAttributes: ["action": "copy", "success": success])
     }
     
     //implemented in AddTripStepVC
@@ -69,8 +77,8 @@ class DataCollector {
     }
     
     //implemented in SaveTripStepVC
-    func editStep(outcome: Bool) {
-        Answers.logCustomEventWithName("Step", customAttributes: ["action": "edit", "outcome": outcome])
+    func editStep(success: Bool) {
+        Answers.logCustomEventWithName("Step", customAttributes: ["action": "edit", "success": success])
     }
     
     //TODO: implement in FriendsVC
@@ -79,15 +87,11 @@ class DataCollector {
     }
     
     func anyView(viewName: String) {
-        
-        let tracker = GAI.sharedInstance().defaultTracker
         tracker.set(kGAIScreenName, value: viewName)
-        
         let builder = GAIDictionaryBuilder.createScreenView()
         tracker.send(builder.build() as [NSObject : AnyObject])
         
         Answers.logContentViewWithName(viewName, contentType: nil, contentId: nil, customAttributes: nil)
-
     }
     
     

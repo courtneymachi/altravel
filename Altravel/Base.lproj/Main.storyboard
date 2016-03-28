@@ -703,10 +703,10 @@
             </objects>
             <point key="canvasLocation" x="3402" y="930"/>
         </scene>
-        <!--Add Trip Step To Trip View Controller-->
+        <!--Copy Trip Step View Controller-->
         <scene sceneID="tp2-NF-w27">
             <objects>
-                <viewController id="of6-fA-QA9" customClass="AddTripStepToTripViewController" customModule="Altravel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="of6-fA-QA9" customClass="CopyTripStepViewController" customModule="Altravel" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="imj-iD-PMo"/>
                         <viewControllerLayoutGuide type="bottom" id="2dv-UT-Ono"/>
