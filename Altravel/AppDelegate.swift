@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // Fabric
-        Fabric.with([Crashlytics.self])
+        Fabric.with([Crashlytics.self, Answers.self])
         
         // Google Maps
         GMSServices.provideAPIKey("AIzaSyA1tR4TwwuHmTnRY2TgpZwfqkDIla_5ugM")
@@ -55,7 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var configureError:NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
         assert(configureError == nil, "Error configuring Google services: \(configureError)")
-
         
         return true
     }

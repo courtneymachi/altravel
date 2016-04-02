@@ -10,12 +10,14 @@ import UIKit
 import Parse
 import Crashlytics
 
-class TripViewController : BaseViewController, UITableViewDataSource, UITableViewDelegate {
+class TripViewController : BaseViewController, UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     var currentTrip: Trip?
     var steps: NSArray?
     var currentTripStep: TripStep?
     var userFavorite: UserFavorite?
+    
+//    var imagePicker: UIImagePickerController!
     
     @IBOutlet weak var stepsTableView: UITableView!
     @IBOutlet weak var datesLabel: UILabel!
@@ -33,7 +35,6 @@ class TripViewController : BaseViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        
         self.tripTitle.layer.masksToBounds = true
         self.tripTitle.layer.cornerRadius = 5;
         
@@ -55,12 +56,13 @@ class TripViewController : BaseViewController, UITableViewDataSource, UITableVie
     func initUI() {
         if let trip = self.currentTrip {
             if self.isEditable {
-                self.newStepButton.hidden = true
-                self.editButton.hidden = true
-            }
-            else {
                 self.newStepButton.hidden = false
                 self.editButton.hidden = false
+            }
+            else {
+                self.newStepButton.hidden = true
+                self.editButton.hidden = true
+
             }
             
             self.tripTitle.text = trip.title
@@ -112,9 +114,7 @@ class TripViewController : BaseViewController, UITableViewDataSource, UITableVie
                     }
                 })
             }
-            
         }
-        
     }
     
     // Table view delegates
@@ -250,6 +250,21 @@ class TripViewController : BaseViewController, UITableViewDataSource, UITableVie
     }
     
     
+//    @IBAction func onCameraTouch(sender: AnyObject) {
+//        self.imagePicker = UIImagePickerController()
+//        self.imagePicker.delegate = self
+//        self.imagePicker.sourceType = .PhotoLibrary
+//        self.presentViewController(self.imagePicker, animated: true, completion: nil)
+//    }
+    
+//    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+//        self.imagePicker.dismissViewControllerAnimated(true, completion: nil)
+//    }
+    
+//    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+//        self.imagePicker.dismissViewControllerAnimated(true, completion: nil)
+//    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let identifier = segue.identifier;
         switch (identifier!) {
@@ -278,4 +293,5 @@ class TripViewController : BaseViewController, UITableViewDataSource, UITableVie
         }
         
     }
+    
 }

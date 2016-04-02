@@ -48,18 +48,18 @@ class SaveTripStepViewController: BaseViewController, GMSAutocompleteViewControl
                 self.locationButton.setTitleForAllStates(tripStep.originPlace)
                 
                 if (self.isEditable) {
-                    self.titleTextField.enabled = false
-                    self.descriptionTextField.enabled = false
-                    self.locationButton.enabled = false
-                    self.saveButton.hidden = true
-                    self.cancelButton.setTitleForAllStates("Close")
-                }
-                else {
                     self.titleTextField.enabled = true
                     self.descriptionTextField.enabled = true
                     self.locationButton.enabled = true
                     self.saveButton.hidden = false
                     self.cancelButton.setTitleForAllStates("Cancel")
+                }
+                else {
+                    self.titleTextField.enabled = false
+                    self.descriptionTextField.enabled = false
+                    self.locationButton.enabled = false
+                    self.saveButton.hidden = true
+                    self.cancelButton.setTitleForAllStates("Close")
                 }
             }
             else {
