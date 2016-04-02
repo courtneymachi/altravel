@@ -30,10 +30,12 @@ class ProfileViewController: BaseViewController, UISearchBarDelegate, UITableVie
     @IBOutlet weak var tripTableView: UITableView!
     @IBOutlet weak var profileTextArea: UITextView!
     @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var editButton: UIButton!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
 
         self.userNameLabel.layer.masksToBounds = true
         self.userNameLabel.layer.cornerRadius = 5;
@@ -64,20 +66,24 @@ class ProfileViewController: BaseViewController, UISearchBarDelegate, UITableVie
     
     func diplayUserInfo() {
         if let property = self.currentUserProperty {
+
+            // this button is hidden by default because it is only visible when the description text view is editable
+            self.editButton.hidden = true;
             
             if self.isEditable {
-                self.closeButton.hidden = false;
-                if let cityButton: UIButton = self.cityButton {
-                    cityButton.enabled = false;
-                }
-                self.profileTextArea.editable = false;
-            }
-            else {
                 self.closeButton.hidden = true;
                 if let cityButton: UIButton = self.cityButton {
                     cityButton.enabled = true;
                 }
                 self.profileTextArea.editable = true;
+            }
+            else {
+                self.closeButton.hidden = false;
+                if let cityButton: UIButton = self.cityButton {
+                    cityButton.enabled = false;
+                }
+                self.profileTextArea.editable = false;
+
             }
             
             if let profile = property.profile {
@@ -131,6 +137,11 @@ class ProfileViewController: BaseViewController, UISearchBarDelegate, UITableVie
         
     }
     
+    func textViewDidBeginEditing(textView: UITextView) {
+        self.editButton.hidden = false;
+    }
+    
+    
     func textViewDidEndEditing(textView: UITextView) {
         if let property = self.currentUserProperty {
             if let description = self.profileTextArea.text {
@@ -149,6 +160,10 @@ class ProfileViewController: BaseViewController, UISearchBarDelegate, UITableVie
         }
     }
     
+    @IBAction func onTouchEditButton(sender: AnyObject) {
+        self.editButton.hidden = true;
+        self.profileTextArea.resignFirstResponder()
+    }
     
     @IBAction func onPickCityButton(sender: AnyObject) {
         let autocompleteController = GMSAutocompleteViewController()

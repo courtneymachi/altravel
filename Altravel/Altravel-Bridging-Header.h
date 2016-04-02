@@ -11,6 +11,4 @@
 
 #import <Google/Analytics.h>
 
-
-
 #endif /* altravel_Bridging_Header_h */
