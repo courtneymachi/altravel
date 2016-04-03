@@ -2,12 +2,10 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "check_mark.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "check_mark-1.png",
       "scale" : "2x"
     },
     {
