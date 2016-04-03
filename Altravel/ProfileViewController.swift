@@ -75,7 +75,7 @@ class ProfileViewController: BaseViewController, UISearchBarDelegate, UITableVie
                 if let cityButton: UIButton = self.cityButton {
                     cityButton.enabled = true;
                 }
-                self.pxtArea.editable = true;
+                self.profileTextArea.editable = true;
             }
             else {
                 self.closeButton.hidden = false;
