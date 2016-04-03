@@ -70,7 +70,7 @@ class SaveTripStepViewController: BaseViewController, GMSAutocompleteViewControl
         }
     }
     
-    func onKeyobardDone() {
+    func onKeyboardDone() {
         self.descriptionTextField.resignFirstResponder()
         self.titleTextField.resignFirstResponder()
     }
