@@ -39,6 +39,9 @@ class SaveTripStepViewController: BaseViewController, GMSAutocompleteViewControl
     }
     
     func initUI() {
+        self.customKeyboard(textField: self.titleTextField)
+        self.customKeyboard(textField: self.descriptionTextField)
+        
         if let tripStep = self.currentStep {
             if tripStep.objectId != nil { // step exists
                 self.isNewStep = false
@@ -67,8 +70,11 @@ class SaveTripStepViewController: BaseViewController, GMSAutocompleteViewControl
         }
     }
     
-    
-    
+    func onKeyobardDone() {
+        self.descriptionTextField.resignFirstResponder()
+        self.titleTextField.resignFirstResponder()
+    }
+
     
     @IBAction func onLocationClickButton(sender: AnyObject) {
         let autocompleteController = GMSAutocompleteViewController()

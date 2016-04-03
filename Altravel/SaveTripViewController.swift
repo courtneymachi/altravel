@@ -53,6 +53,8 @@ class SaveTripViewController: BaseViewController, UITextFieldDelegate {
         
         self.customKeyboard(textField: self.tripNameField)
         self.customKeyboard(textField: self.tripDetailsField)
+        self.customKeyboard(textField: self.startDateField)
+        self.customKeyboard(textField: self.endDateField)
         
         if let trip = self.currentTrip {
             if trip.objectId != nil { // the object was previously saved
@@ -81,8 +83,10 @@ class SaveTripViewController: BaseViewController, UITextFieldDelegate {
     }
     
     func onKeyboardDone() {
-        self.tripNameField.resignFirstResponder();
-        self.tripDetailsField.resignFirstResponder();
+        self.tripNameField.resignFirstResponder()
+        self.tripDetailsField.resignFirstResponder()
+        self.startDateField.resignFirstResponder()
+        self.endDateField.resignFirstResponder()
     }
 
     
