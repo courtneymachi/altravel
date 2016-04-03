@@ -35,11 +35,14 @@ class TripViewController : BaseViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        
+        // TODO: replace this with @IBDesignable
         self.tripTitle.layer.masksToBounds = true
         self.tripTitle.layer.cornerRadius = 5;
         
         self.stepsLabel.layer.masksToBounds = true
         self.stepsLabel.layer.cornerRadius = 5;
+
         
         if let currentTrip = self.currentTrip {
             self.isEditable = ACLValidator.sharedInstance.isEditable(currentTrip)

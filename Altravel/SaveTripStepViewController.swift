@@ -24,7 +24,6 @@ class SaveTripStepViewController: BaseViewController, GMSAutocompleteViewControl
     
     var isNewStep: Bool = true
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         

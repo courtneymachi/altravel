@@ -50,6 +50,10 @@ class SaveTripViewController: BaseViewController, UITextFieldDelegate {
     }
     
     func initUI() {
+        
+        self.customKeyboard(textField: self.tripNameField)
+        self.customKeyboard(textField: self.tripDetailsField)
+        
         if let trip = self.currentTrip {
             if trip.objectId != nil { // the object was previously saved
                 self.isNewTrip = false
@@ -74,6 +78,11 @@ class SaveTripViewController: BaseViewController, UITextFieldDelegate {
                 self.isNewTrip = true
             }
         }
+    }
+    
+    func onKeyboardDone() {
+        self.tripNameField.resignFirstResponder();
+        self.tripDetailsField.resignFirstResponder();
     }
 
     
@@ -178,10 +187,8 @@ class SaveTripViewController: BaseViewController, UITextFieldDelegate {
     @IBAction func cancelButtonTapped(sender: UIButton) {
         DataCollector.sharedInstance.cancelTrip()
         self.dismissViewControllerAnimated(true, completion: nil)
-        
     }
 
-    
     
     // functions
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
@@ -206,11 +213,6 @@ class SaveTripViewController: BaseViewController, UITextFieldDelegate {
         let formatter = NSDateFormatter()
         formatter.dateStyle = .MediumStyle
         self.currentDateField!.text = formatter.stringFromDate(date)
-    }
-    
-    
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        self.view.endEditing(true)
     }
     
     
